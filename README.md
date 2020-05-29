@@ -13,17 +13,22 @@ Following section describes the setup of the cluster
 
 ### Before starting
 
-Add the following repos to helm
+#### Add the following repos to helm
 
 ```sh
 helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
 ```
 
+#### Create openftth namespace
+
+```sh
+kubectl create ns openftth
+```
+
 ### Kafka
 
 ```sh
-kubectl create ns openffth
-helm install --generate-name --namespace kafka incubator/kafka
+helm install --generate-name --namespace openftth incubator/kafka
 ```
 
 ### KSQL
