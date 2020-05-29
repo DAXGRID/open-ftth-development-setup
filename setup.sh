@@ -11,4 +11,4 @@ git clone https://github.com/confluentinc/cp-helm-charts.git
 helm install --set cp-zookeeper.url="unhinged-robin-cp-zookeeper:2181",cp-schema-registry.url="http://lolling-chinchilla-cp-schema-registry:8081" cp-helm-charts/charts/cp-ksql-server --namespace openftth --generate-name
 
 cd ..
-rm -r cp-helm-charts
+rm -rf cp-helm-charts

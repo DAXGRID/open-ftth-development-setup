@@ -6,6 +6,7 @@ Documentation and config files for open-ftth on Kubernetes
 * Kubectl
 * Helm
 * Configured Kubernetes cluster with provisioned storage
+* Git
 
 ## Setup
 
@@ -18,6 +19,18 @@ Following section describes the setup of the cluster
 ```sh
 helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
 ```
+
+### Setup with script
+
+To setup the whole thing just run setup.sh
+
+```sh
+./setup.sh
+```
+
+### Manual setup
+
+To setup the cluster manually calling each command.
 
 #### Create openftth namespace
 
