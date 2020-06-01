@@ -1,13 +1,8 @@
 #!/bin/sh
 
-helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
+helm repo add confluentinc https://confluentinc.github.io/cp-helm-charts/   #(1)
+helm repo update    #(2)
 
 kubectl create ns openftth
 
-helm install openftth-kafka --namespace openftth incubator/kafka
-
-git clone https://github.com/confluentinc/cp-helm-charts.git
-
-helm install openftth-ksql --set cp-zookeeper.url="openffth-zookeeper:2181",cp-schema-registry.url="http://lolling-chinchilla-cp-schema-registry:8081" cp-helm-charts/charts/cp-ksql-server --namespace openftth
-
-rm -rf cp-helm-charts
+helm install openftth --set cp-schema-registry.enabled=false,cp-kafka-rest.enabled=false,cp-control-center.enabled=false confluentinc/cp-helm-charts --namespace openftth
