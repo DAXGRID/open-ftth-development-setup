@@ -1,4 +1,5 @@
 # Setting up open-ftth on kubernetes
+
 Documentation and config files for open-ftth on Kubernetes
 
 ## Requirements
@@ -10,42 +11,24 @@ Documentation and config files for open-ftth on Kubernetes
 
 ## Setup
 
-Following section describes the setup of the cluster
+To setup the cluster run the following command.
 
-### Before starting
-
-#### Add the following repos to helm
-
-```sh
-helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
-```
-
-### Setup with script
-
-To setup the whole thing just run setup.sh
-
-```sh
+``` sh
 ./setup.sh
 ```
 
-### Manual setup
+The script will provision the cluster with the following:
 
-To setup the cluster manually calling each command.
+* Kafka
+* Zookeeper
+* Kafka-connect
+* KSQL-Server
+* Cassandra
 
-#### Create openftth namespace
+## Teardown
 
-```sh
-kubectl create ns openftth
-```
+Run the following script to teardown the cluster.
 
-### Kafka
-
-```sh
-helm install --generate-name --namespace openftth incubator/kafka
-```
-
-### KSQL
-
-```sh
-helm install --set cp-zookeeper.url="unhinged-robin-cp-zookeeper:2181",cp-schema-registry.url="http://lolling-chinchilla-cp-schema-registry:8081" cp-helm-charts/charts/cp-ksql-server --namespace openftth --generate-name
+``` sh
+./teardown.sh
 ```
