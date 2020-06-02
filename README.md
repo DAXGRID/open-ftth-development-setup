@@ -24,6 +24,7 @@ The script will provision the cluster with the following:
 * Kafka-connect
 * KSQL-Server
 * Cassandra
+* PostGIS
 
 ## Teardown
 
