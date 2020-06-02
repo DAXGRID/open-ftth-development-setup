@@ -9,3 +9,5 @@ kubectl create ns openftth
 helm install openftth-kafka --set cp-schema-registry.enabled=false,cp-kafka-rest.enabled=false,cp-control-center.enabled=false confluentinc/cp-helm-charts --namespace openftth
 
 helm install openftth-cassandra bitnami/cassandra --namespace openftth
+
+kubectl apply -f ./postgis.yaml --namespace openftth

@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgis-svc
+  labels:
+    app: postgis
+spec:
+  ports:
+  - port: 5432
+    name: postgis
+  clusterIP: None
+  selector:
+    app: postgis
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgis
+spec:
+  serviceName: "postgis"
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: postgis
+  template:
+    metadata:
+      labels:
+        app: postgis
+    spec:
+      containers:
+      - name: postgis
+        image: kartoza/postgis
+        env:
+          - name: WAL_LEVEL
+            value: logical
+          - name: POSTGRES_USER
+            value: postgres
+          - name: POSTGRES_PASSWORD
+            value: postgres
+        ports:
+        - containerPort: 5432
+          name: postgis
+        volumeMounts:
+        - name: postgis-data
+          mountPath: /postgis_data
+  volumeClaimTemplates:
+  - metadata:
+      name: postgis-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 10Gi
