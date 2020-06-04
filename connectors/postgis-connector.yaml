@@ -11,8 +11,8 @@ spec:
     database.hostname: postgis-svc
     database.port: "5432"
     database.user: "postgres"
-    database.password: "postgres"
-    database.server.name: "postgis"
+    database.password: "${file:/opt/kafka/external-configuration/connector-config/debezium-postgres-credentials.properties:mysql_username}"
+    database.server.name: "${file:/opt/kafka/external-configuration/connector-config/debezium-postgres-credentials.properties:mysql_password}"
     database.dbname: "OPEN_FTTH"
     database.whitelist: "OPEN_FTTH"
     database.history.kafka.bootstrap.servers: "my-cluster-kafka-bootstrap:9092"
