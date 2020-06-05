@@ -9,6 +9,7 @@ spec:
   - port: 5432
   selector:
     app: postgis
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: StatefulSet
