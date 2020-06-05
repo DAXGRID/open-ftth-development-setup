@@ -13,15 +13,12 @@ helm install openftth-cassandra bitnami/cassandra -n openftth
 kubectl apply -f ./postgis/postgis.yaml -n openftth
 
 # Create Strimzi Kafka   
-kubectl apply -f ./strimzi/strimzi-kafka.yaml -n openftth
+kubectl apply -f ./strimzi/kafka-operator.yaml -n openftth
 
 # This is needed for the cluster to recognize the new type
 sleep 1s
 
-kubectl apply -f ./strimzi/kafka-persistent-single.yaml -n openftth
-
-# This is needed for the cluster to recognize the new type
-sleep 1s
+kubectl apply -f ./strimzi/kafka.yaml -n openftth
 
 # Create secret for postgres connector
 kubectl -n openftth create secret generic postgres-credentials \
