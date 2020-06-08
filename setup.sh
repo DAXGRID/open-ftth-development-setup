@@ -6,7 +6,7 @@ helm repo update
 # Create project namespace
 kubectl create ns openftth
 
-# Setup cassandra
+# Setup cassandra https://bitnami.com/stack/cassandra/helm
 helm install openftth-cassandra bitnami/cassandra -n openftth
 
 # Setup Postgis
