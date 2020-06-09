@@ -22,7 +22,6 @@ The script will provision the cluster with the following:
 * Kafka
 * Zookeeper
 * Kafka-connect
-* KSQL-Server
 * Cassandra
 * PostGIS
 

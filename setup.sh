@@ -1,13 +1,17 @@
 #!/bin/sh
 
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm repo update
+# helm repo add bitnami https://charts.bitnami.com/bitnami
+# helm repo update
 
 # Create project namespace
 kubectl create ns openftth
 
 # Setup cassandra https://bitnami.com/stack/cassandra/helm
-helm install openftth-cassandra bitnami/cassandra -n openftth
+# helm install openftth-cassandra bitnami/cassandra -n openftth
+
+# Scylla
+kubectl apply -f ./scylla/operator.yaml
+kubectl apply -f ./scylla/cluster.yaml
 
 # Setup Postgis
 kubectl apply -f ./postgis/postgis.yaml -n openftth
