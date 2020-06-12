@@ -5,9 +5,8 @@ Documentation and config files for open-ftth on Kubernetes
 ## Requirements
 
 * Kubectl
-* Helm
+* Helm 3
 * Configured Kubernetes cluster with provisioned storage
-* Git
 
 ## Setup
 

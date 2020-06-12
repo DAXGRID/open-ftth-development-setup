@@ -4,7 +4,7 @@ metadata:
   name: my-cluster
 spec:
   kafka:
-    replicas: 1
+    replicas: 3
     listeners:
       plain: {}
       tls: {}
@@ -23,7 +23,7 @@ spec:
       transaction.state.log.replication.factor: 1
       transaction.state.log.min.isr: 1
   zookeeper:
-    replicas: 1
+    replicas: 3
     storage:
       type: persistent-claim
       size: 10Gi
