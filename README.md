@@ -13,16 +13,8 @@ Documentation and config files for open-ftth on Kubernetes
 To setup the cluster run the following command.
 
 ``` sh
-./setup.sh
+./scripts/setup.sh
 ```
-
-The script will provision the cluster with the following:
-
-* Kafka
-* Zookeeper
-* Kafka-connect
-* Cassandra
-* PostGIS
 
 ## Teardown
 
