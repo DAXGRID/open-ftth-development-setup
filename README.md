@@ -1,4 +1,4 @@
-# Setting up open-ftth on kubernetes
+# OPEN-FTTH Kubernetes Setup
 
 Documentation and config files for open-ftth on Kubernetes
 
