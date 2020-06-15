@@ -1,9 +1,16 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/bin/sh
+#
+# Setup environment
+./scripts/setup.sh
 
-echo "Setup development environment for OPEN-FTTH"
+# Create secrets for dev environment
 
-./setup.sh
+cat <<EOF > debezium-postgres-credentials.properties
+username: postgres
+password: postgres
+EOF
+kubectl -n openftth create secret generic postgres-credentials \
+  --from-file=debezium-postgres-credentials.properties
+rm debezium-postgres-credentials.properties
 
-echo "Exposes resources for development"
-# kubectl expose pod openftth-cassandra-0 --type=NodePort -n openftth
+

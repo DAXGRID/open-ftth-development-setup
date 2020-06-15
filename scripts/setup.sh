@@ -11,6 +11,8 @@ helm install strimzi strimzi/strimzi-kafka-operator \
    --version 0.18
 
 # Install OpenFTTH
+
+# This is needed to make sure that the strimzi custom types are being registered
 sleep 1s
 
 helm install openftth openftth/ \
