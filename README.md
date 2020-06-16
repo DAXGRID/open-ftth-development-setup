@@ -1,12 +1,12 @@
 # OPEN-FTTH Kubernetes Setup
 
-Documentation and config files for open-ftth on Kubernetes
+Helm Chart for OPEN-FTTH
 
 ## Requirements
 
 * Kubectl
 * Helm 3
-* Configured Kubernetes cluster with provisioned storage
+* Kubernetes Cluster
 
 ## Setup
 
