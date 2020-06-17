@@ -44,6 +44,7 @@ janusgraph:
   ## for Cloud Bigtable choose hbase
   storage.backend: cassandra
   storage.directory: /db/cassandra
+  storage.hostname: openftth-cassandra
 
   ## Google Cloud Bigtable specific configuration
   ## To use Cloud Bigtable, uncomment the following three lines and replace values

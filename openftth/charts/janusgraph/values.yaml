@@ -18,7 +18,7 @@ resources: {}
 extraEnvs: {}
 
 service:
-  type: ClusterIP # Change to LoadBalancer if you plan to access JanusGraph outside k8s cluster
+  type: LoadBalancer # Change to LoadBalancer if you plan to access JanusGraph outside k8s cluster
   port: 8182
   serviceAnnotations:
     # the following line is ignored unless unless using a LoadBalancer with GCP
@@ -27,7 +27,7 @@ service:
 ## This chart can deploy the Elasticsearch as a dependency.
 ## Use this section to provide elasticsearch chart specific values
 elasticsearch:
-  deploy: false # change to true if you want to deploy Elasticsearch as a requirement along with this chart
+  deploy: true # change to true if you want to deploy Elasticsearch as a requirement along with this chart
   rbac:
     create: true # required for kubernetes >1.7
 
@@ -38,8 +38,9 @@ properties:
   ## see http://docs.janusgraph.org/0.2.0/storage-backends.html, choose the desired storage backend
   ## (i.e. berkeleyje, cassandra, cassandrathrift, cql, embeddedcassandra, hbase, inmemory )
   ## for Cloud Bigtable choose hbase
-  storage.backend: berkeleyje
-  storage.directory: /db/berkeley
+  storage.backend: cassandra
+  storage.directory: /db/cassandra
+  storage.hostname: openftth-cassandra
 
   ## Google Cloud Bigtable specific configuration
   ## To use Cloud Bigtable, uncomment the following three lines and replace values
@@ -48,7 +49,7 @@ properties:
   # storage.hbase.ext.hbase.client.connection.impl: com.google.cloud.bigtable.hbase1_x.BigtableConnection # required for using Cloud Bigtable
 
   ## Indexing/Search backend configuration (see http://docs.janusgraph.org/latest/index-backends.html)
-  index.search.backend: lucene
+  index.search.backend: elasticsearch
   index.search.directory: /db/searchindex
   ## choose the index backend you want to use: elasticsearch, es, solr or lucene (default "lucene")
   ## if you plan to use elasticsearch, change to "index.search.backend=elasticsearch"
