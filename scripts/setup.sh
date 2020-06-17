@@ -19,6 +19,7 @@ sleep 1s
 
 # Build dependencies
 helm dependencies build openftth
+helm dependencies build ./openftth/charts/janusgraph
 
 # Install OpenFTTH
 helm install openftth openftth/ \
