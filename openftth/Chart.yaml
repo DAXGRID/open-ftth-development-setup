@@ -8,3 +8,6 @@ dependencies:
   - name: cassandra
     version: 0.15.1
     repository: https://kubernetes-charts-incubator.storage.googleapis.com
+  - name: elasticsearch
+    version: 7.7.1
+    repository: https://helm.elastic.co

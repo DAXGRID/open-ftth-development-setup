@@ -1,56 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "janusgraph.fullname" . }}
+  name: janusgraph-deployment
   labels:
-    app: {{ template "janusgraph.name" . }}
-    chart: {{ template "janusgraph.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    app: janusgraph
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
-      app: {{ template "janusgraph.name" . }}
-      release: {{ .Release.Name }}
+      app: janusgraph
   template:
     metadata:
       labels:
-        app: {{ template "janusgraph.name" . }}
-        release: {{ .Release.Name }}
+        app: janusgraph
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.extraEnvs }}
+        - name: janusgraph
+          image: janusgraph/janusgraph:0.5.2
           env:
-              {{- with .Values.extraEnvs }}
-                {{- toYaml . | trim | nindent 12 -}}
-              {{- end }}
-          {{- end }}
+            - name: JANUS_PROPS_TEMPLATE
+              value: cassandra-es
+            - name: janusgraph.storage.backend
+              value: cql
+            - name: janusgraph.storage.hostname
+              value: openftth-cassandra
+            - name: janusgraph.index.search.hostname
+              value: elasticsearch-master
           ports:
             - containerPort: 8182
-              protocol: TCP
-          volumeMounts:
-            - name: janusgraph-config
-              mountPath: /janusgraph-config
-            - name: local-db
-              mountPath: {{ .Values.persistence.path }}
-          livenessProbe:
-            exec:
-              command:
-                - /tmp/healthcheck.py
-          resources:
-{{ toYaml .Values.resources | indent 12 }}
-      volumes:
-        - name: janusgraph-config
-          configMap:
-            name: {{ .Values.configMapOverrideName | default ( printf "%s-config" .Release.Name ) }}
-        - name: local-db
-        {{- if .Values.persistence.enabled }}
-          persistentVolumeClaim:
-            claimName: {{ .Values.persistence.existingClaim | default (include "janusgraph.fullname" .) }}
-        {{- else }}
-          emptyDir: {}
-        {{- end -}}
+              name: janusgraph
