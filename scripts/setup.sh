@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Create namespace
 kubectl create namespace openftth
@@ -7,12 +7,11 @@ kubectl create namespace openftth
 helm repo add strimzi https://strimzi.io/charts/
 helm repo add stable https://kubernetes-charts.storage.googleapis.com
 helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com
+helm repo add elastic https://helm.elastic.co
 
 helm repo update
 
-helm install strimzi strimzi/strimzi-kafka-operator \
-   --namespace openftth \
-   --version 0.18
+helm install strimzi strimzi/strimzi-kafka-operator -n openftth --version 0.18
 
 # This is needed to make sure that the strimzi custom types are being registered
 sleep 1s
@@ -21,6 +20,5 @@ sleep 1s
 helm dependencies build openftth
 
 # Install OpenFTTH
-helm install openftth openftth/ \
-  --namespace openftth
+helm install openftth openftth -n openftth
 
