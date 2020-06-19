@@ -24,8 +24,10 @@ spec:
               value: cql
             - name: janusgraph.storage.hostname
               value: openftth-cassandra
-            - name: janusgraph.index.search.hostname
-              value: elasticsearch-master
           ports:
             - containerPort: 8182
               name: janusgraph
+          livenessProbe:
+            exec:
+              command:
+                - cat
