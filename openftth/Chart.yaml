@@ -9,5 +9,5 @@ dependencies:
     version: 0.15.1
     repository: https://kubernetes-charts-incubator.storage.googleapis.com
   - name: elasticsearch
-    version: 7.7.1
+    version: 6.8.10
     repository: https://helm.elastic.co

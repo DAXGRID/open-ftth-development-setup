@@ -24,10 +24,15 @@ spec:
               value: cql
             - name: janusgraph.storage.hostname
               value: openftth-cassandra
+            - name: janusgraph.index.search.backend
+              value: elasticsearch
+            - name: index.search.directory
+              value: /db/searchindex
+            - name: janusgraph.index.search.hostname
+              value: elasticsearch-master
+            - name: janusgraph.index.search.elasticsearch.client-only
+              value: "true"
           ports:
             - containerPort: 8182
+              protocol: TCP
               name: janusgraph
-          livenessProbe:
-            exec:
-              command:
-                - cat
