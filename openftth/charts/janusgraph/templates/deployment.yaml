@@ -36,3 +36,11 @@ spec:
             - containerPort: 8182
               protocol: TCP
               name: janusgraph
+          livenessProbe:
+            exec:
+              command:
+                - bin/gremlin.sh
+                - -e
+                - scripts/remote-connect.groovy
+            initialDelaySeconds: 10
+            periodSeconds: 30
