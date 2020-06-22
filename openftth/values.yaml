@@ -10,6 +10,7 @@ cassandra:
 # ElasticSearch
 ############################
 elasticsearch:
+  clusterName: openftth-elasticsearch
   replicas: 1
   minimumMasterNodes: 1
   antiAffinity: "soft"

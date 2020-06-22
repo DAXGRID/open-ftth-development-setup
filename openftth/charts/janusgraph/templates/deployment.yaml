@@ -23,13 +23,11 @@ spec:
             - name: janusgraph.storage.backend
               value: cql
             - name: janusgraph.storage.hostname
-              value: openftth-cassandra
+              value: {{ .Release.Name }}-cassandra
             - name: janusgraph.index.search.backend
               value: elasticsearch
-            - name: index.search.directory
-              value: /db/searchindex
             - name: janusgraph.index.search.hostname
-              value: elasticsearch-master
+              value: {{ .Release.Name }}-elasticsearch-master
             - name: janusgraph.index.search.elasticsearch.client-only
               value: "true"
           ports:
