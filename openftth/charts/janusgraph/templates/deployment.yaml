@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-{{ .Chart.Name }}
@@ -16,20 +16,20 @@ spec:
     spec:
       containers:
         - name: {{ .Release.Name }}-{{ .Chart.Name }}
-          image: janusgraph/janusgraph:0.5.2
+          image: janusgraph/janusgraph:{{ .Values.imageVersion }}
           env:
             - name: JANUS_PROPS_TEMPLATE
-              value: cassandra-es
+              value: {{ .Values.propsTemplate }}
             - name: janusgraph.storage.backend
-              value: cql
+              value: {{ .Values.storageBackend }}
             - name: janusgraph.storage.hostname
               value: {{ .Release.Name }}-cassandra
             - name: janusgraph.index.search.backend
-              value: elasticsearch
+              value: {{ .Values.searchBackend }}
             - name: janusgraph.index.search.hostname
-              value: {{ .Release.Name }}-elasticsearch-master
+              value: {{ .Release.Name }}-{{ .Values.searchHostname}}
             - name: janusgraph.index.search.elasticsearch.client-only
-              value: "true"
+              value: "{{ .Values.elasticsearchClientOnly }}"
           ports:
             - containerPort: 8182
               protocol: TCP

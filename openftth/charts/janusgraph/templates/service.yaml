@@ -5,9 +5,9 @@ metadata:
   labels:
     app: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
-  type: NodePort
+  type: {{ .Values.serviceType }}
   ports:
-    - port: 8182
+    - port: {{ .Values.port }}
       targetPort: 8182
       protocol: TCP
   selector:

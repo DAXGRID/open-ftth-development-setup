@@ -1,0 +1,10 @@
+replicas: 1
+serviceType: NodePort
+port: 8182
+imageVersion: 0.5.2
+
+propsTemplate: cassandra-es
+storageBackend: cql
+searchBackend: elasticsearch
+searchHostname: elasticsearch-master
+elasticsearchClientOnly: true
