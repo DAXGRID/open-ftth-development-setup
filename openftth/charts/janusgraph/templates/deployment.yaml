@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: janusgraph-deployment
+  name: {{ .Release.Name }}-{{ .Chart.Name }}-deployment
   labels:
-    app: janusgraph
+    app: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: janusgraph
+      app: {{ .Release.Name }}-{{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: janusgraph
+        app: {{ .Release.Name }}-{{ .Chart.Name }}
     spec:
       containers:
-        - name: janusgraph
+        - name: {{ .Release.Name }}-{{ .Chart.Name }}
           image: janusgraph/janusgraph:0.5.2
           env:
             - name: JANUS_PROPS_TEMPLATE
@@ -35,7 +35,7 @@ spec:
           ports:
             - containerPort: 8182
               protocol: TCP
-              name: janusgraph
+              name: {{ .Chart.Name }}
           readinessProbe:
             exec:
               command:
