@@ -2,6 +2,10 @@
 
 Helm Chart for OPEN-FTTH
 
+## Note
+
+This chart is still under development and is not meant for use yet.
+
 ## Requirements
 
 * Kubectl
