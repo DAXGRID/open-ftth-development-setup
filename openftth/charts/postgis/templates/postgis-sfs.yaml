@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: postgis
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
-  serviceName: "postgis"
+  serviceName: {{ .Release.Name }}-{{ .Chart.Name }}
   replicas: 1
   selector:
     matchLabels:
-      app: postgis
+      app: {{ .Release.Name }}-{{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: postgis
+        app: {{ .Release.Name }}-{{ .Chart.Name }}
     spec:
       containers:
-        - name: postgis
+        - name: {{ .Release.Name }}-{{ .Chart.Name }}
           image: kartoza/postgis:12.1
           env:
             - name: WAL_LEVEL
@@ -25,13 +25,13 @@ spec:
               value: postgres
           ports:
             - containerPort: 5432
-              name: postgis
+              name: {{ .Release.Name }}-{{ .Chart.Name }}
           volumeMounts:
-            - name: postgis-data
-              mountPath: /postgis_data
+            - name: {{ .Release.Name }}-{{ .Chart.Name }}-data
+              mountPath: /{{ .Release.Name }}_{{ .Chart.Name }}_data
   volumeClaimTemplates:
     - metadata:
-        name: postgis-data
+        name: {{ .Release.Name }}-{{ .Chart.Name }}-data
       spec:
         accessModes: ["ReadWriteOnce"]
         resources:
