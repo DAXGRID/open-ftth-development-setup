@@ -15,14 +15,14 @@ spec:
     spec:
       containers:
         - name: {{ .Release.Name }}-{{ .Chart.Name }}
-          image: kartoza/postgis:12.1
+          image: {{ .Values.image}}
           env:
             - name: WAL_LEVEL
-              value: logical
+              value: {{ .Values.env.wal_level }}
             - name: POSTGRES_USER
-              value: postgres
+              value: {{ .Values.env.user }}
             - name: POSTGRES_PASSWORD
-              value: postgres
+              value: {{ .Values.env.password }}
           ports:
             - containerPort: 5432
               name: {{ .Release.Name }}-{{ .Chart.Name }}
