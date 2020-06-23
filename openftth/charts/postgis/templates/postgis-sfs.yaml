@@ -15,17 +15,17 @@ spec:
     spec:
       containers:
         - name: {{ .Release.Name }}-{{ .Chart.Name }}
-          image: {{ .Values.image}}
+          image: kartoza/postgis:12.1
           env:
             - name: WAL_LEVEL
-              value: {{ .Values.env.wal_level }}
+              value: {{ .Values.env.walLevel }}
             - name: POSTGRES_USER
               value: {{ .Values.env.user }}
             - name: POSTGRES_PASSWORD
               value: {{ .Values.env.password }}
           ports:
             - containerPort: 5432
-              name: {{ .Release.Name }}-{{ .Chart.Name }}
+              name: {{ .Chart.Name }}
           volumeMounts:
             - name: {{ .Release.Name }}-{{ .Chart.Name }}-data
               mountPath: /{{ .Release.Name }}_{{ .Chart.Name }}_data

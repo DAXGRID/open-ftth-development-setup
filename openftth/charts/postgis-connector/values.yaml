@@ -10,7 +10,7 @@ replicationFactor:
 tls:
   trustedCertificates:
     secretName: my-cluster-cluster-ca-cert
-    certificate: ca-crt
+    certificate: ca.crt
 
 volumes:
   secretName: postgres-credentials

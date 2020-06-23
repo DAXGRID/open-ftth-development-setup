@@ -1,6 +1,4 @@
 env:
   user: postgres
   password: postgres
-  wal_level: logical
-
-image: kartoza/postgis:12.1
+  walLevel: logical
