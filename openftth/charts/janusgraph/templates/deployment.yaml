@@ -20,14 +20,25 @@ spec:
           env:
             - name: JANUS_PROPS_TEMPLATE
               value: {{ .Values.propsTemplate }}
+
             - name: janusgraph.storage.backend
               value: {{ .Values.storageBackend }}
+
             - name: janusgraph.storage.hostname
               value: {{ .Release.Name }}-cassandra
+
+            - name: janusgraph.storage.username
+              value: {{ .Values.storageUsername }}
+
+            - name: janusgraph.storage.password
+              value: {{ .Values.storagePassword }}
+
             - name: janusgraph.index.search.backend
               value: {{ .Values.searchBackend }}
+
             - name: janusgraph.index.search.hostname
               value: {{ .Release.Name }}-{{ .Values.searchHostname}}
+
             - name: janusgraph.index.search.elasticsearch.client-only
               value: "{{ .Values.elasticsearchClientOnly }}"
           ports:

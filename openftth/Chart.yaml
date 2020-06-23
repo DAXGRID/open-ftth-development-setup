@@ -6,8 +6,8 @@ version: 0.1.0
 type: application
 dependencies:
   - name: cassandra
-    version: 0.15.1
-    repository: https://kubernetes-charts-incubator.storage.googleapis.com
+    version: 5.4.0
+    repository: https://charts.bitnami.com/bitnami
   - name: elasticsearch
     version: 7.7.1
     repository: https://helm.elastic.co

@@ -5,8 +5,7 @@ kubectl create namespace openftth
 
 # Install Strimzi
 helm repo add strimzi https://strimzi.io/charts/
-helm repo add stable https://kubernetes-charts.storage.googleapis.com
-helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com
+helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo add elastic https://helm.elastic.co
 
 helm repo update

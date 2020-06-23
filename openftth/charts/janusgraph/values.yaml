@@ -5,6 +5,9 @@ imageVersion: 0.5.2
 
 propsTemplate: cassandra-es
 storageBackend: cql
+storageUsername: cassandra
+storagePassword: cassandra
+
 searchBackend: elasticsearch
 searchHostname: elasticsearch-master
 elasticsearchClientOnly: true
