@@ -9,20 +9,20 @@ metadata:
     strimzi.io/use-connector-resources: "true"
 spec:
   image: openftth/connect-debezium-postgresql
-  replicas: 1
-  bootstrapServers: my-cluster-kafka-bootstrap:9093
+  replicas: {{ .Values.replicas }}
+  bootstrapServers: {{ .Values.bootstrapServers }}
   tls:
     trustedCertificates:
-      - secretName: my-cluster-cluster-ca-cert
-        certificate: ca.crt
+      - secretName: {{ .Values.tls.trustedCertificates.secretName }}
+        certificate: {{ .Values.tls.trustedCertificates.certificate }}
   config:
-    config.storage.replication.factor: 1
-    offset.storage.replication.factor: 1
-    status.storage.replication.factor: 1
+    config.storage.replication.factor: {{ .Values.replicationFactor.config }}
+    offset.storage.replication.factor: {{ .Values.replicationFactor.offset }}
+    status.storage.replication.factor: {{ .Values.replicationFactor.status }}
     config.providers: file
     config.providers.file.class: org.apache.kafka.common.config.provider.FileConfigProvider
   externalConfiguration:
     volumes:
       - name: connector-config
         secret:
-          secretName: postgres-credentials
+          secretName: {{ .Values.volumes.secretName }}
