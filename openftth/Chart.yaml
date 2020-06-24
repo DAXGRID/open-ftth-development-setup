@@ -11,3 +11,6 @@ dependencies:
   - name: elasticsearch
     version: 7.7.1
     repository: https://helm.elastic.co
+  - name: nginx-ingress-controller
+    version: 5.3.24
+    repository: https://charts.bitnami.com/bitnami

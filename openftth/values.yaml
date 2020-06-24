@@ -1,15 +1,9 @@
-############################
-# Cassandra
-############################
 cassandra:
   dbUser:
     user: cassandra
     forcePassword: false
     password: cassandra
 
-############################
-# ElasticSearch
-############################
 elasticsearch:
   clusterName: openftth-elasticsearch
   replicas: 1
