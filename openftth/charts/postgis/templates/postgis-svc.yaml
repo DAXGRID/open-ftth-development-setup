@@ -5,6 +5,7 @@ metadata:
   labels:
     app: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
+  type: {{ .Values.serviceType }}
   ports:
     - port: 5432
   selector:

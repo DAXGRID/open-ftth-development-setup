@@ -2,3 +2,5 @@ env:
   user: postgres
   password: postgres
   walLevel: logical
+
+serviceType: LoadBalancer
