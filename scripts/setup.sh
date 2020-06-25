@@ -7,6 +7,7 @@ kubectl create namespace openftth
 helm repo add strimzi https://strimzi.io/charts/ # Used for Strimzi
 helm repo add bitnami https://charts.bitnami.com/bitnami # Used for Cassandra
 helm repo add elastic https://helm.elastic.co # Used for Elasticsearch
+helm repo add traefik https://containous.github.io/traefik-helm-chart # Used for traefik
 
 helm repo update
 
