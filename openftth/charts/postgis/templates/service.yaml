@@ -8,5 +8,6 @@ spec:
   type: {{ .Values.serviceType }}
   ports:
     - port: 5432
+      targetPort: 5432
   selector:
     app: {{ .Release.Name }}-{{ .Chart.Name }}
