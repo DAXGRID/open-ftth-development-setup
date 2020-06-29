@@ -10,10 +10,10 @@ metadata:
 spec:
   image: openftth/connect-debezium-postgresql
   replicas: {{ .Values.replicas }}
-  bootstrapServers: {{ .Values.bootstrapServers }}
+  bootstrapServers: {{ .Release.Name }}-{{ .Values.bootstrapServers }}
   tls:
     trustedCertificates:
-      - secretName: {{ .Values.tls.trustedCertificates.secretName }}
+      - secretName: {{ .Release.Name }}-{{ .Values.tls.trustedCertificates.secretName }}
         certificate: {{ .Values.tls.trustedCertificates.certificate }}
   config:
     config.storage.replication.factor: {{ .Values.replicationFactor.config }}

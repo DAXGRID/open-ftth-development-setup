@@ -3,7 +3,7 @@ kind: KafkaTopic
 metadata:
   name: request.route-network
   labels:
-    strimzi.io/cluster: "my-cluster"
+    strimzi.io/cluster: "{{ .Release.Name }}-kafka-cluster"
 spec:
   partitions: 1
   replicas: 1

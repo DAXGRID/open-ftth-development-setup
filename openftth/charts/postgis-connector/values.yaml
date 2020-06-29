@@ -1,6 +1,6 @@
 replicas: 1
 
-bootstrapServers: my-cluster-kafka-bootstrap:9093
+bootstrapServers: kafka-cluster-kafka-bootstrap:9093
 
 replicationFactor:
   config: 1
@@ -9,7 +9,7 @@ replicationFactor:
 
 tls:
   trustedCertificates:
-    secretName: my-cluster-cluster-ca-cert
+    secretName: kafka-cluster-cluster-ca-cert
     certificate: ca.crt
 
 volumes:
