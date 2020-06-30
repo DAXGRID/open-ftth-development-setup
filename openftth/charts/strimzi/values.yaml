@@ -6,3 +6,6 @@ kafka:
     replicationFactorOffsets: 1
     replicationFactorStatelog: 1
     stateLogMinIsr: 1
+  external:
+    type: loadbalancer
+    tls: false

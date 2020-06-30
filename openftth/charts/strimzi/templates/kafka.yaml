@@ -9,8 +9,8 @@ spec:
       plain: {}
       tls: {}
       external:
-        type: nodeport
-        tls: false
+        type: {{ .Values.kafka.external.type }}
+        tls: {{ .Values.kafka.external.tls }}
     storage:
       type: jbod
       volumes:
