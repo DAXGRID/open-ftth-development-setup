@@ -15,7 +15,7 @@ spec:
     database.server.name: "${file:/opt/kafka/external-configuration/connector-config/debezium-postgres-credentials.properties:password}"
     database.dbname: "OPEN_FTTH"
     database.whitelist: "OPEN_FTTH"
-    database.history.kafka.bootstrap.servers: "my-cluster-kafka-bootstrap:9092"
+    database.history.kafka.bootstrap.servers: "{{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092"
     database.history.kafka.topic: "schema-changes.OPEN_FTTH"
     include.schema.changes: "true"
     plugin.name: "pgoutput"
