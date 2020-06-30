@@ -7,5 +7,5 @@ kafka:
     replicationFactorStatelog: 1
     stateLogMinIsr: 1
   external:
-    type: loadbalancer
+    type: nodeport
     tls: false
