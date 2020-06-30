@@ -1,4 +1,7 @@
 cassandra:
+  cluster:
+    name: cassandra
+    replicaCount: 1
   dbUser:
     user: cassandra
     forcePassword: false
