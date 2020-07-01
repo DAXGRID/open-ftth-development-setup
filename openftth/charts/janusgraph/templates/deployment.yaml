@@ -53,3 +53,12 @@ spec:
                 - scripts/remote-connect.groovy
             initialDelaySeconds: 30
             periodSeconds: 10
+
+          livenessProbe:
+            exec:
+              command:
+                - bin/gremlin.sh
+                - -e
+                - scripts/remote-connect.groovy
+            initialDelaySeconds: 30
+            periodSeconds: 60
