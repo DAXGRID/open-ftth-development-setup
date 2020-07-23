@@ -16,12 +16,22 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-{{ .Chart.Name }}
-        image: openftth/gdb-integrator:v0.1.1-alpha
+        image: openftth/gdb-integrator:v0.1.2-alpha
         env:
-        - name: POSTGIS__SERVER
+        - name: LOGGING__LOGLEVEL_DEFAULT
+          value: "Information"
+
+        - name: APPLICATION__APPLICATIONNAME
+          value: "GDB_INTEGRATOR"
+        - name: APPLICATION__TOLERANCE
+          value: "0.01"
+
+        - name: POSTGIS__HOST
           value: {{ .Release.Name }}-postgis
         - name: POSTGIS__PORT
           value: "5432"
+        - name: POSTGIS__DATABASE
+          value: "OPEN_FTTH"
         - name: POSTGIS__USERNAME
           valueFrom:
             secretKeyRef:
@@ -32,5 +42,18 @@ spec:
             secretKeyRef:
               key: password
               name: {{ .Release.Name }}-{{ .Chart.Name }}-postgis
+
         - name: KAFKA__SERVER
-          value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap
+          value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
+        - name: KAFKA__POSTGRESROUTESEGMENTTOPIC
+          value: "postgres.route_network.route_segment"
+        - name: KAFKA__POSTGRESROUTENODETOPIC
+          value: "postgres.route_network.route_node"
+        - name: KAFKA__POSTGRESROUTESEGMENTCONSUMER
+          value: "postgres-routesegment-consumer"
+        - name: KAFKA__POSTGRESROUTENODECONSUMER
+          value: "postgres-routenode-consumer"
+        - name: KAFKA__POSITIONFILEPATH
+          value: "/tmp/"
+        - name: KAFKA__EVENTROUTENETWORKTOPICNAME
+          value: "event.route-network"
