@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}-{{ .Chart.Name }}
@@ -20,19 +20,19 @@ spec:
 
         env:
         - name: LOGGING__LOGLEVEL_DEFAULT
-          value: "Information"
+          value: {{ .Values.loglevel }}
 
         - name: APPLICATION__APPLICATIONNAME
-          value: "GDB_INTEGRATOR"
+          value: {{ .Values.application.applicationName }}
         - name: APPLICATION__TOLERANCE
-          value: "0.01"
+          value: "{{ .Values.application.tolerance }}"
 
         - name: POSTGIS__HOST
           value: {{ .Release.Name }}-postgis
         - name: POSTGIS__PORT
           value: "5432"
         - name: POSTGIS__DATABASE
-          value: "OPEN_FTTH"
+          value: {{ .Values.postgis.database }}
         - name: POSTGIS__USERNAME
           valueFrom:
             secretKeyRef:
@@ -55,7 +55,7 @@ spec:
         - name: KAFKA__POSTGRESROUTENODECONSUMER
           value: "postgres-routenode-consumer"
         - name: KAFKA__POSITIONFILEPATH
-          value: "/tmp/"
+          value: "/data/"
         - name: KAFKA__EVENTROUTENETWORKTOPICNAME
           value: "event.route-network"
         volumeMounts:
