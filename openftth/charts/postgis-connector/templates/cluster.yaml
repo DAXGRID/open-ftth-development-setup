@@ -25,4 +25,4 @@ spec:
     volumes:
       - name: connector-config
         secret:
-          secretName: {{ .Values.volumes.secretName }}
+          secretName: {{ .Release.Name }}-{{ .Chart.Name }}

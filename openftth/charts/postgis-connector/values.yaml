@@ -12,5 +12,6 @@ tls:
     secretName: kafka-cluster-cluster-ca-cert
     certificate: ca.crt
 
-volumes:
-  secretName: postgres-credentials
+postgis:
+  username: postgres
+  password: postgres
