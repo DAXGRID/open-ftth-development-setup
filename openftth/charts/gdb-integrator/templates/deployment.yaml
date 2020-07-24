@@ -17,6 +17,7 @@ spec:
       containers:
       - name: {{ .Release.Name }}-{{ .Chart.Name }}
         image: openftth/gdb-integrator:v0.1.2-alpha
+
         env:
         - name: LOGGING__LOGLEVEL_DEFAULT
           value: "Information"
@@ -57,3 +58,11 @@ spec:
           value: "/tmp/"
         - name: KAFKA__EVENTROUTENETWORKTOPICNAME
           value: "event.route-network"
+        volumeMounts:
+        - mountPath: /data
+          name: {{ .Release.Name }}-{{ .Chart.Name }}-data
+      restartPolicy: Always
+      volumes:
+      - name: {{ .Release.Name }}-{{ .Chart.Name }}-data
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-{{ .Chart.Name }}

@@ -6,9 +6,3 @@ cassandra:
     user: cassandra
     forcePassword: false
     password: cassandra
-
-elasticsearch:
-  clusterName: openftth-elasticsearch
-  antiAffinity: "soft"
-  replicas: 1
-  minimumMasterNodes: 1
