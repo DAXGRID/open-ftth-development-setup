@@ -10,8 +10,8 @@ spec:
   config:
     database.hostname: {{ .Release.Name }}-postgis
     database.port: "5432"
-    database.user: "${file:/opt/kafka/external-configuration/connector-config/username}"
-    database.password: "${file:/opt/kafka/external-configuration/connector-config/password}"
+    database.user: "${file:/opt/kafka/external-configuration/connector-config/debezium-postgres-credentials.properties:username}"
+    database.password: "${file:/opt/kafka/external-configuration/connector-config/debezium-postgres-credentials.properties:password}"
     database.server.name: "postgres"
     database.dbname: "OPEN_FTTH"
     database.whitelist: "OPEN_FTTH"
