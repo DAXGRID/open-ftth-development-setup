@@ -16,9 +16,10 @@ spec:
       volumes:
         - id: 0
           type: persistent-claim
-          size: 10Gi
-          deleteClaim: false
+          size: {{ .Values.kafka.volumes.size }}
+          deleteClaim: {{ .Values.kafka.volumes.deleteClaim }}
     config:
+      auto.create.topics.enable: {{ .Values.kafka.config.autoCreateTopicsEnable }}
       offsets.topic.replication.factor: {{ .Values.kafka.config.replicationFactorOffsets }}
       transaction.state.log.replication.factor: {{ .Values.kafka.config.replicationFactorStatelog }}
       transaction.state.log.min.isr: {{ .Values.kafka.config.stateLogMinIsr }}
@@ -26,8 +27,8 @@ spec:
     replicas: {{ .Values.zookeeper.replicas }}
     storage:
       type: persistent-claim
-      size: 10Gi
-      deleteClaim: false
+      size: {{ .Values.zookeeper.storage.size }}
+      deleteClaim: {{ .Values.zookeeper.storage.deleteClaim }}
   entityOperator:
     topicOperator: {}
     userOperator: {}

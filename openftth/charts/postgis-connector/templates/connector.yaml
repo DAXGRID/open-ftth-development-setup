@@ -17,5 +17,6 @@ spec:
     database.whitelist: "OPEN_FTTH"
     database.history.kafka.bootstrap.servers: "{{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092"
     database.history.kafka.topic: "schema-changes.OPEN_FTTH"
+    schema.whitelist: "route_network"
     include.schema.changes: "true"
     plugin.name: "pgoutput"

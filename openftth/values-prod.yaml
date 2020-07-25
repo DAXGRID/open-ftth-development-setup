@@ -1,0 +1,27 @@
+cassandra:
+  cluster:
+    name: cassandra
+    replicaCount: 3
+  dbUser:
+    user: cassandra
+    password: cassandra
+    forcePassword: true
+
+strimzi:
+  zookeeper:
+    replicas: 3
+    storage:
+      size: 100Gi
+      deleteClaim: true
+  kafka:
+    replicas: 3
+    config:
+      replicationFactorOffsets: 3
+      replicationFactorStateLog: 3
+      stateLogMinIsr: 2
+    volumes:
+      size: 100Gi
+      deleteClaim: true
+  external:
+    type: loadbalancer
+    tls: true
