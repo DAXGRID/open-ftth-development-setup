@@ -25,3 +25,28 @@ strimzi:
   external:
     type: loadbalancer
     tls: true
+
+gdb-integrator:
+  replicas: 1
+  loglevel: "Information"
+  postgis:
+    username: postgres
+    password: postgres
+  application:
+    tolerance: "0.1"
+    applicationName: "GDB_INTEGRATOR"
+
+postgis-connector:
+  replicas: 1
+  bootstrapServers: kafka-cluster-kafka-bootstrap:9093
+  replicationFactor:
+    config: 1
+    offset: 1
+    status: 1
+  tls:
+    trustedCertificates:
+      secretName: kafka-cluster-cluster-ca-cert
+      certificate: ca.crt
+  postgis:
+    username: postgres
+    password: postgres
