@@ -17,7 +17,8 @@ spec:
         - name: {{ .Release.Name }}-{{ .Chart.Name }}
           image: kartoza/postgis:12.1
           env:
-
+            - name: POSTGRES_DBNAME
+              value: OPEN_FTTH
             - name: WAL_LEVEL
               value: logical
             - name: POSTGRES_USER
@@ -35,7 +36,7 @@ spec:
               name: {{ .Chart.Name }}
           volumeMounts:
             - name: {{ .Release.Name }}-{{ .Chart.Name }}-data
-              mountPath: /{{ .Release.Name }}_{{ .Chart.Name }}_data
+              mountPath: /var/lib/postgresql/
   volumeClaimTemplates:
     - metadata:
         name: {{ .Release.Name }}-{{ .Chart.Name }}-data
