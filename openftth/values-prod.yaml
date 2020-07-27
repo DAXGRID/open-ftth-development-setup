@@ -4,7 +4,7 @@ cassandra:
     replicaCount: 3
   dbUser:
     user: cassandra
-    password: cassandra
+    password:
     forcePassword: true
 
 strimzi:
@@ -49,9 +49,9 @@ postgis-connector:
       certificate: ca.crt
   postgis:
     username: postgres
-    password: postgres
+    password:
 
 postgis:
   username: postgres
-  password: postgres
+  password:
   serviceType: LoadBalancer
