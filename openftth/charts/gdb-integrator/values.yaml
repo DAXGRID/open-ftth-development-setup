@@ -10,3 +10,7 @@ application:
   applicationName: "GDB_INTEGRATOR"
 
 loglevel: "Information"
+
+image:
+  repository: openftth/gdb-integrator
+  tag: v0.1.4-alpha
