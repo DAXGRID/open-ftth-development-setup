@@ -16,14 +16,21 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-{{ .Chart.Name }}
-        image: openftth/gdb-integrator:v0.1.2-alpha
+        image: openftth/gdb-integrator:v0.1.3-alpha
         readinessProbe:
           exec:
             command:
             - cat
             - /tmp/healthy
-          initialDelaySeconds: 30
+          initialDelaySeconds: 15
           periodSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 15
+          periodSeconds: 15
         env:
         - name: LOGGING__LOGLEVEL_DEFAULT
           value: {{ .Values.loglevel }}
