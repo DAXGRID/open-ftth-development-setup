@@ -50,3 +50,9 @@ postgis-connector:
   postgis:
     username: postgres
     password: postgres
+
+postgis:
+  postgis:
+    username: postgres
+    password: postgres
+  serviceType: LoadBalancer

@@ -17,12 +17,19 @@ spec:
         - name: {{ .Release.Name }}-{{ .Chart.Name }}
           image: kartoza/postgis:12.1
           env:
+
             - name: WAL_LEVEL
-              value: {{ .Values.env.walLevel }}
+              value: logical
             - name: POSTGRES_USER
-              value: {{ .Values.env.user }}
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: {{ .Release.Name }}-{{ .Chart.Name }}-postgis
             - name: POSTGRES_PASSWORD
-              value: {{ .Values.env.password }}
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: {{ .Release.Name }}-{{ .Chart.Name }}-postgis
           ports:
             - containerPort: 5432
               name: {{ .Chart.Name }}
