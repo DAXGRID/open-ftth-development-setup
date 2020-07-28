@@ -11,7 +11,7 @@ echo "Exporting $postgis with netsh"
 netsh interface portproxy add v4tov4 listenport=5432 listenaddress=127.65.43.21 connectport=$postgis connectaddress=$minikube
 
 echo "Exporting $kafka with netsh"
-netsh interface portproxy add v4tov4 listenport=5432 listenaddress=127.65.43.21 connectport=$kafka connectaddress=$minikube
+netsh interface portproxy add v4tov4 listenport=9000 listenaddress=127.65.43.21 connectport=$kafka connectaddress=$minikube
 
 sed -i '/openftth/d' $path
-echo 127.65.43.21 >> $path
+echo "127.65.43.21 openftth" >> $path
