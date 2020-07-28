@@ -1,6 +1,6 @@
 apiVersion: v2
 name: gdb-integrator
-appVersion: "0.1.4-alpha"
-description: A Helm chart for gdb-integrator 0.1.4-alpha
+appVersion: "0.1.5-alpha"
+description: A Helm chart for gdb-integrator 0.1.5-alpha
 version: 0.1.6
 type: application
