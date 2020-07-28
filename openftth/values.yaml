@@ -7,24 +7,25 @@ cassandra:
     forcePassword: false
     password: cassandra
 
-zookeeper:
-  replicas: 1
-  storage:
-    size: 10Gi
-    deleteClaim: true
-kafka:
-  replicas: 1
-  config:
-    autoCreateTopicsEnable: true
-    replicationFactorOffsets: 1
-    replicationFactorStatelog: 1
-    stateLogMinIsr: 1
-  external:
-    type: nodeport
-    tls: false
-  volumes:
-    size: 10Gi
-    deleteClaim: true
+strimzi:
+  zookeeper:
+    replicas: 1
+    storage:
+      size: 10Gi
+      deleteClaim: true
+  kafka:
+    replicas: 1
+    config:
+      autoCreateTopicsEnable: true
+      replicationFactorOffsets: 1
+      replicationFactorStatelog: 1
+      stateLogMinIsr: 1
+    external:
+      type: nodeport
+      tls: false
+    volumes:
+      size: 10Gi
+      deleteClaim: true
 
 gdb-integrator:
   replicas: 1
