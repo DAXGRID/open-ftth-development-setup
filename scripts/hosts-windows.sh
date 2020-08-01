@@ -10,9 +10,8 @@ kafka=$(kubectl describe service openftth-kafka-cluster-kafka-external-bootstrap
 echo "Exporting postgis port $postgis with netsh"
 netsh interface portproxy add v4tov4 listenport=5000 listenaddress=127.65.43.25 connectport=$postgis connectaddress=$minikube
 
-echo "Exporting kafka port $kafka with netsh"
+echo "Exporting kafka external port $kafka with netsh"
 netsh interface portproxy add v4tov4 listenport=9000 listenaddress=127.65.43.25 connectport=$kafka connectaddress=$minikube
-
 
 sed -i '/openftth/d' $path
 echo "127.65.43.25 openftth" >> $path
