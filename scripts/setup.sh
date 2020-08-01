@@ -9,7 +9,7 @@ helm repo add bitnami https://charts.bitnami.com/bitnami # Used for Cassandra
 
 helm repo update
 
-helm install strimzi strimzi/strimzi-kafka-operator -n openftth --version 0.18
+helm install strimzi strimzi/strimzi-kafka-operator -n openftth --version 0.19
 
 # This is needed to make sure that the strimzi custom types are being registered
 sleep 1s
