@@ -16,3 +16,10 @@ kafka:
   volumes:
     size: 10Gi
     deleteClaim: true
+topics:
+  eventRouteNetwork:
+    partitions: 1
+    replicas: 1
+  requestRouteNetwork:
+    partitions: 1
+    replicas: 1

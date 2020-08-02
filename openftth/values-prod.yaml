@@ -25,6 +25,13 @@ strimzi:
   external:
     type: loadbalancer
     tls: true
+  topics:
+    eventRouteNetwork:
+      partitions: 1
+      replicas: 3
+    requestRouteNetwork:
+      partitions: 1
+      replicas: 3
 
 gdb-integrator:
   replicas: 1

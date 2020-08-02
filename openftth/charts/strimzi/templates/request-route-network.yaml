@@ -5,5 +5,5 @@ metadata:
   labels:
     strimzi.io/cluster: "{{ .Release.Name }}-kafka-cluster"
 spec:
-  partitions: 1
-  replicas: 1
+  partitions: {{ .Values.topics.requestRouteNetwork.partitions }}
+  replicas: {{ .Values.topics.requestRouteNetwork.replicas }}
