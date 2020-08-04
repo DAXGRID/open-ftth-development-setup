@@ -13,4 +13,4 @@ loglevel: "Information"
 
 image:
   repository: openftth/gdb-integrator
-  tag: v0.1.9-alpha
+  tag: v0.1.10-alpha
