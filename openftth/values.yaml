@@ -63,3 +63,6 @@ postgis:
   username: postgres
   password: postgres
   serviceType: LoadBalancer
+  volumeClaim:
+    storageClassName: default
+    storage: 10Gi

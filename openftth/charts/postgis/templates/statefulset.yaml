@@ -42,6 +42,7 @@ spec:
         name: {{ .Release.Name }}-{{ .Chart.Name }}-data
       spec:
         accessModes: ["ReadWriteOnce"]
+        storageClassName: {{ .Values.volumeClaim.storageClassName }}
         resources:
           requests:
-            storage: 10Gi
+            storage: {{ .Values.volumeClaim.storage }}
