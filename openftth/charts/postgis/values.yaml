@@ -4,5 +4,5 @@ password: postgres
 serviceType: LoadBalancer
 
 volumeClaim:
-  storageClassName: default
+  storageClassName: standard
   storage: 10Gi
