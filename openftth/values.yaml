@@ -6,6 +6,8 @@ cassandra:
     user: cassandra
     forcePassword: false
     password: cassandra
+  persistence:
+    storageClass: standard
 
 strimzi:
   zookeeper:
