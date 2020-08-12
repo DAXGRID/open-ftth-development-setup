@@ -2,10 +2,13 @@ cassandra:
   cluster:
     name: cassandra
     replicaCount: 3
+    seedCount: 2
   dbUser:
     user: cassandra
     password:
     forcePassword: true
+  persistence:
+    storageClass: standard
 
 strimzi:
   zookeeper:
@@ -62,3 +65,6 @@ postgis:
   username: postgres
   password:
   serviceType: LoadBalancer
+  volumeClaim:
+    storageClassName: standard
+    storage: 10Gi
