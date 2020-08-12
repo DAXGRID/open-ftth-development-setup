@@ -1,0 +1,9 @@
+replicas: 1
+
+image:
+  repository: openftth/api-gateway
+  tag: v1.0.3-alpha
+
+loglevel: "Information"
+
+serviceType: LoadBalancer
