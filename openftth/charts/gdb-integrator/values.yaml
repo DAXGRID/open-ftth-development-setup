@@ -4,6 +4,7 @@ postgis:
   password: postgres
 
 replicas: 1
+storage: 1Gi
 
 application:
   tolerance: "0.01"
