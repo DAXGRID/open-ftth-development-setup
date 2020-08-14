@@ -1,4 +1,5 @@
 replicas: 1
+storage: 1Gi
 
 image:
   repository: openftth/api-gateway
