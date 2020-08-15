@@ -1,0 +1,7 @@
+replicas: 1
+
+image:
+  repository: openftth/route-network-service
+  tag: v1.0.0-alpha
+
+loglevel: "Information"
