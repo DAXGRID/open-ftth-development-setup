@@ -1,8 +1,8 @@
 apiVersion: v2
 name: openftth
-appVersion: "0.1.2"
-description: A Helm chart for openftth 0.1.2
-version: 0.1.2
+appVersion: "0.1.3"
+description: A Helm chart for openftth 0.1.3
+version: 0.1.3
 type: application
 dependencies:
   - name: cassandra

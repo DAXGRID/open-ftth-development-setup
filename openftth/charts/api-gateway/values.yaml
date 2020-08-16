@@ -3,7 +3,7 @@ storage: 1Gi
 
 image:
   repository: openftth/api-gateway
-  tag: v1.0.3-alpha
+  tag: v1.0.7-alpha
 
 loglevel: "Information"
 
