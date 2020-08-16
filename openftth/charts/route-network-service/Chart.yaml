@@ -2,5 +2,5 @@ apiVersion: v2
 name: route-network-service
 appVersion: "1.0.3-alpha"
 description: A Helm chart for route-networ-service 1.0.3-alpha
-version: 0.1.0
+version: 0.1.1
 type: application

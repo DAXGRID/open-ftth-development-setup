@@ -5,7 +5,6 @@ metadata:
   labels:
     app: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
-  type: LoadBalancer
   ports:
     - name: https
       port: 443
