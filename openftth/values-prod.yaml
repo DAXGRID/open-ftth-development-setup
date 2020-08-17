@@ -36,9 +36,20 @@ strimzi:
       partitions: 1
       replicas: 3
 
+api-gateway:
+  replicas: 1
+  storage: 1Gi
+  loglevel: "Information"
+  serviceType: LoadBalancer
+
+route-network-service:
+  replicas: 2
+  loglevel: "Information"
+
 gdb-integrator:
   replicas: 1
   loglevel: "Information"
+  storage: 1Gi
   postgis:
     username: postgres
     password: postgres
