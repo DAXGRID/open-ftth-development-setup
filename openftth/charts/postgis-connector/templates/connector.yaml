@@ -20,3 +20,7 @@ spec:
     schema.whitelist: "route_network"
     include.schema.changes: "true"
     plugin.name: "pgoutput"
+    transforms: "Combine"
+    transforms.Combine.type: "io.debezium.transforms.ByLogicalTableRouter"
+    transforms.Combine.topic.regex: "(.*)"
+    transforms.Combine.topic.replacement: "postgis.route-network"
