@@ -59,14 +59,10 @@ spec:
 
         - name: KAFKA__SERVER
           value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
-        - name: KAFKA__POSTGRESROUTESEGMENTTOPIC
-          value: "postgres.route_network.route_segment"
-        - name: KAFKA__POSTGRESROUTENODETOPIC
-          value: "postgres.route_network.route_node"
-        - name: KAFKA__POSTGRESROUTESEGMENTCONSUMER
-          value: "postgres-routesegment-consumer"
-        - name: KAFKA__POSTGRESROUTENODECONSUMER
-          value: "postgres-routenode-consumer"
+        - name: KAFKA__POSTGISROUTENETWORKTOPIC
+          value: "postgis.route-network"
+        - name: KAFKA__POSTGISROUTENETWORKCONSUMER
+          value: "postgis-route-network-consumer"
         - name: KAFKA__POSITIONFILEPATH
           value: "/data/"
         - name: KAFKA__EVENTROUTENETWORKTOPICNAME
