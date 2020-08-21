@@ -1,7 +1,7 @@
 apiVersion: v2
 name: openftth
-appVersion: "0.1.8"
-description: A Helm chart for openftth 0.1.8
+appVersion: "0.1.9"
+description: A Helm chart for openftth 0.1.9
 version: 0.1.4
 type: application
 dependencies:
