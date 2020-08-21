@@ -23,3 +23,6 @@ topics:
   requestRouteNetwork:
     partitions: 1
     replicas: 1
+  postgisRouteNetwork:
+    partitions: 1
+    replicas: 1

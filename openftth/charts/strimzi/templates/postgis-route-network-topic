@@ -1,0 +1,9 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: postgis.route-network
+  labels:
+    strimzi.io/cluster: "{{ .Release.Name }}-kafka-cluster"
+spec:
+  partitions: {{ .Values.topics.postgisRouteNetwork.partitions }}
+  replicas: {{ .Values.topics.postgisRouteNetwork.replicas }}
