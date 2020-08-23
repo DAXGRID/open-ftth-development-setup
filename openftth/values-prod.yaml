@@ -8,7 +8,7 @@ cassandra:
     password:
     forcePassword: true
   persistence:
-    storageClass: standard
+    storageClass: ""
 
 strimzi:
   zookeeper:
@@ -77,5 +77,5 @@ postgis:
   password:
   serviceType: LoadBalancer
   volumeClaim:
-    storageClassName: standard
+    storageClassName: ""
     storage: 10Gi

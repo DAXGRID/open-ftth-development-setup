@@ -1,5 +1,6 @@
 replicas: 1
 storage: 1Gi
+storageClassName: ""
 
 image:
   repository: openftth/api-gateway

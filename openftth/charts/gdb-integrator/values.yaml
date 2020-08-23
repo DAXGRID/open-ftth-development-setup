@@ -5,6 +5,7 @@ postgis:
 
 replicas: 1
 storage: 1Gi
+storageClassName: ""
 
 application:
   tolerance: "0.01"
