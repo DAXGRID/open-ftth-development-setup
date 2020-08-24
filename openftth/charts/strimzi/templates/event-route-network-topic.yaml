@@ -7,6 +7,5 @@ metadata:
 spec:
   config:
     retention.ms: -1
-    log.cleanup.policy: [compact]
   partitions: {{ .Values.topics.eventRouteNetwork.partitions }}
   replicas: {{ .Values.topics.eventRouteNetwork.replicas }}
