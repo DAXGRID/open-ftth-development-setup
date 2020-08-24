@@ -1,0 +1,12 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: event.route-network
+  labels:
+    strimzi.io/cluster: "openftth-kafka-cluster"
+spec:
+  config:
+    retention.ms: -1
+    segment.bytes: -1
+  partitions: 1
+  replicas: 1

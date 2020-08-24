@@ -24,3 +24,5 @@ PGPASSWORD="$POSTGRES_PASSWORD" psql -t -A \
 -U "$POSTGRES_USERNAME" \
 -c "$sql"
 
+kubectl delete kafkatopic event.route-network -n openftth
+kubectl apply -f ./event-routenetwork-topic.yaml -n openftth
