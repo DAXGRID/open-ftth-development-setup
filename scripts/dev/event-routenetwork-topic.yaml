@@ -7,6 +7,5 @@ metadata:
 spec:
   config:
     retention.ms: -1
-    segment.bytes: -1
   partitions: 1
   replicas: 1
