@@ -7,7 +7,6 @@ metadata:
 spec:
   config:
     retention.ms: -1
-    segment.bytes: -1
     log.cleanup.policy: [compact]
   partitions: {{ .Values.topics.postgisRouteNetwork.partitions }}
   replicas: {{ .Values.topics.postgisRouteNetwork.replicas }}
