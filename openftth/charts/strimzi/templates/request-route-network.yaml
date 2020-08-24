@@ -8,5 +8,6 @@ spec:
   config:
     retention.ms: -1
     segment.bytes: -1
+    log.cleanup.policy: [compact]
   partitions: {{ .Values.topics.requestRouteNetwork.partitions }}
   replicas: {{ .Values.topics.requestRouteNetwork.replicas }}
