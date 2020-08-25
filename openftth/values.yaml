@@ -42,6 +42,7 @@ api-gateway:
   storage: 1Gi
   loglevel: "Information"
   serviceType: LoadBalancer
+  storageClassName: ""
 
 route-network-service:
   replicas: 1
