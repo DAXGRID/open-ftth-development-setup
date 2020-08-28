@@ -44,6 +44,19 @@ api-gateway:
   serviceType: LoadBalancer
   storageClassName: ""
 
+route-network-validator:
+  loglevel: "Warning"
+  writeToName: "Console"
+  replicas: 1
+  storage: 1Gi
+  storageClassName: ""
+
+  database:
+    database: OPEN_FTTH
+    username: postgres
+    password: postgres
+    port: 5432
+
 route-network-service:
   replicas: 1
   loglevel: "Warning"

@@ -1,0 +1,17 @@
+loglevel: "Warning"
+writeToName: "Console"
+
+replicas: 1
+
+storage: 1Gi
+storageClassName: ""
+
+database:
+  database: OPEN_FTTH
+  username: postgres
+  password: postgres
+  port: 5432
+
+image:
+  repository: openftth/route-network-validator
+  tag: v1.0.1
