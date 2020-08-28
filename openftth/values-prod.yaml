@@ -39,17 +39,17 @@ strimzi:
 api-gateway:
   replicas: 1
   storage: 1Gi
-  loglevel: "Information"
+  loglevel: "Warning"
   serviceType: LoadBalancer
   storageClassName: ""
 
 route-network-service:
   replicas: 2
-  loglevel: "Information"
+  loglevel: "Warning"
 
 gdb-integrator:
   replicas: 1
-  loglevel: "Information"
+  loglevel: "Warning"
   storage: 1Gi
   postgis:
     username: postgres

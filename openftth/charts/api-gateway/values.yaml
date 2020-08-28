@@ -6,6 +6,6 @@ image:
   repository: openftth/api-gateway
   tag: v1.0.9-alpha
 
-loglevel: "Information"
+loglevel: "Warning"
 
 serviceType: LoadBalancer
