@@ -1,0 +1,11 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: event.geographical-area-updated
+  labels:
+    strimzi.io/cluster: "{{ .Release.Name }}-kafka-cluster"
+spec:
+  config:
+    retention.ms: 14400000
+  partitions: {{ .Values.topics.eventGeoGraphicalAreaUpdated.partitions }}
+  replicas: {{ .Values.topics.eventGeoGraphicalAreaUpdated.replicas }}
