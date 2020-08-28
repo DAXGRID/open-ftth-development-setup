@@ -22,14 +22,14 @@ spec:
             command:
             - cat
             - /tmp/healthy
-          initialDelaySeconds: 15
+          initialDelaySeconds: 10
           periodSeconds: 5
         livenessProbe:
           exec:
             command:
             - cat
             - /tmp/healthy
-          initialDelaySeconds: 15
+          initialDelaySeconds: 10
           periodSeconds: 15
         env:
         - name: SERILOG__MINIMUMLEVEL__DEFAULT
@@ -37,10 +37,21 @@ spec:
         - name: SERILOG__WRITETO__NAME
           value: {{ .Values.writeToName }}
 
-        - name: DATABASE__CONNECTIONSTRING
+        - name: DATABASE__HOST
+          value: {{ .Release.Name }}-postgis
+        - name: DATABASE__PORT
+          value: "5432"
+        - name: DATABASE__DATABASE
+          value: {{ .Values.database.database }}
+        - name: DATABASE__USERNAME
           valueFrom:
             secretKeyRef:
-              key: connectionString
+              key: username
+              name: {{ .Release.Name }}-{{ .Chart.Name }}-postgis
+        - name: DATABASE__PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
               name: {{ .Release.Name }}-{{ .Chart.Name }}-postgis
         - name: DATABASE__SCHEMA
           value: route_network_validator
@@ -53,11 +64,4 @@ spec:
           value: event.route-network
         - name: KAFKA__POSITIONFILEPATH
           value: "/tmp/"
-        volumeMounts:
-        - mountPath: /data
-          name: {{ .Release.Name }}-{{ .Chart.Name }}-data
       restartPolicy: Always
-      volumes:
-      - name: {{ .Release.Name }}-{{ .Chart.Name }}-data
-        persistentVolumeClaim:
-          claimName: {{ .Release.Name }}-{{ .Chart.Name }}

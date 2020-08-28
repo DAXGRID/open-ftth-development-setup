@@ -48,8 +48,6 @@ route-network-validator:
   loglevel: "Warning"
   writeToName: "Console"
   replicas: 1
-  storage: 1Gi
-  storageClassName: ""
 
   database:
     database: OPEN_FTTH

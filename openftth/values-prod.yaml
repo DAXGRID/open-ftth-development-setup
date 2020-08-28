@@ -44,11 +44,9 @@ api-gateway:
   storageClassName: ""
 
 route-network-validator:
-  loglevel: "Warning"
+  loglevel: "Information"
   writeToName: "Console"
   replicas: 1
-  storage: 1Gi
-  storageClassName: ""
 
   database:
     database: OPEN_FTTH
