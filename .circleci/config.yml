@@ -9,7 +9,6 @@ jobs:
   package-and-upload:
     executor: helm-kubectl
     steps:
-      - checkout
       - add_ssh_keys:
           fingerprints:
             - "a2:cc:79:03:01:5e:88:f5:bb:9a:8f:6f:18:c1:69:41"
@@ -17,17 +16,20 @@ jobs:
           name: git clone daxgrid-charts
           command: git clone https://github.com/DAXGRID/charts.git
       - run:
+          name: git clone daxgrid-charts
+          command: git clone https://github.com/DAXGRID/open-ftth-chart.git
+      - run:
           name: package and push
           command: |
              cd ./charts
-             helm dependency build ../openftth
-             helm package ../openftth
+             helm dependency build ../open-ftth-chart/openftth
+             helm package ../open-ftth-chart/openftth
              helm repo index ./ --url https://daxgrid.github.io/charts/
              git config user.email "runeanielsen@live.dk"
              git config user.name "runeanielsen"
              git add .
              git commit -m "updates chart openftth"
-             git push origin master
+             git push
 workflows:
   package-and-upload-chart:
     jobs:
