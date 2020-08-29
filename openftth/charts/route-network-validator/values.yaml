@@ -10,4 +10,4 @@ database:
 
 image:
   repository: openftth/route-network-validator
-  tag: v1.0.3
+  tag: v1.0.4
