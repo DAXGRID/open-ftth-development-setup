@@ -12,9 +12,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "a2:cc:79:03:01:5e:88:f5:bb:9a:8f:6f:18:c1:69:41"
-      - run:
-          name: key-scan
-          command: ssh-keyscan -p 443 ssh.github.com >> ~/.ssh/known_hosts
+            - "69:9f:61:d5:c9:e7:7d:c9:15:f7:7c:e6:a9:ac:e1:85"
       - run:
           name: git clone charts
           command: git clone git@github.com:DAXGRID/charts.git
