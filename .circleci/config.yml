@@ -17,26 +17,17 @@ jobs:
           name: git clone daxgrid-charts
           command: git clone https://github.com/DAXGRID/charts.git
       - run:
-          name: cd to charts
-          command: cd ./charts
-      - run:
-          name: helm build openftth-chart
-          command: helm dependency build ../openftth
-      - run:
-          name: helm package openftth-chart
-          command: helm package ../openftth
-      - run:
-          name: helm create index for packages
-          command: helm repo index ./ --url https://daxgrid.github.io/charts/
-      - run:
-          name: push to git
+          name: package and push
           command: |
+             cd ./charts
+             helm dependency build ../openftth
+             helm package ../openftth
+             helm repo index ./ --url https://daxgrid.github.io/charts/
              git config user.email "runeanielsen@live.dk"
              git config user.name "runeanielsen"
              git add .
              git commit -m "updates chart openftth"
              git push origin master
-
 workflows:
   package-and-upload-chart:
     jobs:
