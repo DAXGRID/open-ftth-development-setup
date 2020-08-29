@@ -1,0 +1,45 @@
+version: 2.1
+
+executors:
+  helm-kubectl:
+    docker:
+    - image: dtzar/helm-kubectl
+
+jobs:
+  package-and-upload:
+    executor: helm-kubectl
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "a2:cc:79:03:01:5e:88:f5:bb:9a:8f:6f:18:c1:69:41"
+      - run:
+          name: git clone daxgrid-charts
+          command: git clone https://github.com/DAXGRID/charts.git
+      - run:
+          name: git clone openftth-chart
+          command: git clone https://github.com/DAXGRID/open-ftth-chart.git
+      - run:
+          name: cd to daxgrid-charts
+          command: cd ./charts
+      - run:
+          name: helm package openftth-chart
+          command: helm package ../open-ftth-charts/openftth
+      - run:
+          name: helm create index for packages
+          command: helm repo index ./ --url https://daxgrid.github.io/charts/
+      - run:
+          name: push to git
+          command: |
+             git config user.email "runeanielsen@live.dk"
+             git config user.name "runeanielsen"
+             git add .
+             git commit -m "updates chart openftth"
+             git push origin master
+
+workflows:
+  package-and-upload-chart
+    jobs:
+      - package-and-upload:
+          filters:
+            tags:
+              only: /.*/
