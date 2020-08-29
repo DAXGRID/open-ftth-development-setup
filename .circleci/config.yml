@@ -37,7 +37,7 @@ jobs:
              git push origin master
 
 workflows:
-  package-and-upload-chart
+  package-and-upload-chart:
     jobs:
       - package-and-upload:
           filters:
