@@ -39,7 +39,7 @@ strimzi:
 api-gateway:
   replicas: 1
   storage: 1Gi
-  loglevel: "Warning"
+  loglevel: "Information"
   serviceType: LoadBalancer
   storageClassName: ""
 
@@ -55,7 +55,7 @@ route-network-validator:
 
 route-network-service:
   replicas: 2
-  loglevel: "Warning"
+  loglevel: "Information"
 
 gdb-integrator:
   replicas: 1
