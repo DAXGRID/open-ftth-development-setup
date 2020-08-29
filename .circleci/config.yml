@@ -20,7 +20,13 @@ jobs:
           command: git clone https://github.com/DAXGRID/open-ftth-chart.git
       - run:
           name: cd to daxgrid-charts
-          command: cd ./charts/
+          command: cd charts
+      - run:
+          name: pwd
+          command: pwd
+      - run:
+          name: helm build openftth-chart
+          command: helm dependency build ../open-ftth-chart/openftth
       - run:
           name: helm package openftth-chart
           command: helm package ../open-ftth-chart/openftth
