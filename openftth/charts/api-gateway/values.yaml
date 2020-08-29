@@ -4,7 +4,7 @@ storageClassName: ""
 
 image:
   repository: openftth/api-gateway
-  tag: v1.0.9-alpha
+  tag: v1.1.0
 
 loglevel: "Warning"
 

@@ -1,5 +1,4 @@
 loglevel: "Warning"
-writeToName: "Console"
 
 replicas: 1
 
@@ -10,4 +9,4 @@ database:
 
 image:
   repository: openftth/route-network-validator
-  tag: v1.0.4
+  tag: v1.0.6
