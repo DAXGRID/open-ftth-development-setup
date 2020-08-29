@@ -9,6 +9,7 @@ jobs:
   package-and-upload:
     executor: helm-kubectl
     steps:
+      - checkout
       - add_ssh_keys:
           fingerprints:
             - "a2:cc:79:03:01:5e:88:f5:bb:9a:8f:6f:18:c1:69:41"
