@@ -45,7 +45,7 @@ api-gateway:
   storageClassName: ""
 
 route-network-validator:
-  loglevel: "Warning"
+  loglevel: "Information"
   writeToName: "Console"
   replicas: 1
 
