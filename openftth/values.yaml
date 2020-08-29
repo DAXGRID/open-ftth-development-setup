@@ -46,7 +46,6 @@ api-gateway:
 
 route-network-validator:
   loglevel: "Information"
-  writeToName: "Console"
   replicas: 1
 
   database:
@@ -61,7 +60,7 @@ route-network-service:
 
 gdb-integrator:
   replicas: 1
-  loglevel: "Warning"
+  loglevel: "Information"
   storage: 1Gi
   postgis:
     username: postgres

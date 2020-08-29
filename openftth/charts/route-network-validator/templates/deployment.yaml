@@ -35,7 +35,7 @@ spec:
         - name: SERILOG__MINIMUMLEVEL__DEFAULT
           value: {{ .Values.loglevel }}
         - name: SERILOG__WRITETO__NAME
-          value: {{ .Values.writeToName }}
+          value: "Console"
 
         - name: DATABASE__HOST
           value: {{ .Release.Name }}-postgis
