@@ -17,6 +17,7 @@ kafka:
   volumes:
     size: 10Gi
     deleteClaim: true
+  storage:
     storageClassName: ""
 topics:
   eventRouteNetwork:

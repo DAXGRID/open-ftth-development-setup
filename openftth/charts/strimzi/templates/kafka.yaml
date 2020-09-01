@@ -13,14 +13,14 @@ spec:
         tls: {{ .Values.kafka.external.tls }}
     storage:
       type: jbod
+      {{- if .Values.kafka.storage.storageClassName }}
+      class: {{ .Values.kafka.storage.storageClassName }}
+      {{- end }}
       volumes:
         - id: 0
           type: persistent-claim
           size: {{ .Values.kafka.volumes.size }}
           deleteClaim: {{ .Values.kafka.volumes.deleteClaim }}
-          {{- if .Values.kafka.volumes.storageClassName }}
-          class: {{ .Values.kafka.volumes.storageClassName }}
-          {{- end }}
     config:
       auto.create.topics.enable: {{ .Values.kafka.config.autoCreateTopicsEnable }}
       offsets.topic.replication.factor: {{ .Values.kafka.config.replicationFactorOffsets }}

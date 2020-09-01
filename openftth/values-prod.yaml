@@ -15,22 +15,23 @@ strimzi:
     replicas: 3
     storage:
       size: 10Gi
-      deleteClaim: true
+      deleteClaim: false
       storageClassName: ""
-
   kafka:
     replicas: 3
     config:
+      autoCreateTopicsEnable: true
       replicationFactorOffsets: 3
       replicationFactorStateLog: 3
       stateLogMinIsr: 2
     volumes:
       size: 10Gi
-      deleteClaim: true
+      deleteClaim: false
+    storage:
       storageClassName: ""
-  external:
-    type: loadbalancer
-    tls: true
+    external:
+      type: loadbalancer
+      tls: true
   topics:
     eventRouteNetwork:
       partitions: 1
