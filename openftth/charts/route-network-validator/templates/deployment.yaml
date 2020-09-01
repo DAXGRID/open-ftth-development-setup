@@ -21,16 +21,16 @@ spec:
           exec:
             command:
             - cat
-            - /tmp/healthy
-          initialDelaySeconds: 10
-          periodSeconds: 5
+            - /tmp/healthy300
+          initialDelaySeconds: 120
+          periodSeconds: 60
         livenessProbe:
           exec:
             command:
             - cat
             - /tmp/healthy
-          initialDelaySeconds: 10
-          periodSeconds: 15
+          initialDelaySeconds: 120
+          periodSeconds: 60
         env:
         - name: SERILOG__MINIMUMLEVEL__DEFAULT
           value: {{ .Values.loglevel }}
