@@ -24,13 +24,12 @@ strimzi:
       replicationFactorOffsets: 3
       replicationFactorStateLog: 3
       stateLogMinIsr: 2
-    volumes:
-      size: 10Gi
-      deleteClaim: false
     storage:
       storageClassName: ""
+      size: 10Gi
+      deleteClaim: false
     external:
-      type: loadbalancer
+      type: ""
       tls: true
   topics:
     eventRouteNetwork:

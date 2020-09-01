@@ -24,13 +24,12 @@ strimzi:
       replicationFactorOffsets: 1
       replicationFactorStatelog: 1
       stateLogMinIsr: 1
-    volumes:
-      size: 10Gi
-      deleteClaim: true
     storage:
       storageClassName: ""
+      size: 10Gi
+      deleteClaim: true
     external:
-      type: clusterip
+      type: ""
       tls: true
   topics:
     eventRouteNetwork:

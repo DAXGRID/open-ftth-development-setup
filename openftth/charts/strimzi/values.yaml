@@ -14,11 +14,10 @@ kafka:
   external:
     type: nodeport
     tls: false
-  volumes:
-    size: 10Gi
-    deleteClaim: true
   storage:
     storageClassName: ""
+    size: 10Gi
+    deleteClaim: true
 topics:
   eventRouteNetwork:
     partitions: 1
