@@ -84,6 +84,10 @@ postgis-connector:
     username: postgres
     password: postgres
 
+frontend:
+  replicas: 1
+  serviceType: LoadBalancer
+
 postgis:
   username: postgres
   password: postgres
