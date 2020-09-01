@@ -19,7 +19,7 @@ spec:
           size: {{ .Values.kafka.volumes.size }}
           deleteClaim: {{ .Values.kafka.volumes.deleteClaim }}
           {{- if .Values.volumeClaim.storageClassName }}
-          class: {{ .Values.kafka.volumes.storageClass }}
+          class: {{ .Values.kafka.volumes.storageClassName }}
           {{- end }}
     config:
       auto.create.topics.enable: {{ .Values.kafka.config.autoCreateTopicsEnable }}
@@ -32,8 +32,8 @@ spec:
       type: persistent-claim
       size: {{ .Values.zookeeper.storage.size }}
       deleteClaim: {{ .Values.zookeeper.storage.deleteClaim }}
-      {{- if .Values.zookeeper.storage.storageClass }}
-      class: {{ .Values.kafka.volumes.storageClass }}
+      {{- if .Values.zookeeper.storage.storageClassName }}
+      class: {{ .Values.kafka.volumes.storageClassName }}
       {{- end }}
   entityOperator:
     topicOperator: {}
