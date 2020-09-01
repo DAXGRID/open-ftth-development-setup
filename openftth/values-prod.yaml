@@ -14,7 +14,7 @@ strimzi:
   zookeeper:
     replicas: 3
     storage:
-      size: 100Gi
+      size: 10Gi
       deleteClaim: true
   kafka:
     replicas: 3
@@ -23,7 +23,7 @@ strimzi:
       replicationFactorStateLog: 3
       stateLogMinIsr: 2
     volumes:
-      size: 100Gi
+      size: 10Gi
       deleteClaim: true
   external:
     type: loadbalancer
@@ -33,6 +33,12 @@ strimzi:
       partitions: 1
       replicas: 3
     requestRouteNetwork:
+      partitions: 1
+      replicas: 3
+    postgisRouteNetwork:
+      partitions: 1
+      replicas: 3
+    eventGeoGraphicalAreaUpdated:
       partitions: 1
       replicas: 3
 

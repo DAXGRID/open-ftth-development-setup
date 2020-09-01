@@ -36,6 +36,12 @@ strimzi:
     requestRouteNetwork:
       partitions: 1
       replicas: 1
+    postgisRouteNetwork:
+      partitions: 1
+      replicas: 1
+    eventGeoGraphicalAreaUpdated:
+      partitions: 1
+      replicas: 1
 
 api-gateway:
   replicas: 1
