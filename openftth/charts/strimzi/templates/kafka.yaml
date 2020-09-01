@@ -18,7 +18,7 @@ spec:
           type: persistent-claim
           size: {{ .Values.kafka.volumes.size }}
           deleteClaim: {{ .Values.kafka.volumes.deleteClaim }}
-          {{- if .Values.volumeClaim.storageClassName }}
+          {{- if .Values.kafka.volumes.storageClassName }}
           class: {{ .Values.kafka.volumes.storageClassName }}
           {{- end }}
     config:
@@ -33,7 +33,7 @@ spec:
       size: {{ .Values.zookeeper.storage.size }}
       deleteClaim: {{ .Values.zookeeper.storage.deleteClaim }}
       {{- if .Values.zookeeper.storage.storageClassName }}
-      class: {{ .Values.kafka.volumes.storageClassName }}
+      class: {{ .Values.zookeeper.volumes.storageClassName }}
       {{- end }}
   entityOperator:
     topicOperator: {}
