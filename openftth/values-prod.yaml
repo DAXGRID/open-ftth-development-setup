@@ -16,6 +16,8 @@ strimzi:
     storage:
       size: 10Gi
       deleteClaim: true
+      storageClassName: ""
+
   kafka:
     replicas: 3
     config:
@@ -25,6 +27,7 @@ strimzi:
     volumes:
       size: 10Gi
       deleteClaim: true
+      storageClassName: ""
   external:
     type: loadbalancer
     tls: true

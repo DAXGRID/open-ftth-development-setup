@@ -16,6 +16,7 @@ strimzi:
     storage:
       size: 10Gi
       deleteClaim: true
+      storageClassName: ""
   kafka:
     replicas: 1
     config:
@@ -29,6 +30,7 @@ strimzi:
     volumes:
       size: 10Gi
       deleteClaim: true
+      storageClassName: ""
   topics:
     eventRouteNetwork:
       partitions: 1
