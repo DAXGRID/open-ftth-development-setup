@@ -1,5 +1,6 @@
 replicas: 1
 serviceType: LoadBalancer
+graphqlServer:
 
 image:
   repository: openftth/frontend

@@ -19,3 +19,6 @@ spec:
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         env:
       restartPolicy: Always
+        env:
+        - name: REACT_APP_GRAPHQL_SERVER=
+          value: {{ .Values.graphqlServer }}

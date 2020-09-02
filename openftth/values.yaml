@@ -103,3 +103,6 @@ postgis:
   volumeClaim:
     storageClassName: ""
     storage: 10Gi
+
+frontend:
+  graphqlServer:
