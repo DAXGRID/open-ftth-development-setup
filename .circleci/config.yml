@@ -32,7 +32,7 @@ jobs:
              git config user.email "runeanielsen@live.dk"
              git config user.name "runeanielsen"
              git add .
-             git commit -m "updates chart openftth"
+             git commit -m "adds/updates $(ls -t open* | head -1)"
              git push
 workflows:
   package-and-upload-chart:
