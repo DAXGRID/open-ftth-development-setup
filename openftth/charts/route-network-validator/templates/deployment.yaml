@@ -21,7 +21,7 @@ spec:
           exec:
             command:
             - cat
-            - /tmp/healthy300
+            - /tmp/healthy
           initialDelaySeconds: 120
           periodSeconds: 60
         livenessProbe:
