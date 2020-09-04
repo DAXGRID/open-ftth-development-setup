@@ -29,8 +29,8 @@ strimzi:
       size: 10Gi
       deleteClaim: true
     external:
-      type: ""
-      tls: true
+      type: nodeport
+      tls: false
   topics:
     eventRouteNetwork:
       partitions: 1
