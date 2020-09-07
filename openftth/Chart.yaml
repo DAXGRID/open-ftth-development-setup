@@ -2,7 +2,7 @@ apiVersion: v2
 name: openftth
 appVersion: "0.2.7"
 description: A Helm chart for openftth
-version: 0.2.17
+version: 0.2.18
 type: application
 dependencies:
   - name: cassandra
