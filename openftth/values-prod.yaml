@@ -94,3 +94,16 @@ postgis:
 
 frontend:
   graphqlServer:
+
+kibana:
+  elasticsearchHosts: http://openftth-elasticsearch-master:9200
+
+elasticsearch:
+  clusterName: "openftth-elasticsearch"
+  antiAffinity: hard
+  replicas: 3
+  minimumMasterNodes: 2
+
+fluentd-elasticsearch:
+  elasticsearch:
+    hosts: ["openftth-elasticsearch-master:9200"]
