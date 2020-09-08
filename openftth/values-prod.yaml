@@ -1,15 +1,3 @@
-cassandra:
-  cluster:
-    name: cassandra
-    replicaCount: 3
-    seedCount: 2
-  dbUser:
-    user: cassandra
-    password:
-    forcePassword: true
-  persistence:
-    storageClass: ""
-
 strimzi:
   zookeeper:
     replicas: 3
