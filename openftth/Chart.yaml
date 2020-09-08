@@ -4,4 +4,3 @@ appVersion: "0.2.9"
 description: A Helm chart for openftth
 version: 0.2.19
 type: application
-dependencies:
