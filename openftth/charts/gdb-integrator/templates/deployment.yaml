@@ -32,10 +32,8 @@ spec:
           initialDelaySeconds: 15
           periodSeconds: 15
         env:
-        - name: SERILOG__MINIMUMLEVEL__DEFAULT
+        - name: SERILOG__MINIMUMLEVEL
           value: {{ .Values.loglevel }}
-        - name: SERILOG__WRITETO__NAME
-          value: "Console"
 
         - name: APPLICATION__APPLICATIONNAME
           value: {{ .Values.application.applicationName }}

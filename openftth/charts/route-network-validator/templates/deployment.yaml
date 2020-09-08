@@ -32,7 +32,7 @@ spec:
           initialDelaySeconds: 120
           periodSeconds: 60
         env:
-        - name: SERILOG__MINIMUMLEVEL__DEFAULT
+        - name: SERILOG__MINIMUMLEVEL
           value: {{ .Values.loglevel }}
         - name: SERILOG__WRITETO__NAME
           value: "Console"
