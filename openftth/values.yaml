@@ -103,6 +103,10 @@ elasticsearch:
   antiAffinity: soft
   replicas: 1
   minimumMasterNodes: 1
+  volumeClaimTemplate:
+    resources:
+      requests:
+        storage: 10Gi
 
 fluentd-elasticsearch:
   elasticsearch:
