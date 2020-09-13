@@ -107,6 +107,7 @@ elasticsearch:
     resources:
       requests:
         storage: 10Gi
+        storageClassName: ""
 
 fluentd-elasticsearch:
   elasticsearch:
