@@ -2,6 +2,12 @@ loglevel: "Warning"
 
 replicas: 1
 
+resources:
+  requests:
+    memory: 1500Mi
+  limits:
+    memory: 2Gi
+
 database:
   database: OPEN_FTTH
   username: postgres
