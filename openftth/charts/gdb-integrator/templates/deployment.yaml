@@ -17,6 +17,9 @@ spec:
       containers:
       - name: {{ .Release.Name }}-{{ .Chart.Name }}
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        resources:
+          requests:
+            memory: {{ .Values.resources.requests.memory }}
         readinessProbe:
           exec:
             command:

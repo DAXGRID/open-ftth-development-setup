@@ -8,6 +8,10 @@ storage: 1Gi
 storageClassName: ""
 loglevel: "Information"
 
+resources:
+ requests:
+   memory: 300Mi
+
 application:
   tolerance: "0.01"
   applicationName: "GDB_INTEGRATOR"
