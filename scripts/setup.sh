@@ -6,7 +6,7 @@ kubectl create namespace openftth
 # Install Strimzi
 helm repo add strimzi https://strimzi.io/charts/ # Used for Strimzi
 helm repo add bitnami https://charts.bitnami.com/bitnami # Used for Cassandra
-helm repo add elastic https://helm.elastic.com # Used for Elastic and Kibana
+helm repo add elastic https://helm.elastic.co # Used for Elastic and Kibana
 helm repo add kiwigrid https://kiwigrid.github.io # Used for fluentd + elasticsearch
 
 helm repo update
