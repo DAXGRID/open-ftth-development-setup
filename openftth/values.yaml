@@ -43,6 +43,11 @@ api-gateway:
 route-network-validator:
   loglevel: "Information"
   replicas: 1
+  resources:
+    requests:
+      memory: 0Mi
+    limits:
+      memory: 0Gi
 
   database:
     database: OPEN_FTTH
@@ -64,6 +69,9 @@ gdb-integrator:
   application:
     tolerance: "0.01"
     applicationName: "GDB_INTEGRATOR"
+  resources:
+    requests:
+      memory: 0Mi
 
 postgis-connector:
   replicas: 1
