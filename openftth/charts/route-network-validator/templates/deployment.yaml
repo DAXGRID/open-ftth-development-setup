@@ -17,6 +17,11 @@ spec:
       containers:
       - name: {{ .Release.Name }}-{{ .Chart.Name }}
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        resources:
+          limits:
+            memory: 2000Mi
+          requests:
+            memory: 1500Mi
         readinessProbe:
           exec:
             command:
