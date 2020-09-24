@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: {{ .Release.Name }}-{{ .Chart.Name }}
-          image: kartoza/postgis:12.1
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           env:
             - name: POSTGRES_DBNAME
               value: OPEN_FTTH

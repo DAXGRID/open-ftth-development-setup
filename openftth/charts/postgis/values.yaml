@@ -3,6 +3,10 @@ password: postgres
 
 serviceType: LoadBalancer
 
+image:
+  repository: kartoza/postgis
+  tag: 12.1
+
 volumeClaim:
   storageClassName: ""
   storage: 10Gi
