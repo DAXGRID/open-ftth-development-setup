@@ -3,4 +3,4 @@ loglevel: "Warning"
 
 image:
   repository: openftth/route-network-service
-  tag: v1.0.3-alpha
+  tag: v1.0.5
