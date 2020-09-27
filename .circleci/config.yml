@@ -12,7 +12,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "a2:cc:79:03:01:5e:88:f5:bb:9a:8f:6f:18:c1:69:41"
+            - "84:38:8e:27:4d:03:27:c9:1e:db:56:db:2c:b9:d1:c1"
       - run:
           name: key-scan
           command: ssh-keyscan github.com >> ~/.ssh/known_hosts
@@ -29,8 +29,8 @@ jobs:
              helm dependency build ../open-ftth-chart/openftth
              helm package ../open-ftth-chart/openftth
              helm repo index ./ --url https://daxgrid.github.io/charts/
-             git config user.email "runeanielsen@live.dk"
-             git config user.name "runeanielsen"
+             git config user.email "admin@dax.dk"
+             git config user.name "dax-bot"
              git add .
              git commit -m "adds/updates $(ls -t open* | head -1)"
              git push
