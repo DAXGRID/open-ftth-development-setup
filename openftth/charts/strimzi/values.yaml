@@ -1,3 +1,4 @@
+backup: true
 zookeeper:
   replicas: 1
   storage:
