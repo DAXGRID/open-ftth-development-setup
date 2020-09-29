@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: {{ .Release.Name }}-{{ .Chart.Name }}
+        backup: "{{ .Values.backup }}"
     spec:
       containers:
         - name: {{ .Release.Name }}-{{ .Chart.Name }}

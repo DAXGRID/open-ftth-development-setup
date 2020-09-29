@@ -1,11 +1,10 @@
 replicas: 1
 storage: 1Gi
 storageClassName: ""
+backup: true
+loglevel: "Information"
+serviceType: LoadBalancer
 
 image:
   repository: openftth/api-gateway
   tag: v1.1.0
-
-loglevel: "Warning"
-
-serviceType: LoadBalancer
