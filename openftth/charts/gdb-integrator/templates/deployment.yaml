@@ -64,13 +64,13 @@ spec:
         - name: KAFKA__SERVER
           value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
         - name: KAFKA__POSTGISROUTENETWORKTOPIC
-          value: "postgis.route-network"
+          value: "postgres-connector.route-network"
         - name: KAFKA__POSTGISROUTENETWORKCONSUMER
-          value: "postgis-route-network-consumer"
+          value: "postgres-connector-gdb-integrator-consumer"
         - name: KAFKA__POSITIONFILEPATH
           value: "/data/"
         - name: KAFKA__EVENTROUTENETWORKTOPICNAME
-          value: "event.route-network"
+          value: "domain.route-network"
         - name: KAFKA__EVENTGEOGRAPHICALAREAUPDATED
           value: "event.geographical-area-updated"
 
