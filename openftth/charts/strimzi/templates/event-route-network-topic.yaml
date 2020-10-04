@@ -6,6 +6,6 @@ metadata:
     strimzi.io/cluster: "{{ .Release.Name }}-kafka-cluster"
 spec:
   config:
-    retention.ms: 2629800000
+    retention.ms: -1
   partitions: {{ .Values.topics.eventRouteNetwork.partitions }}
   replicas: {{ .Values.topics.eventRouteNetwork.replicas }}
