@@ -20,16 +20,16 @@ strimzi:
       type: ""
       tls: true
   topics:
-    eventRouteNetwork:
+    domainRouteNetwork:
       partitions: 1
       replicas: 3
     requestRouteNetwork:
       partitions: 1
       replicas: 3
-    postgisRouteNetwork:
+    postgresConnectorRouteNetwork:
       partitions: 1
       replicas: 3
-    eventGeoGraphicalAreaUpdated:
+    notificationGeoGraphicalAreaUpdated:
       partitions: 1
       replicas: 3
 

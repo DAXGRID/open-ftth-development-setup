@@ -66,9 +66,9 @@ spec:
         - name: KAFKA__SERVER
           value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
         - name: KAFKA__ROUTENETWORKEVENTTOPIC
-          value: event.route-network
+          value: domain.route-network
         - name: KAFKA__GEOGRAPHICALAREAUPDATEDTOPIC
-          value: event.geographical-area-updated
+          value: notification.geographical-area-updated
         - name: KAFKA__POSITIONFILEPATH
           value: "/tmp/"
       restartPolicy: Always

@@ -20,15 +20,15 @@ kafka:
     size: 10Gi
     deleteClaim: true
 topics:
-  eventRouteNetwork:
+  domainRouteNetwork:
     partitions: 1
     replicas: 1
   requestRouteNetwork:
     partitions: 1
     replicas: 1
-  postgisRouteNetwork:
+  postgresConnectorRouteNetwork:
     partitions: 1
     replicas: 1
-  eventGeoGraphicalAreaUpdated:
+  notificationGeoGraphicalAreaUpdated:
     partitions: 1
     replicas: 1
