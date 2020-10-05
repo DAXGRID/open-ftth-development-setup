@@ -8,7 +8,7 @@ strimzi:
   kafka:
     replicas: 1
     config:
-      autoCreateTopicsEnable: true
+      autoCreateTopicsEnable: false
       replicationFactorOffsets: 1
       replicationFactorStatelog: 1
       stateLogMinIsr: 1

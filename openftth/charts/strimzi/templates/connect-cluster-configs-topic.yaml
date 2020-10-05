@@ -1,0 +1,11 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: connect-cluster-configs
+  labels:
+    strimzi.io/cluster: "{{ .Release.Name }}-kafka-cluster"
+spec:
+  config:
+    retention.ms: -1
+  partitions: 1
+  replicas: 1
