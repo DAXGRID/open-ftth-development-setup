@@ -70,6 +70,7 @@ gdb-integrator:
     tolerance: "0.01"
     applicationName: "GDB_INTEGRATOR"
     sendGeographicalAreaUpdatedNotification: true
+    enableSegmentEndsAutoSnappingToRouteNode: true
   resources:
     requests:
       memory: 0Mi
