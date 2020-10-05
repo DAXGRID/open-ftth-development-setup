@@ -72,7 +72,7 @@ spec:
         - name: KAFKA__EVENTROUTENETWORKTOPICNAME
           value: "domain.route-network"
         - name: KAFKA__EVENTGEOGRAPHICALAREAUPDATED
-          value: "event.geographical-area-updated"
+          value: "notification.geographical-area-updated"
 
         volumeMounts:
         - mountPath: /data
