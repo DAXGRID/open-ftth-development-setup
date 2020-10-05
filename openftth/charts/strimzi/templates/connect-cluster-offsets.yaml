@@ -1,0 +1,11 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: connect-cluster-offsets
+  labels:
+    strimzi.io/cluster: "{{ .Release.Name }}-kafka-cluster"
+spec:
+  config:
+    cleanup.policy: compact
+  partitions: 25
+  replicas: 1
