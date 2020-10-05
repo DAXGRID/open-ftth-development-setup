@@ -45,6 +45,8 @@ spec:
           value: "{{ .Values.application.tolerance }}"
         - name: APPLICATION__SENDGEOGRAPHICALAREAUPDATEDNOTIFICATION
           value: "{{ .Values.application.sendGeographicalAreaUpdatedNotification }}"
+        - name: APPLICATION__ENABLESEGMENTENDSAUTOSNAPPINGTOROUTENODE
+          value: "{{ .Values.application.enableSegmentEndsAutoSnappingToRouteNode }}"
 
         - name: POSTGIS__HOST
           value: {{ .Release.Name }}-postgis
