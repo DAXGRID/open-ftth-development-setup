@@ -43,6 +43,8 @@ spec:
           value: {{ .Values.application.applicationName }}
         - name: APPLICATION__TOLERANCE
           value: "{{ .Values.application.tolerance }}"
+        - name: APPLICATION__SENDGEOGRAPHICALAREAUPDATEDNOTIFICATION
+          value: "{{ .Values.application.sendGeographicalAreaUpdatedNotification }}"
 
         - name: POSTGIS__HOST
           value: {{ .Release.Name }}-postgis
