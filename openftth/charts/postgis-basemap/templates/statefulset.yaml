@@ -22,7 +22,7 @@ spec:
               memory: {{ .Values.resources.requests.memory }}
           env:
             - name: POSTGRES_DBNAME
-              value: OPEN_FTTH
+              value: BASEMAP
             - name: WAL_LEVEL
               value: logical
             - name: POSTGRES_USER
