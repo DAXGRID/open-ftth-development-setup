@@ -102,6 +102,17 @@ postgis:
     storageClassName: ""
     storage: 10Gi
 
+postgis-basemap:
+  username: postgres
+  password: postgres
+  serviceType: LoadBalancer
+  volumeClaim:
+    storageClassName: ""
+    storage: 10Gi
+  resources:
+    requests:
+      memory: 0Mi
+
 frontend:
   graphqlServer:
 

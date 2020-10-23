@@ -10,8 +10,8 @@ loglevel: "Information"
 backup: true
 
 resources:
- requests:
-   memory: 300Mi
+  requests:
+    memory: 300Mi
 
 application:
   tolerance: "0.01"
