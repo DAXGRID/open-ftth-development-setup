@@ -98,6 +98,7 @@ postgis:
   username: postgres
   password:
   serviceType: LoadBalancer
+  serviceAnnotations: {}
   volumeClaim:
     storageClassName: ""
     storage: 10Gi
@@ -106,6 +107,7 @@ postgis-basemap:
   username: postgres
   password: postgres
   serviceType: LoadBalancer
+  serviceAnnotations: {}
   volumeClaim:
     storageClassName: ""
     storage: 10Gi
