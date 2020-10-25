@@ -15,3 +15,5 @@ volumeClaim:
 resources:
   requests:
     memory: 1000Mi
+
+serviceAnnotations: {}

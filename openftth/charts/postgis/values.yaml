@@ -11,3 +11,5 @@ image:
 volumeClaim:
   storageClassName: ""
   storage: 10Gi
+
+serviceAnnotations: {}
