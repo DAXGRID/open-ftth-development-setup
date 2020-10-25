@@ -4,6 +4,7 @@ metadata:
   name: {{ .Release.Name }}-{{ .Chart.Name }}
   labels:
     app: {{ .Release.Name }}-{{ .Chart.Name }}
+  annotations: {{ toYaml .Values.serviceAnnotations | nindent 4 }}
 spec:
   type: {{ .Values.serviceType }}
   ports:
