@@ -1,0 +1,6 @@
+apiVersion: v2
+name: utility-graph-service
+appVersion: "1.0"
+description: A Helm chart for utility-graph-service
+version: 0.1.0
+type: application

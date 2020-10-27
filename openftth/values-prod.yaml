@@ -134,3 +134,12 @@ elasticsearch:
 fluentd-elasticsearch:
   elasticsearch:
     hosts: ["openftth-elasticsearch-master:9200"]
+
+utility-graph-service:
+  replicas: 1
+  storage: 1Gi
+  storageClassName: ""
+  backup: true
+  database:
+    username: postgres
+    password: postgres

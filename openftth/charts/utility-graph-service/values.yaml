@@ -1,0 +1,13 @@
+replicas: 1
+storage: 1Gi
+storageClassName: ""
+backup: true
+
+database:
+  database: UTILITY_GRAPH
+  username: postgres
+  password: postgres
+
+image:
+  repository: openftth/utility-graph-service
+  tag: v1.0.0
