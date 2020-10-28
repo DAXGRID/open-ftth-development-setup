@@ -1,0 +1,12 @@
+username: postgres
+password: postgres
+
+image:
+  repository: postgres
+  tag: 13.0
+
+volumeClaim:
+  storageClassName: ""
+  storage: 10Gi
+
+serviceAnnotations: {}

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
+spec:
+  serviceName: {{ .Release.Name }}-{{ .Chart.Name }}
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-{{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-{{ .Chart.Name }}
+        backup: "{{ .Values.backup }}"
+    spec:
+      containers:
+        - name: {{ .Release.Name }}-{{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          env:
+            - name: POSTGRES_DB
+              value: UTILITY_GRAPH
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: {{ .Release.Name }}-{{ .Chart.Name }}
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: {{ .Release.Name }}-{{ .Chart.Name }}
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: {{ .Release.Name }}-{{ .Chart.Name }}-data
+              mountPath: /var/lib/postgresql/
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ .Release.Name }}-{{ .Chart.Name }}-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        {{- if .Values.volumeClaim.storageClassName }}
+        storageClassName: {{ .Values.volumeClaim.storageClassName }}
+        {{- end }}
+        resources:
+          requests:
+            storage: {{ .Values.volumeClaim.storage }}
