@@ -1,7 +1,6 @@
 replicas: 1
 storage: 1Gi
 storageClassName: ""
-backup: true
 loglevel: "Information"
 serviceType: LoadBalancer
 
