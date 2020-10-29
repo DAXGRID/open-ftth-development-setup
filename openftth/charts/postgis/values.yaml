@@ -2,7 +2,6 @@ username: postgres
 password: postgres
 
 serviceType: LoadBalancer
-backup: true
 
 image:
   repository: kartoza/postgis
