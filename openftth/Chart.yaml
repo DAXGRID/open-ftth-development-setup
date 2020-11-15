@@ -2,7 +2,7 @@ apiVersion: v2
 name: openftth
 appVersion: "0.3.4"
 description: A Helm chart for openftth
-version: 0.4.4
+version: 0.4.5
 type: application
 dependencies:
   - name: elasticsearch
