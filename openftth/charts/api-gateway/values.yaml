@@ -6,4 +6,4 @@ serviceType: LoadBalancer
 
 image:
   repository: openftth/api-gateway
-  tag: v1.2.0
+  tag: v1.3.0
