@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
+  labels:
+    app: {{ .Release.Name }}-{{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-{{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-{{ .Chart.Name }}
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-{{ .Chart.Name }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        env:
+        - name: LOGGING__LOGLEVEL_DEFAULT
+          value: {{ .Values.loglevel }}
+        - name: KAFKA__SERVER
+          value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
+        - name: KAFKA__NOTIFICATIONGEOGRAPHICALAREAUPDATEDCONSUMER
+          value: "notification-geographical-area-updated-desktop-bridge-consumer"
+        - name: KAFKA__NOTIFICATIONGEOGRAPHICALAREAUPDATED
+          value: "notification.geographical-area-updated"
+      restartPolicy: Always
