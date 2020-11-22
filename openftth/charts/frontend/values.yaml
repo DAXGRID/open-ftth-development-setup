@@ -4,4 +4,4 @@ graphqlServer:
 
 image:
   repository: openftth/frontend
-  tag: v1.0.1
+  tag: v2.0.0
