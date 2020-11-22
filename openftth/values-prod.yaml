@@ -93,6 +93,11 @@ postgis-connector:
 frontend:
   replicas: 1
   serviceType: LoadBalancer
+  mapbox:
+    apiKey: ""
+    styleUrl: ""
+  desktopBridgeUri: ""
+  apiGatewayUri: ""
 
 postgis:
   username: postgres
