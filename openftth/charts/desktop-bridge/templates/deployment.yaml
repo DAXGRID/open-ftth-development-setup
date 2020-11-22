@@ -6,7 +6,6 @@ metadata:
     app: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
   replicas: {{ .Values.replicas }}
-
   selector:
     matchLabels:
       app: {{ .Release.Name }}-{{ .Chart.Name }}
@@ -15,18 +14,16 @@ spec:
       labels:
         app: {{ .Release.Name }}-{{ .Chart.Name }}
     spec:
-      volumes:
-       - name: {{ .Release.Name }}-{{ .Chart.Name }}-mnt
-         configMap:
-           name: {{ .Release.Name }}-{{ .Chart.Name }}
-           items:
-           - key: config-env.js
-             path: config-env.js
       containers:
       - name: {{ .Release.Name }}-{{ .Chart.Name }}
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        volumeMounts:
-         - name: {{ .Release.Name }}-{{ .Chart.Name }}-mnt
-           mountPath: /usr/share/nginx/html/config-env.js
-           subPath: config-env.js
+        env:
+        - name: LOGGING__LOGLEVEL_DEFAULT
+          value: {{ .Values.loglevel }}
+        - name: KAFKA__SERVER
+          value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
+        - name: KAFKA__NOTIFICATIONGEOGRAPHICALAREAUPDATEDCONSUMER
+          value: "notification-geographical-area-updated-desktop-bridge-consumer"
+        - name: KAFKA__NOTIFICATIONGEOGRAPHICALAREAUPDATED
+          value: "notification.geographical-area-updated"
       restartPolicy: Always

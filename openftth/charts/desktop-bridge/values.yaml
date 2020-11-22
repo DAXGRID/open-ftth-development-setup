@@ -1,0 +1,7 @@
+replicas: 1
+loglevel: "Information"
+serviceType: LoadBalancer
+
+image:
+  repository: openftth/desktop-bridge
+  tag: v1.1.0

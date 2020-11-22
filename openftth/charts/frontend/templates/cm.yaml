@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
+data:
+  config-env.js: |
+    window.config_MAPBOX_API_KEY = "{{ .Values.mapbox.apiKey }}";
+    window.config_MAPBOX_STYLE_URL = "{{ .Values.mapbox.styleUrl }}";
+    window.config_API_GATEWAY_URI = "{{ .Values.apiGatewayUri }}";
+    window.config_DESKTOP_BRIDGE_URI = "{{ .Values.desktopBridgeUri }}";

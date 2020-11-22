@@ -93,6 +93,11 @@ postgis-connector:
 frontend:
   replicas: 1
   serviceType: LoadBalancer
+  mapbox:
+    apiKey: ""
+    styleUrl: ""
+  desktopBridgeUri: ""
+  apiGatewayUri: ""
 
 postgis:
   username: postgres
@@ -114,9 +119,6 @@ postgis-basemap:
   resources:
     requests:
       memory: 1000Mi
-
-frontend:
-  graphqlServer:
 
 kibana:
   elasticsearchHosts: http://openftth-elasticsearch-master:9200
