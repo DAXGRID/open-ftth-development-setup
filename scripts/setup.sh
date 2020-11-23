@@ -15,7 +15,7 @@ helm repo update
 # Install strimzi
 helm install strimzi strimzi/strimzi-kafka-operator \
      -n openftth \
-     --version 0.19
+     --version 0.20
 
 # Install loki
 helm upgrade --install loki --namespace=openftth grafana/loki-stack --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false,loki.persistence.enabled=true,loki.persistence.storageClassName=standard,loki.persistence.size=10Gi --version 2.3.0
