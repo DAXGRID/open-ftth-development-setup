@@ -20,4 +20,4 @@ application:
 
 image:
   repository: openftth/gdb-integrator
-  tag: v2.3.6
+  tag: v2.3.7
