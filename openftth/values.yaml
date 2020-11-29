@@ -119,20 +119,3 @@ postgis-basemap:
   resources:
     requests:
       memory: 0Mi
-
-kibana:
-  elasticsearchHosts: http://openftth-elasticsearch-master:9200
-
-elasticsearch:
-  clusterName: "openftth-elasticsearch"
-  antiAffinity: soft
-  replicas: 1
-  minimumMasterNodes: 1
-  volumeClaimTemplate:
-    resources:
-      requests:
-        storage: 10Gi
-
-fluentd-elasticsearch:
-  elasticsearch:
-    hosts: ["openftth-elasticsearch-master:9200"]

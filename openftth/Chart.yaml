@@ -2,15 +2,5 @@ apiVersion: v2
 name: openftth
 appVersion: "0.4.0"
 description: A Helm chart for openftth
-version: 0.5.2
+version: 0.6.0
 type: application
-dependencies:
-  - name: elasticsearch
-    version: 7.9.0
-    repository: https://helm.elastic.co
-  - name: kibana
-    version: 7.9.0
-    repository: https://helm.elastic.co
-  - name: fluentd-elasticsearch
-    version: 9.6.0
-    repository: https://kiwigrid.github.io

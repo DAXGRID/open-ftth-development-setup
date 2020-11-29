@@ -4,23 +4,19 @@
 kubectl create namespace openftth
 
 # Install Strimzi
-helm repo add strimzi https://strimzi.io/charts/ # Used for Strimzi
-helm repo add bitnami https://charts.bitnami.com/bitnami # Used for Cassandra
-helm repo add elastic https://helm.elastic.co # Used for Elastic and Kibana
-helm repo add kiwigrid https://kiwigrid.github.io # Used for fluentd + elasticsearch
+helm repo add strimzi https://strimzi.io/charts/
+helm repo add loki https://grafana.github.io/loki/charts
 
 helm repo update
 
+# Install strimzi
 helm install strimzi strimzi/strimzi-kafka-operator -n openftth --version 0.19
+
+# Install loki
+helm upgrade --install loki --namespace=openftth loki/loki-stack  --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false,loki.persistence.enabled=true,loki.persistence.storageClassName=standard,loki.persistence.size=10Gi
 
 # This is needed to make sure that the strimzi custom types are being registered
 sleep 1s
-
-# Update dependency
-helm dependency update openftth
-
-# Build dependencies
-helm dependencies build openftth
 
 # Install OpenFTTH
 helm install openftth openftth -n openftth
