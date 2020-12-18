@@ -39,5 +39,6 @@ workflows:
     jobs:
       - package-and-upload:
           filters:
-            tags:
-              only: /.*/
+            branches:
+              only:
+                - master
