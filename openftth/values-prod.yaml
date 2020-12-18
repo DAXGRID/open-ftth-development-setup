@@ -119,3 +119,8 @@ postgis-basemap:
   resources:
     requests:
       memory: 1000Mi
+
+desktop-bridge:
+  replicas: 1
+  loglevel: "Information"
+  serviceType: LoadBalancer
