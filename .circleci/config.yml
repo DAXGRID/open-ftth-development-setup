@@ -32,7 +32,7 @@ jobs:
              git config user.email "admin@dax.dk"
              git config user.name "dax-bot"
              git add .
-             git commit -m "adds/updates $(ls -t open* | head -1)"
+             git commit -m "adds/updates $(ls openftth* | sort -r | head -1)"
              git push
 workflows:
   package-and-upload-chart:
