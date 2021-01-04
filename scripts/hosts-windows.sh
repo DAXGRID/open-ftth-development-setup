@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 path=c:/windows/system32/drivers/etc/hosts
 
