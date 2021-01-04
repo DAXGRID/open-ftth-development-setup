@@ -4,4 +4,4 @@ serviceType: LoadBalancer
 
 image:
   repository: openftth/desktop-bridge
-  tag: v1.2.0
+  tag: v1.3.0
