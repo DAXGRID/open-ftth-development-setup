@@ -2,8 +2,6 @@ apiVersion: kafka.strimzi.io/v1beta1
 kind: Kafka
 metadata:
   name: {{ .Release.Name }}-kafka-cluster
-  labels:
-    backup: "{{ .Values.backup }}"
 spec:
   kafka:
     replicas: {{ .Values.kafka.replicas }}

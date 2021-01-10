@@ -15,7 +15,7 @@ strimzi:
     storage:
       storageClassName: ""
       size: 10Gi
-      deleteClaim: true
+      deleteClaim: false
     external:
       type: nodeport
       tls: false
