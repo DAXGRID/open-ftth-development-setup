@@ -31,3 +31,6 @@ topics:
   notificationGeoGraphicalAreaUpdated:
     partitions: 1
     replicas: 1
+  notificationUtilityNetwork:
+    partitions: 1
+    replicas: 1
