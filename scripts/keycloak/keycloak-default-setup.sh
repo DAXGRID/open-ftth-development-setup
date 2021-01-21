@@ -7,8 +7,9 @@ KEYCLOAK_REALM="master"
 KEYCLOAK_USER="user"
 KEYCLOAK_SECRET=$(kubectl get secret --namespace openftth keycloak-env-vars \
                           -o jsonpath="{.data.KEYCLOAK_ADMIN_PASSWORD}" | base64 --decode)
-REALM_FILE="realm.json";
-CLIENT_FILE="client.json";
+REALM_FILE="realm.json"
+CLIENT_FILE="client.json"
+USER_FILE="user.json"
 CURL_CMD="curl --silent --show-error"
 
 # Receive token
@@ -43,3 +44,11 @@ ${CURL_CMD} \
   -H "Content-Type: application/json" \
   -d @"${CLIENT_FILE}" \
   "${KEYCLOAK_URL}/auth/admin/realms/${NEW_REALM}/clients";
+
+# Create user
+${CURL_CMD} \
+  -X POST \
+  -H "Authorization: Bearer ${ACCESS_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d @"${USER_FILE}" \
+  "${KEYCLOAK_URL}/auth/admin/realms/${NEW_REALM}/users";
