@@ -1,4 +1,10 @@
 {
   "username": "test",
-  "enabled": true
+  "enabled": true,
+  "credentials": [
+    {
+      "value": "test",
+      "temporary": true
+    }
+  ]
 }
