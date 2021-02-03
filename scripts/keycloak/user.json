@@ -1,0 +1,9 @@
+{
+  "username": "test",
+  "enabled": true,
+  "credentials": [
+    {
+      "value": "test"
+    }
+  ]
+}

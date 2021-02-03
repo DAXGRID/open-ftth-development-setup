@@ -1,0 +1,7 @@
+{
+  "realm": "openftth",
+  "enabled": true,
+  "sslRequired": "external",
+  "bruteForceProtected": true,
+  "eventsEnabled": false
+}
