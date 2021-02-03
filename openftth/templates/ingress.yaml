@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: openftth-ingress
+  namespace: {{ .Release.Name }}
+spec:
+  rules:
+  - host: frontend.openftth.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Release.Name}}-frontend
+          servicePort: 80
+  - host: desktop-bridge.openftth.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Release.Name}}-desktop-bridge
+          servicePort: 80
+  - host: api-gateway.openftth.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Release.Name}}-desktop-bridge
+          servicePort: 80

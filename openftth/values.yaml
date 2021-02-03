@@ -63,7 +63,7 @@ route-network-service:
   loglevel: "Information"
 
 gdb-integrator:
-  replicas: 1
+  replicas: 0
   loglevel: "Information"
   storage: 1Gi
   postgis:
@@ -99,8 +99,8 @@ frontend:
   mapbox:
     apiKey: ""
     styleUrl: ""
-  desktopBridgeUri: ""
-  apiGatewayUri: ""
+  desktopBridgeUri: "desktop-bridge.openftth.com"
+  apiGatewayUri: "api-gateway.openftth.com"
 
 postgis:
   username: postgres
