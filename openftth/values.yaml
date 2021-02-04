@@ -63,7 +63,7 @@ route-network-service:
   loglevel: "Information"
 
 gdb-integrator:
-  replicas: 0
+  replicas: 1
   loglevel: "Information"
   storage: 1Gi
   postgis:
