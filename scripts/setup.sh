@@ -7,6 +7,7 @@ kubectl create namespace openftth
 helm repo add strimzi https://strimzi.io/charts/
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 helm repo update
 
@@ -18,6 +19,11 @@ helm upgrade --install loki --namespace=openftth grafana/loki-stack --set grafan
 
 # Install Keycloak
 helm upgrade --install keycloak bitnami/keycloak -n openftth --version 1.2.0
+
+# Install Nginx-Ingress
+helm install nginx-ingress ingress-nginx/ingress-nginx \
+    --namespace openftth \
+    --set controller.replicaCount=1
 
 # This is needed to make sure that the strimzi custom types are being registered
 sleep 1s
