@@ -24,5 +24,12 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: {{ .Release.Name}}-desktop-bridge
+          serviceName: {{ .Release.Name}}-api-gateway
+          servicePort: 80
+  - host: auth.openftth.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: keycloak
           servicePort: 80
