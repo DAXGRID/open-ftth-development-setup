@@ -40,7 +40,6 @@ api-gateway:
   replicas: 1
   storage: 1Gi
   loglevel: "Information"
-  serviceType: LoadBalancer
   storageClassName: ""
 
 route-network-validator:
@@ -95,7 +94,6 @@ postgis-connector:
 
 frontend:
   replicas: 1
-  serviceType: LoadBalancer
   mapbox:
     apiKey: ""
     styleUrl: ""
@@ -127,4 +125,3 @@ postgis-basemap:
 desktop-bridge:
   replicas: 1
   loglevel: "Information"
-  serviceType: LoadBalancer

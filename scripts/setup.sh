@@ -18,7 +18,7 @@ helm install strimzi strimzi/strimzi-kafka-operator -n openftth --version 0.19
 helm upgrade --install loki --namespace=openftth grafana/loki-stack --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false,loki.persistence.enabled=true,loki.persistence.storageClassName=standard,loki.persistence.size=10Gi --version 2.3.0
 
 # Install Keycloak
-helm upgrade --install keycloak bitnami/keycloak -n openftth --version 1.2.0
+helm upgrade --install keycloak bitnami/keycloak -n openftth --version 1.2.0 --set service.type=ClusterIP
 
 # Install Nginx-Ingress
 helm install nginx-ingress ingress-nginx/ingress-nginx \

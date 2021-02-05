@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Release.Name }}
 spec:
   rules:
-  - host: frontend.openftth.com
+  - host: openftth.com
     http:
       paths:
       - path: /
