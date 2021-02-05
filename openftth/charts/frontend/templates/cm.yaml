@@ -8,3 +8,4 @@ data:
     window.config_MAPBOX_STYLE_URL = "{{ .Values.mapbox.styleUrl }}";
     window.config_API_GATEWAY_URI = "{{ .Values.apiGatewayUri }}";
     window.config_DESKTOP_BRIDGE_URI = "{{ .Values.desktopBridgeUri }}";
+    window.config_KEYCLOAK_URI = "{{ .Values.keyCloakUri }}";

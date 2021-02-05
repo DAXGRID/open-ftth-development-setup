@@ -101,6 +101,7 @@ frontend:
     styleUrl: ""
   desktopBridgeUri: ""
   apiGatewayUri: ""
+  keyCloakUri: ""
 
 postgis:
   username: postgres

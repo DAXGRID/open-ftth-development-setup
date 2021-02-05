@@ -11,3 +11,4 @@ mapbox:
 
 desktopBridgeUri: ""
 apiGatewayUri: ""
+keyCloakUri: ""

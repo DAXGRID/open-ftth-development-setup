@@ -100,7 +100,8 @@ frontend:
     apiKey: ""
     styleUrl: ""
   desktopBridgeUri: "desktop-bridge.openftth.com"
-  apiGatewayUri: "api-gateway.openftth.com"
+  apiGatewayUri: "https://api-gateway.openftth.com"
+  keyCloakUri: "https://auth.openftth.com"
 
 postgis:
   username: postgres
