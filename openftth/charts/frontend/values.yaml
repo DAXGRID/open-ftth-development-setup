@@ -10,5 +10,6 @@ mapbox:
   styleUrl: ""
 
 desktopBridgeUri: ""
-apiGatewayUri: ""
+apiGatewayHttpUri: ""
+apiGatewayWsUri: ""
 keyCloakUri: ""

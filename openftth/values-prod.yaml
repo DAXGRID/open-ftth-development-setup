@@ -98,7 +98,8 @@ frontend:
     apiKey: ""
     styleUrl: ""
   desktopBridgeUri: ""
-  apiGatewayUri: ""
+  apiGatewayHttpUri: ""
+  apiGatewayWsUri: ""
   keyCloakUri: ""
 
 postgis:
