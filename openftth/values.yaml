@@ -97,9 +97,9 @@ frontend:
   mapbox:
     apiKey: ""
     styleUrl: ""
-  desktopBridgeUri: "desktop-bridge.openftth.com"
-  apiGatewayUri: "api-gateway.openftth.com"
-  keyCloakUri: "http://auth.openftth.com/auth"
+  desktopBridgeUri: "desktop-bridge.openftth.local"
+  apiGatewayUri: "api-gateway.openftth.local"
+  keyCloakUri: "http://auth.openftth.local/auth"
 
 postgis:
   username: postgres

@@ -1,6 +1,6 @@
 {
   "clientId": "openftth-frontend",
-  "redirectUris": ["https://openftth.com/*"],
+  "redirectUris": ["http://openftth.local/*"],
   "publicClient": true,
-  "webOrigins": ["https://openftth.com"]
+  "webOrigins": ["http://openftth.local"]
 }

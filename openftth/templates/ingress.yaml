@@ -5,28 +5,28 @@ metadata:
   namespace: {{ .Release.Name }}
 spec:
   rules:
-  - host: openftth.com
+  - host: openftth.local
     http:
       paths:
       - path: /
         backend:
           serviceName: {{ .Release.Name}}-frontend
           servicePort: 80
-  - host: desktop-bridge.openftth.com
+  - host: desktop-bridge.openftth.local
     http:
       paths:
       - path: /
         backend:
           serviceName: {{ .Release.Name}}-desktop-bridge
           servicePort: 80
-  - host: api-gateway.openftth.com
+  - host: api-gateway.openftth.local
     http:
       paths:
       - path: /
         backend:
           serviceName: {{ .Release.Name}}-api-gateway
           servicePort: 80
-  - host: auth.openftth.com
+  - host: auth.openftth.local
     http:
       paths:
       - path: /
