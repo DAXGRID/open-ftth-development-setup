@@ -40,7 +40,6 @@ api-gateway:
   replicas: 1
   storage: 1Gi
   loglevel: "Information"
-  serviceType: LoadBalancer
   storageClassName: ""
 
 route-network-validator:
@@ -95,12 +94,13 @@ postgis-connector:
 
 frontend:
   replicas: 1
-  serviceType: LoadBalancer
   mapbox:
     apiKey: ""
     styleUrl: ""
-  desktopBridgeUri: ""
-  apiGatewayUri: ""
+  desktopBridgeUri: "ws://desktop-bridge.openftth.local"
+  apiGatewayHttpUri: "http://api-gateway.openftth.local"
+  apiGatewayWsUri: "ws://api-gateway.openftth.local"
+  keyCloakUri: "http://auth.openftth.local/auth"
 
 postgis:
   username: postgres
@@ -126,4 +126,3 @@ postgis-basemap:
 desktop-bridge:
   replicas: 1
   loglevel: "Information"
-  serviceType: LoadBalancer

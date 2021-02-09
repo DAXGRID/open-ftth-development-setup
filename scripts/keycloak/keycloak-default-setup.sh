@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 NEW_REALM="openftth"
-KEYCLOAK_URL=http://$(kubectl describe service keycloak -n openftth | \
-                          grep LoadBalancer | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+')
+KEYCLOAK_URL=http://auth.openftth.local
 KEYCLOAK_REALM="master"
 KEYCLOAK_USER="user"
 KEYCLOAK_SECRET=$(kubectl get secret --namespace openftth keycloak-env-vars \

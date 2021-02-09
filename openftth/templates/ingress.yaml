@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: openftth-ingress
+  namespace: {{ .Release.Name }}
+spec:
+  rules:
+  - host: openftth.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Release.Name}}-frontend
+          servicePort: 80
+  - host: desktop-bridge.openftth.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Release.Name}}-desktop-bridge
+          servicePort: 80
+  - host: api-gateway.openftth.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Release.Name}}-api-gateway
+          servicePort: 80
+  - host: auth.openftth.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: keycloak
+          servicePort: 80

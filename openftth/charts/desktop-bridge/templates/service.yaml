@@ -5,15 +5,11 @@ metadata:
   labels:
     app: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
-  type: {{ .Values.serviceType }}
+  type: ClusterIP
   ports:
     - name: http
       protocol: TCP
       port: 80
-      targetPort: 5000
-    - name: https
-      protocol: TCP
-      port: 443
       targetPort: 5000
   selector:
     app: {{ .Release.Name }}-{{ .Chart.Name }}

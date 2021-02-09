@@ -2,7 +2,6 @@ replicas: 1
 storage: 1Gi
 storageClassName: ""
 loglevel: "Information"
-serviceType: LoadBalancer
 
 image:
   repository: openftth/api-gateway
