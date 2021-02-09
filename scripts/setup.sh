@@ -20,13 +20,10 @@ helm upgrade --install loki --namespace=openftth grafana/loki-stack --set grafan
 # Install Keycloak
 helm upgrade --install keycloak bitnami/keycloak -n openftth --version 1.2.0 --set service.type=ClusterIP
 
+# Install OpenFTTH
+helm install openftth openftth -n openftth
+
 # Install Nginx-Ingress
 helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace openftth \
     --set controller.replicaCount=1
-
-# This is needed to make sure that the strimzi custom types are being registered
-sleep 1s
-
-# Install OpenFTTH
-helm install openftth openftth -n openftth
