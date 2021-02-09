@@ -8,6 +8,7 @@ helm repo add strimzi https://strimzi.io/charts/
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo add jetstack https://charts.jetstack.io
 
 helm repo update
 
@@ -27,3 +28,9 @@ helm install openftth openftth -n openftth
 helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace openftth \
     --set controller.replicaCount=1
+
+# Install the cert-manager
+helm install cert-manager jetstack/cert-manager \
+  --namespace openftth \
+  --version v1.1.0 \
+  --set installCRDs=true
