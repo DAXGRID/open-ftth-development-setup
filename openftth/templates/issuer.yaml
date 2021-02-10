@@ -1,18 +1,16 @@
+{{ if (eq .Values.ingress.tls true) }}
 apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
   name: {{ .Release.Name }}-letsencrypt
 spec:
   acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: MY_EMAIL_ADDRESS
+    server: {{ .Values.tls.server }}
+    email: {{ .Values.tls.email }}
     privateKeySecretRef:
       name: letsencrypt
     solvers:
     - http01:
         ingress:
           class: nginx
-          podTemplate:
-            spec:
-              nodeSelector:
-                "kubernetes.io/os": linux
+{{ end }}

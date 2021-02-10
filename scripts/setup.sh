@@ -13,13 +13,23 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 
 # Install strimzi
-helm install strimzi strimzi/strimzi-kafka-operator -n openftth --version 0.19
+helm install strimzi strimzi/strimzi-kafka-operator \
+     -n openftth \
+     --version 0.19
 
 # Install loki
 helm upgrade --install loki --namespace=openftth grafana/loki-stack --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false,loki.persistence.enabled=true,loki.persistence.storageClassName=standard,loki.persistence.size=10Gi --version 2.3.0
 
 # Install Keycloak
-helm upgrade --install keycloak bitnami/keycloak -n openftth --version 1.2.0 --set service.type=ClusterIP
+helm upgrade --install keycloak bitnami/keycloak -n openftth \
+     --version 1.2.0 \
+     --set service.type=ClusterIP
+
+# Install the cert-manager
+helm install cert-manager jetstack/cert-manager \
+  --namespace openftth \
+  --version v1.1.0 \
+  --set installCRDs=true
 
 # Install OpenFTTH
 helm install openftth openftth -n openftth
@@ -28,9 +38,3 @@ helm install openftth openftth -n openftth
 helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace openftth \
     --set controller.replicaCount=1
-
-# Install the cert-manager
-helm install cert-manager jetstack/cert-manager \
-  --namespace openftth \
-  --version v1.1.0 \
-  --set installCRDs=true

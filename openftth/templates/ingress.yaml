@@ -1,9 +1,23 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: openftth-ingress
+  name: {{ .Release.Name }}-ingress
   namespace: {{ .Release.Name }}
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    {{ if (eq .Values.ingress.tls true) }}
+    cert-manager.io/cluster-issuer: letsencrypt
+    {{ end }}
 spec:
+  {{ if (eq .Values.ingress.tls true) }}
+  tls:
+  - hosts:
+    - openftth.local
+    - desktop-bridge.openftth.local
+    - api-gateway.openftth.local
+    - auth.openftth.local
+    secretName: tls-secret
+  {{ end }}
   rules:
   - host: openftth.local
     http:
