@@ -126,3 +126,8 @@ postgis-basemap:
 desktop-bridge:
   replicas: 1
   loglevel: "Information"
+
+ingress:
+  tls: false
+  email: ""
+  issuer: ""
