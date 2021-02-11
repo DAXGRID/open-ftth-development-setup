@@ -128,6 +128,14 @@ desktop-bridge:
   loglevel: "Information"
 
 ingress:
-  tls: true
-  email: ""
-  issuer: "https://acme-v02.api.letsencrypt.org/directory"
+  tls:
+    enabled: true
+    acme:
+      email: ""
+      server: "https://acme-v02.api.letsencrypt.org/directory"
+    hosts: {}
+  domainNames:
+    frontend: 
+    desktopBridge:
+    apiGateway: 
+    auth:

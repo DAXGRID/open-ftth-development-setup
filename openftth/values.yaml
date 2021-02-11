@@ -128,6 +128,14 @@ desktop-bridge:
   loglevel: "Information"
 
 ingress:
-  tls: false
-  email: ""
-  issuer: ""
+  tls:
+    enabled: false
+    acme:
+      email: ""
+      server: ""
+    hosts: {}
+  domainNames:
+    frontend: openftth.local
+    desktopBridge: desktop-bridge.openftth.local
+    apiGateway: api-gateway.openftth.local
+    auth: auth.openftth.local

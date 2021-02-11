@@ -1,12 +1,12 @@
-{{ if (eq .Values.ingress.tls true) }}
+{{ if (eq .Values.ingress.tls.enabled true) }}
 apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
   name: {{ .Release.Name }}-letsencrypt
 spec:
   acme:
-    server: {{ .Values.tls.server }}
-    email: {{ .Values.tls.email }}
+    server: {{ .Values.ingress.tls.acme.server }}
+    email: {{ .Values.ingress.tls.acme.email }}
     privateKeySecretRef:
       name: letsencrypt
     solvers:
