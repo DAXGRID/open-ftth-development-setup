@@ -5,42 +5,38 @@ metadata:
   namespace: {{ .Release.Name }}
   annotations:
     kubernetes.io/ingress.class: nginx
-    {{ if (eq .Values.ingress.tls true) }}
+    {{ if (eq .Values.ingress.tls.enabled true) }}
     cert-manager.io/cluster-issuer: letsencrypt
     {{ end }}
 spec:
-  {{ if (eq .Values.ingress.tls true) }}
+  {{ if (eq .Values.ingress.tls.enabled true) }}
   tls:
-  - hosts:
-    - openftth.local
-    - desktop-bridge.openftth.local
-    - api-gateway.openftth.local
-    - auth.openftth.local
+  - hosts: {{ toYaml .Values.ingress.tls.hosts | nindent 4 }}
     secretName: tls-secret
   {{ end }}
   rules:
-  - host: openftth.local
+  - host: {{ .Values.ingress.domainNames.frontend }}
     http:
       paths:
       - path: /
         backend:
           serviceName: {{ .Release.Name}}-frontend
           servicePort: 80
-  - host: desktop-bridge.openftth.local
+  - host: {{ .Values.ingress.domainNames.desktopBridge }}
     http:
       paths:
       - path: /
         backend:
           serviceName: {{ .Release.Name}}-desktop-bridge
           servicePort: 80
-  - host: api-gateway.openftth.local
+  - host: {{ .Values.ingress.domainNames.apiGateway }}
     http:
       paths:
       - path: /
         backend:
           serviceName: {{ .Release.Name}}-api-gateway
           servicePort: 80
-  - host: auth.openftth.local
+  - host: {{ .Values.ingress.domainNames.auth }}
     http:
       paths:
       - path: /
