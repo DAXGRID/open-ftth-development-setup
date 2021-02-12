@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
-  name: {{ .Release.Name }}-letsencrypt
+  name: letsencrypt
 spec:
   acme:
     server: {{ .Values.ingress.tls.acme.server }}
