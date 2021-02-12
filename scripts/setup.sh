@@ -22,8 +22,9 @@ helm upgrade --install loki --namespace=openftth grafana/loki-stack --set grafan
 
 # Install Keycloak
 helm upgrade --install keycloak bitnami/keycloak -n openftth \
-     --version 1.2.0 \
-     --set service.type=ClusterIP
+     --version 2.0.1 \
+     --set service.type=ClusterIP \
+     --set proxyAddressForwarding=true
 
 # Install the cert-manager
 helm install cert-manager jetstack/cert-manager \
