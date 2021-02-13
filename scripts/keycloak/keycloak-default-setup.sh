@@ -4,9 +4,7 @@ NEW_REALM="openftth"
 KEYCLOAK_URL=http://auth.openftth.local
 KEYCLOAK_REALM="master"
 KEYCLOAK_USER="user"
-KEYCLOAK_SECRET=$(kubectl get secret --namespace openftth keycloak-env-vars \
-                          -o jsonpath="{.data.KEYCLOAK_ADMIN_PASSWORD}" | base64 --decode)
-
+KEYCLOAK_SECRET=$(kubectl get secret --namespace openftth keycloak -o jsonpath="{.data.admin-password}" | base64 --decode)
 DIR_PATH=$(dirname $(realpath $0))
 REALM_FILE=$DIR_PATH"/realm.json"
 CLIENT_FILE=$DIR_PATH"/client.json"
