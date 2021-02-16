@@ -1,9 +1,15 @@
 {
-  "username": "test",
+  "username": "admin",
+  "firstName": "John",
+  "lastName": "Doe",
   "enabled": true,
+  "email": "john@doe.foo",
   "credentials": [
     {
-      "value": "test"
+      "value": "password"
     }
-  ]
+  ],
+  "attributes": {
+    "user_role": "admin"
+  }
 }
