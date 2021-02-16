@@ -9,6 +9,7 @@ DIR_PATH=$(dirname $(realpath $0))
 REALM_FILE=$DIR_PATH"/realm.json"
 CLIENT_FILE=$DIR_PATH"/client.json"
 USER_FILE=$DIR_PATH"/user.json"
+USER_ROLE_CLIENT_SCOPE_FILE=$DIR_PATH"/user-role-client-scope.json"
 CURL_CMD="curl --silent --show-error"
 
 #Receive token
@@ -44,3 +45,11 @@ ${CURL_CMD} \
   -H "Content-Type: application/json" \
   -d @"${USER_FILE}" \
   "${KEYCLOAK_URL}/auth/admin/realms/${NEW_REALM}/users";
+
+# Create user role client scope
+${CURL_CMD} \
+  -X POST \
+  -H "Authorization: Bearer ${ACCESS_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d @"${USER_ROLE_CLIENT_SCOPE_FILE}" \
+  "${KEYCLOAK_URL}/auth/admin/realms/${NEW_REALM}/client-scopes";

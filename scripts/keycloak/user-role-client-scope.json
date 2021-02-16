@@ -1,0 +1,8 @@
+{
+  "name": "user_role",
+  "description": "The user role.",
+  "protocol": "openid-connect",
+  "attributes": {
+    "display.on.consent.screen": "false"
+  }
+}
