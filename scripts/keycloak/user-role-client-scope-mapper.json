@@ -1,0 +1,14 @@
+{
+  "protocol": "openid-connect",
+  "config": {
+    "id.token.claim": "true",
+    "access.token.claim": "false",
+    "userinfo.token.claim": "true",
+    "multivalued": "",
+    "aggregate.attrs": "",
+    "user.attribute": "user_role",
+    "jsonType.label": "String"
+  },
+  "name": "user_role",
+  "protocolMapper": "oidc-usermodel-attribute-mapper"
+}
