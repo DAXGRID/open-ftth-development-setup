@@ -1,4 +1,5 @@
 {
+  "id": "c78c48cf-6d12-4946-8ecf-24da7820c5b2",
   "clientId": "openftth-frontend",
   "redirectUris": ["http://openftth.local/*"],
   "publicClient": true,

@@ -9,6 +9,9 @@ DIR_PATH=$(dirname $(realpath $0))
 REALM_FILE=$DIR_PATH"/realm.json"
 CLIENT_FILE=$DIR_PATH"/client.json"
 USER_FILE=$DIR_PATH"/user.json"
+USER_ROLE_CLIENT_SCOPE_FILE=$DIR_PATH"/user-role-client-scope.json"
+USER_ROLE_CLIENT_SCOPE_MAPPER_FILE=$DIR_PATH"/user-role-client-scope-mapper.json"
+ADD_USER_ROLE_DEFAULT_CLIENT_SCOPE=$DIR_PATH"/add-user-role-default-client-scope.json";
 CURL_CMD="curl --silent --show-error"
 
 #Receive token
@@ -29,6 +32,13 @@ ${CURL_CMD} \
   -d @"${REALM_FILE}" \
   "${KEYCLOAK_URL}/auth/admin/realms";
 
+# Verify that the realm has been created
+${CURL_CMD} \
+  -X GET \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer ${ACCESS_TOKEN}" \
+  "${KEYCLOAK_URL}/auth/admin/realms/${NEW_REALM}"|jq -r .|head;
+
 # Create client
 ${CURL_CMD} \
   -X POST \
@@ -44,3 +54,27 @@ ${CURL_CMD} \
   -H "Content-Type: application/json" \
   -d @"${USER_FILE}" \
   "${KEYCLOAK_URL}/auth/admin/realms/${NEW_REALM}/users";
+
+# Create user_role client scope
+${CURL_CMD} \
+  -X POST \
+  -H "Authorization: Bearer ${ACCESS_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d @"${USER_ROLE_CLIENT_SCOPE_FILE}" \
+  "${KEYCLOAK_URL}/auth/admin/realms/${NEW_REALM}/client-scopes";
+
+# Create user_role role mappings
+${CURL_CMD} \
+  -X POST \
+  -H "Authorization: Bearer ${ACCESS_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d @"${USER_ROLE_CLIENT_SCOPE_MAPPER_FILE}" \
+  "${KEYCLOAK_URL}/auth/admin/realms/${NEW_REALM}/client-scopes/ffa29964-3d6a-4a2d-bdbe-32917ea7d9e9/protocol-mappers/models";
+
+# Add user to default client scope
+${CURL_CMD} \
+  -X PUT \
+  -H "Authorization: Bearer ${ACCESS_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d @"${USER_ROLE_CLIENT_SCOPE_MAPPER_FILE}" \
+  "${KEYCLOAK_URL}/auth/admin/realms/${NEW_REALM}/clients/c78c48cf-6d12-4946-8ecf-24da7820c5b2/default-client-scopes/ffa29964-3d6a-4a2d-bdbe-32917ea7d9e9";

@@ -1,4 +1,5 @@
 {
+  "id": "openftth",
   "realm": "openftth",
   "enabled": true,
   "sslRequired": "external",
