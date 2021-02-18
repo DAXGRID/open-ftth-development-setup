@@ -7,6 +7,7 @@
     "multivalued": "",
     "aggregate.attrs": "",
     "user.attribute": "user_role",
+    "claim.name": "user_role",
     "jsonType.label": "String"
   },
   "name": "user_role",
