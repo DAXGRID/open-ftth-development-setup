@@ -26,8 +26,11 @@ spec:
           value: "/data/"
         - name: KAFKA__ROUTENETWORKEVENTTOPIC
           value: "domain.route-network"
+        - name: KAFKA__UTILITYNETWORKNOTIFICATIONSTOPIC
+          value: "notification.utility-network"
         - name: REMOTESERVICES__ROUTENETWORKSERVICE
           value: http://{{ .Release.Name }}-route-network-service
+
         volumeMounts:
         - mountPath: /data
           name: {{ .Release.Name }}-{{ .Chart.Name }}-data
