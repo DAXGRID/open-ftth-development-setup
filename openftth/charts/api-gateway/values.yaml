@@ -6,3 +6,8 @@ loglevel: "Information"
 image:
   repository: openftth/api-gateway
   tag: v1.10.2
+
+database:
+  name: ""
+  username: ""
+  password: ""
