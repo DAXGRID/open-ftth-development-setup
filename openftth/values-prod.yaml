@@ -61,10 +61,6 @@ route-network-validator:
     password: postgres
     port: 5432
 
-route-network-service:
-  replicas: 2
-  loglevel: "Information"
-
 gdb-integrator:
   replicas: 1
   loglevel: "Information"
