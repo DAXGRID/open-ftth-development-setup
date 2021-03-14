@@ -17,9 +17,24 @@ spec:
       containers:
       - name: {{ .Release.Name }}-{{ .Chart.Name }}
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 15
+          periodSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 15
+          periodSeconds: 15
         env:
         - name: LOGGING__LOGLEVEL_DEFAULT
           value: {{ .Values.loglevel }}
+
         - name: KAFKA__SERVER
           value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
         - name: KAFKA__POSITIONFILEPATH
@@ -30,6 +45,18 @@ spec:
           value: "notification.utility-network"
         - name: REMOTESERVICES__ROUTENETWORKSERVICE
           value: http://{{ .Release.Name }}-route-network-service
+        {{- if .Values.database.host }}
+        - name: DATABASE__HOST
+          value: {{ .Release.Name }}-postgis-basemap
+        - name: DATABASE__PORT
+          value: "5432"
+        - name: DATABASE__DATABASE
+          value: {{ .Values.database.name }}
+        - name: DATABASE__USERNAME
+          value: {{ .Values.database.username }}
+        - name: DATABASE__PASSWORD
+          value: {{ .Values.database.password }}
+        {{ end }}
 
         volumeMounts:
         - mountPath: /data

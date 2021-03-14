@@ -2,5 +2,5 @@ apiVersion: v2
 name: api-gateway
 appVersion: "1.10.2"
 description: A Helm chart for api-gateway
-version: 0.1.10
+version: 0.1.11
 type: application

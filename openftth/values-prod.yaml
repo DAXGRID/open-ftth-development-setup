@@ -41,6 +41,10 @@ api-gateway:
   storage: 1Gi
   loglevel: "Information"
   storageClassName: ""
+  database:
+    name: ""
+    username: ""
+    password: ""
 
 route-network-validator:
   loglevel: "Information"
