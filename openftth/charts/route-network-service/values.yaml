@@ -1,6 +1,0 @@
-replicas: 1
-loglevel: "Warning"
-
-image:
-  repository: openftth/route-network-service
-  tag: v1.0.5
