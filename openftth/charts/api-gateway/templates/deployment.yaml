@@ -45,7 +45,7 @@ spec:
           value: "notification.utility-network"
         - name: REMOTESERVICES__ROUTENETWORKSERVICE
           value: http://{{ .Release.Name }}-route-network-service
-        {{- if .Values.database.host }}
+        {{- if .Values.database.name }}
         - name: DATABASE__HOST
           value: {{ .Release.Name }}-postgis-basemap
         - name: DATABASE__PORT
