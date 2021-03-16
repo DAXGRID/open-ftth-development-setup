@@ -7,7 +7,12 @@ image:
   repository: openftth/api-gateway
   tag: v1.11.0
 
-database:
-  name: ""
-  username: ""
-  password: ""
+eventStoreDatabase:
+  name: EVENT_STORE
+  username: postgres
+  password: postgres
+
+geoDatabase:
+  name: OPEN_FTTH
+  username: postgres
+  password: postgres
