@@ -22,7 +22,7 @@ helm upgrade --install loki --namespace=openftth grafana/loki-stack --set grafan
 
 # Install Keycloak
 helm upgrade --install keycloak bitnami/keycloak -n openftth \
-     --version 2.0.1 \
+     --version 2.3.0 \
      --set service.type=ClusterIP \
      --set proxyAddressForwarding=true
 
