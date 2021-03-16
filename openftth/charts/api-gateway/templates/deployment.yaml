@@ -45,18 +45,28 @@ spec:
           value: "notification.utility-network"
         - name: REMOTESERVICES__ROUTENETWORKSERVICE
           value: http://{{ .Release.Name }}-route-network-service
-        {{- if .Values.database.name }}
-        - name: DATABASE__HOST
-          value: {{ .Release.Name }}-postgis-basemap
-        - name: DATABASE__PORT
+
+        - name: EVENTSTOREDATABASE__HOST
+          value: openftth-event-store-postgresql
+        - name: EVENTSTOREDATABASE__PORT
           value: "5432"
-        - name: DATABASE__DATABASE
-          value: {{ .Values.database.name }}
-        - name: DATABASE__USERNAME
-          value: {{ .Values.database.username }}
-        - name: DATABASE__PASSWORD
-          value: {{ .Values.database.password }}
-        {{ end }}
+        - name: EVENTSTOREDATABASE__DATABASE
+          value: {{ .Values.eventStoreDatabase.name }}
+        - name: EVENTSTOREDATABASE__USERNAME
+          value: {{ .Values.eventStoreDatabase.username }}
+        - name: EVENTSTOREDATABASE__PASSWORD
+          value: {{ .Values.eventStoreDatabase.password }}
+
+        - name: GEODATABASE__HOST
+          value: {{ .Release.Name }}-postgis
+        - name: GEODATABASE__PORT
+          value: "5432"
+        - name: GEODATABASE__DATABASE
+          value: {{ .Values.geoDatabase.name }}
+        - name: GEODATABASE__USERNAME
+          value: {{ .Values.geoDatabase.username }}
+        - name: GEODATABASE__PASSWORD
+          value: {{ .Values.geoDatabase.password }}
 
         volumeMounts:
         - mountPath: /data

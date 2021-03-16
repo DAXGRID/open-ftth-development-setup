@@ -41,10 +41,14 @@ api-gateway:
   storage: 1Gi
   loglevel: "Information"
   storageClassName: ""
-  database:
-    name: ""
-    username: ""
-    password: ""
+  eventStoreDatabase:
+    name: EVENT_STORE
+    username: postgres
+    password: postgres
+  geoDatabase:
+    name: OPEN_FTTH
+    username: postgres
+    password: postgres
 
 route-network-validator:
   loglevel: "Information"

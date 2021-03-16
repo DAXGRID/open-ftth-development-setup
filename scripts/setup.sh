@@ -32,8 +32,17 @@ helm install cert-manager jetstack/cert-manager \
   --version v1.1.0 \
   --set installCRDs=true
 
+# Install Postgres database for OpenFTTH eventstore
+# Username and password should be changed in live env.
+helm install openftth-event-store bitnami/postgresql \
+     --namespace openftth \
+     --set global.postgresql.postgresqlDatabase=eventstore \
+     --set global.postgresql.postgresqlUsername=postgres \
+     --set global.postgresql.postgresqlPassword=postgres \
+     --set service.type=ClusterIP
+
 # Install OpenFTTH
-helm install openftth openftth -n openftth
+helm install openftth openftth --namespace openftth
 
 # Install Nginx-Ingress
 helm install nginx-ingress ingress-nginx/ingress-nginx \
