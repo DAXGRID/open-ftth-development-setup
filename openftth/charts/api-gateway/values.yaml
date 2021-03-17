@@ -1,6 +1,4 @@
 replicas: 1
-storage: 1Gi
-storageClassName: ""
 loglevel: "Information"
 
 image:

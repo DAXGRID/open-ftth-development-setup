@@ -67,12 +67,4 @@ spec:
           value: {{ .Values.geoDatabase.username }}
         - name: GEODATABASE__PASSWORD
           value: {{ .Values.geoDatabase.password }}
-
-        volumeMounts:
-        - mountPath: /data
-          name: {{ .Release.Name }}-{{ .Chart.Name }}-data
       restartPolicy: Always
-      volumes:
-      - name: {{ .Release.Name }}-{{ .Chart.Name }}-data
-        persistentVolumeClaim:
-          claimName: {{ .Release.Name }}-{{ .Chart.Name }}
