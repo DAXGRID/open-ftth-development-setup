@@ -36,7 +36,7 @@ helm install cert-manager jetstack/cert-manager \
 # Username and password should be changed in live env.
 helm install openftth-event-store bitnami/postgresql \
      --namespace openftth \
-     --set global.postgresql.postgresqlDatabase=eventstore \
+     --set global.postgresql.postgresqlDatabase=EVENT_STORE \
      --set global.postgresql.postgresqlUsername=postgres \
      --set global.postgresql.postgresqlPassword=postgres \
      --set service.type=ClusterIP
