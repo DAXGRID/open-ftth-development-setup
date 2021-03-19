@@ -14,3 +14,9 @@ geoDatabase:
   name: OPEN_FTTH
   username: postgres
   password: postgres
+
+resources:
+  requests:
+    memory: 1500Mi
+  limits:
+    memory: 2000Mi
