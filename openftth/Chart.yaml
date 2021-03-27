@@ -2,5 +2,5 @@ apiVersion: v2
 name: openftth
 appVersion: "0.4.0"
 description: A Helm chart for openftth
-version: 0.7.32
+version: 0.7.33
 type: application
