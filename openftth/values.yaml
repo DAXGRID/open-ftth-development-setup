@@ -96,9 +96,6 @@ postgis-connector:
 
 frontend:
   replicas: 1
-  mapbox:
-    apiKey: ""
-    styleUrl: ""
   desktopBridgeUri: "ws://desktop-bridge.openftth.local"
   apiGatewayHttpUri: "http://api-gateway.openftth.local"
   apiGatewayWsUri: "ws://api-gateway.openftth.local"
