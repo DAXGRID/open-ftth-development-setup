@@ -13,3 +13,7 @@ desktopBridgeUri: ""
 apiGatewayHttpUri: ""
 apiGatewayWsUri: ""
 keyCloakUri: ""
+colorMarkings:
+  - Blue
+  - Red
+  - Green
