@@ -8,3 +8,4 @@ data:
     window.config_API_GATEWAY_WS_URI = "{{ .Values.apiGatewayWsUri }}";
     window.config_DESKTOP_BRIDGE_URI = "{{ .Values.desktopBridgeUri }}";
     window.config_KEYCLOAK_URI = "{{ .Values.keyCloakUri }}";
+    window.config_COLOR_OPTIONS = [{{- range .Values.colorMarkings }}"{{ . -}}",{{ end }}]
