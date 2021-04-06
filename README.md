@@ -3,7 +3,6 @@
 Helm Chart for OPEN-FTTH
 
 ## Note
-g
 This chart is still under development and is not meant for use yet.
 
 ## Requirements
