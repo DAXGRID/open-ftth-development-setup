@@ -48,6 +48,8 @@ spec:
           value: "{{ .Values.application.sendGeographicalAreaUpdatedNotification }}"
         - name: APPLICATION__ENABLESEGMENTENDSAUTOSNAPPINGTOROUTENODE
           value: "{{ .Values.application.enableSegmentEndsAutoSnappingToRouteNode }}"
+        - name: APPLICATION__APIGATEWAYHOST
+          value: http://{{ .Release.Name }}-api-gateway
 
         - name: POSTGIS__HOST
           value: {{ .Release.Name }}-postgis
