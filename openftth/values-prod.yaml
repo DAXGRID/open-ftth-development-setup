@@ -47,6 +47,9 @@ api-gateway:
     name: OPEN_FTTH
     username: postgres
     password: postgres
+  auth:
+    host: ""
+    requireHttps: true
 
 route-network-validator:
   loglevel: "Information"

@@ -20,3 +20,7 @@ resources:
     memory: 1500Mi
   limits:
     memory: 2000Mi
+
+auth:
+  host: ""
+  requireHttps: false

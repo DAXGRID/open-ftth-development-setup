@@ -72,4 +72,10 @@ spec:
           value: {{ .Values.geoDatabase.username }}
         - name: GEODATABASE__PASSWORD
           value: {{ .Values.geoDatabase.password }}
+
+        - name: AUTH__HOST
+          value: {{ .Values.auth.host }}
+        - name: AUTH__REQUIREHTTPS
+          value: "{{ .Values.auth.requireHttps }}"
+
       restartPolicy: Always

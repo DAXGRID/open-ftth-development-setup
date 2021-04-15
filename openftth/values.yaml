@@ -47,6 +47,9 @@ api-gateway:
     name: OPEN_FTTH
     username: postgres
     password: postgres
+  auth:
+    host: http://auth.openftth.local/auth/realms/openftth
+    requireHttps: false
 
 route-network-validator:
   loglevel: "Information"
