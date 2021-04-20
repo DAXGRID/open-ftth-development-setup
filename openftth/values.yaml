@@ -50,6 +50,7 @@ api-gateway:
   auth:
     host: http://auth.openftth.local/auth/realms/openftth
     requireHttps: false
+    audience: "account"
 
 route-network-validator:
   loglevel: "Information"

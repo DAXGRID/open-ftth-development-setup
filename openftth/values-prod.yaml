@@ -50,6 +50,7 @@ api-gateway:
   auth:
     host: ""
     requireHttps: true
+    audience: "account"
 
 route-network-validator:
   loglevel: "Information"
