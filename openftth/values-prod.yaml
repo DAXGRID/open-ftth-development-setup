@@ -51,6 +51,7 @@ api-gateway:
     host: ""
     requireHttps: true
     audience: "account"
+    enable: true
 
 route-network-validator:
   loglevel: "Information"
