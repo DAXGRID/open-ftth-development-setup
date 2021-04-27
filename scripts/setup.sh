@@ -18,7 +18,18 @@ helm install strimzi strimzi/strimzi-kafka-operator \
      --version 0.19
 
 # Install loki
-helm upgrade --install loki --namespace=openftth grafana/loki-stack --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false,loki.persistence.enabled=true,loki.persistence.storageClassName=standard,loki.persistence.size=10Gi --version 2.3.0
+helm upgrade --install loki \
+     grafana/loki-stack \
+     --namespace=loki \
+     --create-namespace \
+     --set grafana.enabled=true \
+     --set prometheus.enabled=true \
+     --set prometheus.alertmanager.persistentVolume.enabled=false \
+     --set prometheus.server.persistentVolume.enabled=false \
+     --set loki.persistence.enabled=true \
+     --set loki.persistence.storageClassName=default \
+     --set loki.persistence.size=8Gi \
+     --version 2.3.1
 
 # Install Keycloak
 helm upgrade --install keycloak bitnami/keycloak -n openftth \
@@ -27,9 +38,10 @@ helm upgrade --install keycloak bitnami/keycloak -n openftth \
      --set proxyAddressForwarding=true
 
 # Install the cert-manager
-helm install cert-manager jetstack/cert-manager \
-  --namespace openftth \
-  --version v1.1.0 \
+helm upgrade --install cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.3.1 \
   --set installCRDs=true
 
 # Install Postgres database for OpenFTTH eventstore
