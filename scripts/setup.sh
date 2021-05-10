@@ -27,7 +27,7 @@ helm upgrade --install loki \
      --set prometheus.alertmanager.persistentVolume.enabled=false \
      --set prometheus.server.persistentVolume.enabled=false \
      --set loki.persistence.enabled=true \
-     --set loki.persistence.storageClassName=default \
+     --set loki.persistence.storageClassName=standard \
      --set loki.persistence.size=8Gi \
      --version 2.3.1
 
@@ -55,6 +55,21 @@ helm install openftth-event-store bitnami/postgresql \
 
 # Install OpenFTTH
 helm install openftth openftth --namespace openftth
+
+# Install Tippecanoe
+helm upgrade --install openftth-tilegenerator dax/tippecanoe \
+     --namespace openftth \
+     --set schedule="*/10 * * * *" \
+     --set commandArgs='tippecanoe -zg -o /data/out.mbtiles --drop-densest-as-needed /data/output.geojson --force' \
+     --set storage.enabled=true \
+     --set gdal.enabled=true \
+     --set gdal.commandArgs='ogr2ogr -f GeoJSON /data/output.geojson PG:"host=openftth-postgis dbname=OPEN_FTTH user=postgres password=postgres" -sql "select mrid\, ST_Transform(coord\, 4326) as wkb_geometry from route_network.route_segment"'
+
+# Install Mbtileserver
+helm upgrade --install openftth-tileserver dax/mbtileserver \
+  --namespace openftth \
+  --set storage.claimName=openftth-tilegenerator-tippecanoe \
+  --set 'commandArgs={-v, -d, /data}'
 
 # Install Nginx-Ingress
 helm install nginx-ingress ingress-nginx/ingress-nginx \
