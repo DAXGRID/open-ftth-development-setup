@@ -37,7 +37,7 @@ spec:
           initialDelaySeconds: 180
           periodSeconds: 60
         env:
-        - name: LOGGING__LOGLEVEL_DEFAULT
+        - name: SERILOG__LOGLEVEL__DEFAULT
           value: {{ .Values.loglevel }}
 
         - name: KAFKA__SERVER
