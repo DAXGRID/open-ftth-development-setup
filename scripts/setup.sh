@@ -60,9 +60,7 @@ helm install openftth openftth --namespace openftth
 helm upgrade --install openftth-tilegenerator dax/tippecanoe \
      --namespace openftth \
      --set schedule="*/30 * * * *" \
-     --set commandArgs='\
-           tippecanoe -z22 --full-detail=10 --low-detail=10 --generate-ids -o /data/route_segments.mbtiles /data/route_segments.geojson --force && \
-           tippecanoe -z22 -Bg --full-detail=10 --low-detail=10 --generate-ids -o /data/route_nodes.mbtiles /data/route_nodes.geojson --force'  \
+     --set commandArgs='tippecanoe -z22 -Bg --full-detail=10 --low-detail=10 --generate-ids -o /data/route_network.mbtiles /data/route_segments.geojson /data/route_nodes.geojson --force' \
      --set storage.enabled=true \
      --set gdal.enabled=true \
      --set gdal.commandArgs='\
@@ -75,9 +73,8 @@ helm upgrade --install openftth-tilegenerator dax/tippecanoe \
 helm upgrade --install openftth-tileserver dax/mbtileserver \
   --namespace openftth \
   --set storage.claimName=openftth-tilegenerator-tippecanoe \
-  --set image.repository=maptiler/tileserver-gl
   --set service.type=ClusterIP \
-  --set 'commandArgs={-v, -d, /data}'
+  --set 'commandArgs={-d, /data}'
 
 # Install Nginx-Ingress
 helm install nginx-ingress ingress-nginx/ingress-nginx \
