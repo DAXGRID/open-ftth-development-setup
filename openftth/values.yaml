@@ -143,3 +143,4 @@ ingress:
     desktopBridge: desktop-bridge.openftth.local
     apiGateway: api-gateway.openftth.local
     auth: auth.openftth.local
+    tileServer: tiles.openftth.local
