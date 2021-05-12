@@ -60,10 +60,10 @@ helm install openftth openftth --namespace openftth
 helm upgrade --install openftth-tilegenerator dax/tippecanoe \
      --namespace openftth \
      --set schedule="*/10 * * * *" \
-     --set commandArgs='tippecanoe -zg -o /data/out.mbtiles --drop-densest-as-needed /data/output.geojson --force' \
+     --set commandArgs='tippecanoe -z24 -o /data/out.mbtiles --drop-densest-as-needed /data/output.geojson --force' \
      --set storage.enabled=true \
      --set gdal.enabled=true \
-     --set gdal.commandArgs='ogr2ogr -f GeoJSON /data/output.geojson PG:"host=openftth-postgis dbname=OPEN_FTTH user=postgres password=postgres" -sql "select mrid\, ST_Transform(coord\, 4326) as wkb_geometry from route_network.route_segment"'
+     --set gdal.commandArgs='ogr2ogr -f GeoJSON /data/output.geojson PG:"host=openftth-postgis dbname=OPEN_FTTH user=postgres password=postgres" -sql "select mrid\, ST_Transform(coord\, 4326) as wkb_geometry from route_network.route_segment WHERE route_network.route_segment.marked_to_be_deleted = false"'
 
 # Install Mbtileserver
 helm upgrade --install openftth-tileserver dax/mbtileserver \
