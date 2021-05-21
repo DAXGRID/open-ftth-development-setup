@@ -56,19 +56,26 @@ helm install openftth-event-store bitnami/postgresql \
 # Install OpenFTTH
 helm install openftth openftth --namespace openftth
 
+# Install Mbtileserver
+helm upgrade --install openftth-routenetwork-tileserver dax/mbtileserver \
+  --version 2.0.0 \
+  --namespace openftth \
+  --set service.type=NodePort \
+  --set storage.size=1Gi \
+  --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /data}'
+
 # Install Tippecanoe
 helm upgrade --install openftth-tilegenerator dax/tippecanoe \
+     --version 2.0.0 \
      --namespace openftth \
      --set schedule="*/30 * * * *" \
-     --set commandArgs='tippecanoe -z22 -o /data/route_network.mbtiles /data/out.geojson --force' \
-     --set storage.enabled=true
-
-# Install Mbtileserver
-helm upgrade --install openftth-tileserver dax/mbtileserver \
-  --namespace openftth \
-  --set storage.claimName=openftth-tilegenerator-tippecanoe \
-  --set service.type=ClusterIP \
-  --set 'commandArgs={-d, /data}'
+     --set commandArgs='sha1sum --ignore-missing -c /data/route_network.geojson.sha1 || (tippecanoe -z17 -P -o ./route_network.mbtiles /data/route_network.geojson --force && cp ./route_network.mbtiles /data/route_network.mbtiles && sha1sum /data/route_network.geojson > /data/route_network.geojson.sha1)' \
+     --set storage.enabled=true \
+     --set storage.claimName=openftth-routenetwork-tileserver-mbtileserver \
+     --set prejob.enabled=true \
+     --set prejob.commandArgs='dotnet OpenFTTH.TileDataExtractor.dll "Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" route_network.geojson && cp route_network.geojson /data/route_network.geojson' \
+     --set prejob.image.repository=openftth/tile-data-extract \
+     --set prejob.image.tag=v1.3.0
 
 # Install Nginx-Ingress
 helm install nginx-ingress ingress-nginx/ingress-nginx \

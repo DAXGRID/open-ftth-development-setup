@@ -50,5 +50,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: openftth-tileserver-mbtileserver
+          serviceName: openftth-routenetwork-tileserver-mbtileserver
           servicePort: 80
