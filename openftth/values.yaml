@@ -105,7 +105,7 @@ frontend:
   apiGatewayHttpUri: "http://api-gateway.openftth.local"
   apiGatewayWsUri: "ws://api-gateway.openftth.local"
   keyCloakUri: "http://auth.openftth.local/auth"
-  routeNetworkTileServerUri: "http://tiles.openftth.local"
+  routeNetworkTileServerUri: "http://tiles-routenetwork.openftth.local"
 
 postgis:
   username: postgres
@@ -144,4 +144,5 @@ ingress:
     desktopBridge: desktop-bridge.openftth.local
     apiGateway: api-gateway.openftth.local
     auth: auth.openftth.local
-    tileServer: tiles.openftth.local
+    tileServerRouteNetwork: tiles-routenetwork.openftth.local
+    tileServerBasemap: tiles-basemap.openftth.local
