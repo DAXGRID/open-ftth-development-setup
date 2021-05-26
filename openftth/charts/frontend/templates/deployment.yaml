@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app: {{ .Release.Name }}-{{ .Chart.Name }}
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
     spec:
       volumes:
        - name: {{ .Release.Name }}-{{ .Chart.Name }}-mnt
