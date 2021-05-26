@@ -58,7 +58,7 @@ helm install openftth openftth --namespace openftth
 
 # Install Mbtileserver route-network
 helm upgrade --install openftth-routenetwork-tileserver dax/mbtileserver \
-  --version 2.1.0 \
+  --version 2.2.0 \
   --namespace openftth \
   --set service.type=NodePort \
   --set storage.size=1Gi \
@@ -66,12 +66,13 @@ helm upgrade --install openftth-routenetwork-tileserver dax/mbtileserver \
 
 # Install Mbtileserver base-map
 helm upgrade --install openftth-basemap-tileserver dax/mbtileserver \
-  --version 2.1.0 \
+  --version 2.2.0 \
   --namespace openftth \
   --set image.tag=danish-1621934598 \
-  --set service.type=LoadBalancer \
+  --set service.type=NodePort \
   --set storage.enabled=false \
-  --set 'commandArgs={--enable-reload-signal, -d, /tilesets}'
+  --set 'commandArgs={--enable-reload-signal, -d, /tilesets}' \
+  --set reload.enabled=false
 
 # Install Tippecanoe
 helm upgrade --install openftth-tilegenerator dax/tippecanoe \
