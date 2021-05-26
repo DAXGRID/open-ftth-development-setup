@@ -68,7 +68,7 @@ helm upgrade --install openftth-routenetwork-tileserver dax/mbtileserver \
 helm upgrade --install openftth-basemap-tileserver dax/mbtileserver \
   --version 2.2.0 \
   --namespace openftth \
-  --set image.tag=danish-1621934598 \
+  --set image.tag=danish-1621954230 \
   --set service.type=NodePort \
   --set storage.enabled=false \
   --set 'commandArgs={--enable-reload-signal, -d, /tilesets}' \
