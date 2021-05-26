@@ -116,18 +116,6 @@ postgis:
     storageClassName: ""
     storage: 10Gi
 
-postgis-basemap:
-  username: postgres
-  password: postgres
-  serviceType: LoadBalancer
-  serviceAnnotations: {}
-  volumeClaim:
-    storageClassName: ""
-    storage: 10Gi
-  resources:
-    requests:
-      memory: 1000Mi
-
 desktop-bridge:
   replicas: 1
   loglevel: "Information"
