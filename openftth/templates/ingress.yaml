@@ -45,3 +45,17 @@ spec:
         backend:
           serviceName: keycloak
           servicePort: 80
+  - host: {{ .Values.ingress.domainNames.tileServerRouteNetwork }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: openftth-routenetwork-tileserver-mbtileserver
+          servicePort: 80
+  - host: {{ .Values.ingress.domainNames.tileServerBasemap }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: openftth-basemap-tileserver-mbtileserver
+          servicePort: 80

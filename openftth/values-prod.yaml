@@ -105,6 +105,7 @@ frontend:
   apiGatewayHttpUri: ""
   apiGatewayWsUri: ""
   keyCloakUri: ""
+  routeNetworkTileServerUri: ""
 
 postgis:
   username: postgres
@@ -143,3 +144,5 @@ ingress:
     desktopBridge:
     apiGateway: 
     auth:
+    tileServerRouteNetwork:
+    tileServerBasemap:

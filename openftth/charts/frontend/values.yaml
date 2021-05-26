@@ -13,6 +13,8 @@ desktopBridgeUri: ""
 apiGatewayHttpUri: ""
 apiGatewayWsUri: ""
 keyCloakUri: ""
+routeNetworkTileServerUri: ""
+basemapTileServerUri: ""
 colorMarkings:
   - Blue
   - Red
