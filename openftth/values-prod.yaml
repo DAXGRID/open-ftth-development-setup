@@ -106,6 +106,7 @@ frontend:
   apiGatewayWsUri: ""
   keyCloakUri: ""
   routeNetworkTileServerUri: ""
+  basemapTileServerUri: ""
 
 postgis:
   username: postgres
