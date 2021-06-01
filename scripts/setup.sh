@@ -81,7 +81,7 @@ helm upgrade --install openftth-tilegenerator dax/tippecanoe \
      --version 2.0.0 \
      --namespace openftth \
      --set schedule="*/30 * * * *" \
-     --set commandArgs='sha1sum --ignore-missing -c /data/route_network.geojson.sha1 || (tippecanoe -z17 -P -o ./route_network.mbtiles /data/route_network.geojson --force && cp ./route_network.mbtiles /data/route_network.mbtiles && sha1sum /data/route_network.geojson > /data/route_network.geojson.sha1)' \
+     --set commandArgs='sha1sum --ignore-missing -c /data/route_network.geojson.sha1 || (tippecanoe -z17 -ps -P -o ./route_network.mbtiles /data/route_network.geojson --force && cp ./route_network.mbtiles /data/route_network.mbtiles && sha1sum /data/route_network.geojson > /data/route_network.geojson.sha1)' \
      --set storage.enabled=true \
      --set storage.claimName=openftth-routenetwork-tileserver-mbtileserver \
      --set prejob.enabled=true \
