@@ -60,7 +60,7 @@ helm install openftth openftth --namespace openftth
 
 # Install Mbtileserver route-network
 helm upgrade --install openftth-routenetwork-tileserver dax/mbtileserver \
-  --version 2.2.0 \
+  --version 3.0.0 \
   --namespace openftth \
   --set service.type=NodePort \
   --set storage.size=1Gi \
@@ -68,7 +68,7 @@ helm upgrade --install openftth-routenetwork-tileserver dax/mbtileserver \
 
 # Install Mbtileserver base-map
 helm upgrade --install openftth-basemap-tileserver dax/mbtileserver \
-  --version 2.2.0 \
+  --version 3.0.0 \
   --namespace openftth \
   --set image.tag=danish-1621954230 \
   --set service.type=NodePort \
