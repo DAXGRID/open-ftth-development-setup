@@ -76,6 +76,13 @@ helm upgrade --install openftth-basemap-tileserver dax/mbtileserver \
   --set 'commandArgs={--enable-reload-signal, -d, /tilesets}' \
   --set reload.enabled=false
 
+# Install danish address seed
+helm upgrade --install danish-address-seed dax/danish-address-seed \
+     --version 1.0.2 \
+     --namespace openftth \
+     --set schedule="0 0 * * *" \
+     --set connectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH"
+
 # Install Tippecanoe
 helm upgrade --install openftth-tilegenerator dax/tippecanoe \
      --version 2.0.0 \
