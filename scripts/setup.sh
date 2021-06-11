@@ -76,6 +76,13 @@ helm upgrade --install openftth-basemap-tileserver dax/mbtileserver \
   --set 'commandArgs={--enable-reload-signal, -d, /tilesets}' \
   --set reload.enabled=false
 
+# Install Typesense
+helm upgrade --install openftth-search dax/typesense \
+  --version 1.0.0 \
+  --namespace openftth \
+  --set serviceType=LoadBalancer \
+  --set apiKey=changeMe!
+
 # Install danish address seed
 helm upgrade --install danish-address-seed dax/danish-address-seed \
      --version 1.0.2 \
