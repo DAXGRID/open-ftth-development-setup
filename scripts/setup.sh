@@ -85,10 +85,12 @@ helm upgrade --install openftth-search dax/typesense \
 
 # Install danish address seed
 helm upgrade --install danish-address-seed dax/danish-address-seed \
-     --version 1.0.2 \
+     --version 1.1.1 \
      --namespace openftth \
      --set schedule="0 0 * * *" \
-     --set connectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH"
+     --set connectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
+     --set typesense.host="openftth-search-typesense" \
+     --set typesense.apiKey=changeMe!
 
 # Install Tippecanoe
 helm upgrade --install openftth-tilegenerator dax/tippecanoe \
