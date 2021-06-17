@@ -81,11 +81,13 @@ helm upgrade --install openftth-search dax/typesense \
   --version 1.0.0 \
   --namespace openftth \
   --set serviceType=LoadBalancer \
-  --set apiKey=changeMe!
+  --set apiKey=changeMe! \
+  --set resources.memoryRequest="2Gi" \
+  --set resources.memoryLimit="3Gi"
 
 # Install danish address seed
 helm upgrade --install danish-address-seed dax/danish-address-seed \
-     --version 1.1.2 \
+     --version 1.1.3 \
      --namespace openftth \
      --set schedule="0 0 * * *" \
      --set connectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
