@@ -47,11 +47,14 @@ api-gateway:
     name: OPEN_FTTH
     username: postgres
     password: postgres
+  typesense:
+    host: http://openftth-search-typesens
+    apiKey: changeMe!
   auth:
     host: http://auth.openftth.local/auth/realms/openftth
     requireHttps: false
     audience: "account"
-    enable: true
+    enable: false
 
 route-network-validator:
   loglevel: "Information"
@@ -61,7 +64,6 @@ route-network-validator:
       memory: 0Mi
     limits:
       memory: 0Gi
-
   database:
     database: OPEN_FTTH
     username: postgres
