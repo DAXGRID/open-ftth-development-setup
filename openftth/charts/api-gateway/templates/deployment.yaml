@@ -73,6 +73,13 @@ spec:
         - name: GEODATABASE__PASSWORD
           value: {{ .Values.geoDatabase.password }}
 
+        - name: TYPESENSE__HOST
+          value: {{ .Values.typesense.host }}
+        - name: TYPESENSE__PORT
+          value: "{{ .Values.typesense.port }}"
+        - name: TYPESENSE__APIKEY
+          value: {{ .Values.typesense.apiKey }}
+
         - name: AUTH__HOST
           value: {{ .Values.auth.host }}
         - name: AUTH__REQUIREHTTPS

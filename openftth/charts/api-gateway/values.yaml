@@ -21,6 +21,11 @@ resources:
   limits:
     memory: 2000Mi
 
+typesense:
+  host: ""
+  port: "80"
+  apiKey: ""
+
 auth:
   host: ""
   requireHttps: false

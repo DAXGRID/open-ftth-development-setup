@@ -47,6 +47,9 @@ api-gateway:
     name: OPEN_FTTH
     username: postgres
     password: postgres
+  typesense:
+    host: ""
+    apiKey: ""
   auth:
     host: ""
     requireHttps: true
@@ -61,7 +64,6 @@ route-network-validator:
       memory: 1500Mi
     limits:
       memory: 3Gi
-
   database:
     database: OPEN_FTTH
     username: postgres
