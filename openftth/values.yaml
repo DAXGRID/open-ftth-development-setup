@@ -48,7 +48,7 @@ api-gateway:
     username: postgres
     password: postgres
   typesense:
-    host: http://openftth-search-typesens
+    host: openftth-search-typesense
     apiKey: changeMe!
   auth:
     host: http://auth.openftth.local/auth/realms/openftth
