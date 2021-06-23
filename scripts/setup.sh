@@ -14,6 +14,11 @@ helm repo add dax https://daxgrid.github.io/charts
 # Update repos
 helm repo update
 
+# Install Nginx-Ingress
+helm install nginx-ingress ingress-nginx/ingress-nginx \
+    --namespace openftth \
+    --set controller.replicaCount=1
+
 # Install strimzi
 helm install strimzi strimzi/strimzi-kafka-operator \
      -n openftth \
@@ -106,8 +111,3 @@ helm upgrade --install openftth-tilegenerator dax/tippecanoe \
      --set prejob.commandArgs='dotnet OpenFTTH.TileDataExtractor.dll "Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" route_network.geojson && cp route_network.geojson /data/route_network.geojson' \
      --set prejob.image.repository=openftth/tile-data-extract \
      --set prejob.image.tag=v1.3.0
-
-# Install Nginx-Ingress
-helm install nginx-ingress ingress-nginx/ingress-nginx \
-    --namespace openftth \
-    --set controller.replicaCount=1
