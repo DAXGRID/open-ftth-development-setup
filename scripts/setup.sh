@@ -90,13 +90,20 @@ helm upgrade --install openftth-search dax/typesense \
   --set resources.memoryRequest="2Gi" \
   --set resources.memoryLimit="3Gi"
 
-# Install danish address seed
+# Install Danish-address-seed
 helm upgrade --install danish-address-seed dax/danish-address-seed \
      --version 1.1.5 \
      --namespace openftth \
      --set schedule="0 0 * * *" \
      --set connectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
      --set typesense.host="openftth-search-typesense" \
+     --set typesense.apiKey=changeMe!
+
+# Install Route-network-search-indexer
+helm upgrade --install route-network-search-indexer dax/route-network-search-indexer \
+     --version 1.0.0 \
+     --namespace openftth \
+     --set kafka.positionConnectionString="Host=postgis.openftth.local;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
      --set typesense.apiKey=changeMe!
 
 # Install Tippecanoe
