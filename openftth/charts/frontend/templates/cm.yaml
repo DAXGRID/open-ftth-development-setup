@@ -10,4 +10,5 @@ data:
     window.config_KEYCLOAK_URI = "{{ .Values.keyCloakUri }}";
     window.config_ROUTE_NETWORK_TILE_SERVER_URI = "{{ .Values.routeNetworkTileServerUri }}";
     window.config_BASEMAP_TILE_SERVER_URI = "{{ .Values.basemapTileServerUri }}";
+    window.config_AERIAL_PHOTO_SERVER_URI = "{{ .Values.aerialPhotoServerUri }}";
     window.config_COLOR_OPTIONS = [{{- range .Values.colorMarkings }}"{{ . -}}",{{ end }}]
