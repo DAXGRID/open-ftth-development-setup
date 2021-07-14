@@ -109,6 +109,7 @@ frontend:
   keyCloakUri: "http://auth.openftth.local/auth"
   routeNetworkTileServerUri: "http://tiles-routenetwork.openftth.local"
   basemapTileServerUri: "http://tiles-basemap.openftth.local"
+  aerialPhotoServerUri: "https://services.kortforsyningen.dk/orto_foraar?token=d7a878f2b71f71248075981855a481b4&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/jpeg&TRANSPARENT=false&LAYERS=orto_foraar&STYLES=&WIDTH=256&HEIGHT=256&SRS=EPSG:3857&BBOX={bbox-epsg-3857}"
 
 postgis:
   username: postgres
