@@ -101,9 +101,9 @@ helm upgrade --install danish-address-seed dax/danish-address-seed \
 
 # Install Route-network-search-indexer
 helm upgrade --install route-network-search-indexer dax/route-network-search-indexer \
-     --version 1.0.0 \
+     --version 1.1.0 \
      --namespace openftth \
-     --set kafka.positionConnectionString="Host=postgis.openftth.local;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
+     --set kafka.positionConnectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
      --set typesense.apiKey=changeMe!
 
 # Install Tippecanoe
