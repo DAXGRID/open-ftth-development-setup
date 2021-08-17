@@ -119,6 +119,9 @@ postgis:
   volumeClaim:
     storageClassName: ""
     storage: 10Gi
+  resources:
+    requests:
+      memory: 1Gi
 
 desktop-bridge:
   replicas: 1

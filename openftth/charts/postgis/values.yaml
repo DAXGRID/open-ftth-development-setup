@@ -11,4 +11,8 @@ volumeClaim:
   storageClassName: ""
   storage: 10Gi
 
+resources:
+  requests:
+    memory: 1Gi
+
 serviceAnnotations: {}
