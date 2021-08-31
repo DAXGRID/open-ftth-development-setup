@@ -13,6 +13,10 @@ spec:
       labels:
         app: {{ .Release.Name }}-{{ .Chart.Name }}
     spec:
+      volumes:
+        - name: {{ .Release.Name }}-{{ .Chart.Name }}-dshm
+          emptyDir:
+            medium: Memory
       containers:
         - name: {{ .Release.Name }}-{{ .Chart.Name }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
@@ -40,6 +44,8 @@ spec:
           volumeMounts:
             - name: {{ .Release.Name }}-{{ .Chart.Name }}-data
               mountPath: /var/lib/postgresql/
+            - name: {{ .Release.Name }}-{{ .Chart.Name }}-dshm
+              mountPath: /dev/shm
   volumeClaimTemplates:
     - metadata:
         name: {{ .Release.Name }}-{{ .Chart.Name }}-data
