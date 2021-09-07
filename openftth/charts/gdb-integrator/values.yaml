@@ -4,8 +4,6 @@ postgis:
   password: postgres
 
 replicas: 1
-storage: 1Gi
-storageClassName: ""
 loglevel: "Information"
 
 resources:

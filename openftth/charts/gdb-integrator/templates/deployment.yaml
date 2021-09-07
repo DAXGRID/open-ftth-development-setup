@@ -74,18 +74,8 @@ spec:
           value: "postgres-connector.route-network"
         - name: KAFKA__POSTGISROUTENETWORKCONSUMER
           value: "postgres-connector-gdb-integrator-consumer"
-        - name: KAFKA__POSITIONFILEPATH
-          value: "/data/"
         - name: KAFKA__EVENTROUTENETWORKTOPICNAME
           value: "domain.route-network"
         - name: KAFKA__EVENTGEOGRAPHICALAREAUPDATED
           value: "notification.geographical-area-updated"
-
-        volumeMounts:
-        - mountPath: /data
-          name: {{ .Release.Name }}-{{ .Chart.Name }}-data
       restartPolicy: Always
-      volumes:
-      - name: {{ .Release.Name }}-{{ .Chart.Name }}-data
-        persistentVolumeClaim:
-          claimName: {{ .Release.Name }}-{{ .Chart.Name }}
