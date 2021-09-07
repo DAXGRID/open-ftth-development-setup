@@ -73,7 +73,6 @@ route-network-validator:
 gdb-integrator:
   replicas: 1
   loglevel: "Information"
-  storage: 1Gi
   postgis:
     username: postgres
     password: postgres
