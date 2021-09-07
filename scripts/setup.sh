@@ -16,6 +16,7 @@ helm repo update
 
 # Install Nginx-Ingress
 helm install nginx-ingress ingress-nginx/ingress-nginx \
+    --version 3.23.0 \
     --namespace openftth \
     --set controller.replicaCount=1
 
