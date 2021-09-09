@@ -54,7 +54,8 @@ helm upgrade --install cert-manager jetstack/cert-manager \
 
 # Install Postgres database for OpenFTTH eventstore
 # Username and password should be changed in live env.
-helm install openftth-event-store bitnami/postgresql \
+helm upgrade --install openftth-event-store bitnami/postgresql \
+     --version 10.3.18 \
      --namespace openftth \
      --set global.postgresql.postgresqlDatabase=EVENT_STORE \
      --set global.postgresql.postgresqlUsername=postgres \
