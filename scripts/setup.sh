@@ -108,6 +108,15 @@ helm upgrade --install route-network-search-indexer dax/route-network-search-ind
      --set kafka.positionConnectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
      --set typesense.apiKey=changeMe!
 
+# Install relational projector
+helm upgrade --install relational-projector dax/relational-projector \
+     --version 1.0.5 \
+     --namespace openftth \
+     --set eventStoreDatabase.username=postgres \
+     --set eventStoreDatabase.password=postgres \
+     --set geoDatabase.username=postgres \
+     --set geoDatabase.username=postgres
+
 # Install Tippecanoe
 helm upgrade --install openftth-tilegenerator dax/tippecanoe \
      --version 2.0.0 \
