@@ -17,7 +17,8 @@ helm repo update
 # Install Nginx-Ingress
 helm install nginx-ingress ingress-nginx/ingress-nginx \
     --version 3.23.0 \
-    --namespace openftth \
+    --namespace nginx-ingress \
+    --create-namespace \
     --set controller.replicaCount=1
 
 # Install strimzi
@@ -31,13 +32,16 @@ helm upgrade --install loki \
      --namespace=loki \
      --create-namespace \
      --set grafana.enabled=true \
+     --set grafana.persistence.enabled=true \
+     --set grafana.persistence.size=4Gi \
+     --set grafana.adminPassword=password \
      --set prometheus.enabled=true \
      --set prometheus.alertmanager.persistentVolume.enabled=false \
-     --set prometheus.server.persistentVolume.enabled=false \
+     --set prometheus.server.persistentVolume.enabled=true \
+     --set prometheus.server.persistentVolume.size=8Gi \
      --set loki.persistence.enabled=true \
-     --set loki.persistence.storageClassName=standard \
      --set loki.persistence.size=8Gi \
-     --version 2.3.1
+     --version 2.4.1
 
 # Install Keycloak
 helm upgrade --install keycloak bitnami/keycloak -n openftth \
