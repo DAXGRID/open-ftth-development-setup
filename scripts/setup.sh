@@ -98,7 +98,7 @@ helm upgrade --install openftth-search dax/typesense \
 
 # Install Danish-address-seed
 helm upgrade --install danish-address-seed dax/danish-address-seed \
-     --version 1.1.9 \
+     --version 1.1.10 \
      --namespace openftth \
      --set schedule="0 0 * * *" \
      --set connectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
