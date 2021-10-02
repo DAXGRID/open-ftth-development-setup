@@ -1,4 +1,4 @@
-apiVersion: kafka.strimzi.io/v1beta1
+apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
   name: consumer-offsets---84e7a678d08f4bd226872e5cdd4eb527fadc1c6a
