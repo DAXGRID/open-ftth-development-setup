@@ -6,10 +6,17 @@ spec:
   kafka:
     replicas: {{ .Values.kafka.replicas }}
     listeners:
-      plain: {}
-      tls: {}
+      - name: plain
+        port: 9092
+        type: internal
+        tls: false
+      - name: tls
+        port: 9093
+        type: internal
+        tls: true
       {{- if .Values.kafka.external.type }}
-      external:
+      - name: external
+        port: 9094
         type: {{ .Values.kafka.external.type }}
         tls: {{ .Values.kafka.external.tls }}
       {{- end }}
