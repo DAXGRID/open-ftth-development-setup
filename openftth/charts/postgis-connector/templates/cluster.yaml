@@ -2,8 +2,10 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaConnect
 metadata:
   name: {{ .Release.Name }}-{{ .Chart.Name }}-cluster
+  annotations:
+    strimzi.io/use-connector-resources: "true"
 spec:
-  image: openftth/connect-debezium-postgresql:1.7.0.Final
+  image: openftth/connect-debezium-postgresql:1.7.0.Final.v2
   replicas: {{ .Values.replicas }}
   bootstrapServers: {{ .Release.Name }}-{{ .Values.bootstrapServers }}
   tls:
