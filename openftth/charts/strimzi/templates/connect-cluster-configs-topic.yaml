@@ -6,6 +6,7 @@ metadata:
     strimzi.io/cluster: "{{ .Release.Name }}-kafka-cluster"
 spec:
   config:
-    retention.ms: -1
+    cleanup.policy: compact
+    log.cleaner.min.compaction.lag.ms: 604800000
   partitions: 1
   replicas: 1

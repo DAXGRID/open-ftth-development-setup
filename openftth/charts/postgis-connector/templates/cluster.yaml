@@ -5,7 +5,7 @@ metadata:
   annotations:
     strimzi.io/use-connector-resources: "true"
 spec:
-  image: openftth/connect-debezium-postgresql:1.7.0.Final.v2
+  image: openftth/connect-debezium-postgresql:1.7.0.Final.v3
   replicas: {{ .Values.replicas }}
   bootstrapServers: {{ .Release.Name }}-{{ .Values.bootstrapServers }}
   tls:

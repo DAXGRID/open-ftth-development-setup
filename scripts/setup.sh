@@ -24,24 +24,7 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
 # Install strimzi
 helm upgrade --install strimzi strimzi/strimzi-kafka-operator \
      -n openftth \
-     --version 0.22.1
-
-# Install loki
-helm upgrade --install loki \
-     grafana/loki-stack \
-     --namespace=loki \
-     --create-namespace \
-     --set grafana.enabled=true \
-     --set grafana.persistence.enabled=true \
-     --set grafana.persistence.size=4Gi \
-     --set grafana.adminPassword=password \
-     --set prometheus.enabled=true \
-     --set prometheus.alertmanager.persistentVolume.enabled=false \
-     --set prometheus.server.persistentVolume.enabled=true \
-     --set prometheus.server.persistentVolume.size=8Gi \
-     --set loki.persistence.enabled=true \
-     --set loki.persistence.size=8Gi \
-     --version 2.4.1
+     --version 0.25.0
 
 # Install Keycloak
 helm upgrade --install keycloak bitnami/keycloak -n openftth \
