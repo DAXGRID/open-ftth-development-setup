@@ -7,6 +7,6 @@ metadata:
 spec:
   config:
     cleanup.policy: compact
-    log.cleaner.min.compaction.lag.ms: 604800000
+    min.compaction.lag.ms: 604800000
   partitions: 1
   replicas: 1
