@@ -24,3 +24,4 @@ spec:
     transforms.Combine.type: "io.debezium.transforms.ByLogicalTableRouter"
     transforms.Combine.topic.regex: "(.*)"
     transforms.Combine.topic.replacement: "postgres-connector.route-network"
+    heartbeat.interval.ms: 3000
