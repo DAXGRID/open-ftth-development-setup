@@ -35,6 +35,9 @@ strimzi:
     notificationUtilityNetwork:
       partitions: 1
       replicas: 3
+    notificationFileChanges:
+      partitions: 1
+      replicas: 3
 
 api-gateway:
   replicas: 1

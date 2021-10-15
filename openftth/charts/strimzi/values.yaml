@@ -34,3 +34,6 @@ topics:
   notificationUtilityNetwork:
     partitions: 1
     replicas: 1
+  notificationFileChanges:
+    partitions: 1
+    replicas: 1
