@@ -52,6 +52,13 @@ helm upgrade --install openftth-event-store bitnami/postgresql \
 # Install OpenFTTH
 helm install openftth openftth --namespace openftth
 
+# Install go-http-file-server
+helm upgrade --install file-server  dax/go-http-file-server \
+  --version
+  --namespace openftth \
+  --set username=user1 \
+  --set password=pass1
+
 # Install Mbtileserver route-network
 helm upgrade --install openftth-routenetwork-tileserver dax/mbtileserver \
   --version 3.2.0 \
@@ -104,15 +111,11 @@ helm upgrade --install relational-projector dax/relational-projector \
      --set geoDatabase.username=postgres \
      --set geoDatabase.username=postgres
 
-# Install Tippecanoe
-helm upgrade --install openftth-tilegenerator dax/tippecanoe \
-     --version 2.0.0 \
+# Route network tile data extract
+helm upgrade --install route-network-tile-data-extract dax/open-ftth-tile-data-extract \
+     --version 1.0.0 \
      --namespace openftth \
-     --set schedule="*/30 * * * *" \
-     --set commandArgs='sha1sum --ignore-missing -c /data/route_network.geojson.sha1 || (tippecanoe -z17 -pS -P -o ./route_network.mbtiles /data/route_network.geojson --force && cp ./route_network.mbtiles /data/route_network.mbtiles && sha1sum /data/route_network.geojson > /data/route_network.geojson.sha1)' \
-     --set storage.enabled=true \
-     --set storage.claimName=openftth-routenetwork-tileserver-mbtileserver \
-     --set prejob.enabled=true \
-     --set prejob.commandArgs='dotnet OpenFTTH.TileDataExtractor.dll "Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" route_network.geojson && cp route_network.geojson /data/route_network.geojson' \
-     --set prejob.image.repository=openftth/tile-data-extract \
-     --set prejob.image.tag=v1.3.0
+     --set postgisConnectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
+     --set fileServer.uri=http://file-server-go-http-file-server \
+     --set fileServer.username=user1 \
+     --set fileServer.password=pass1
