@@ -14,17 +14,17 @@ helm repo add dax https://daxgrid.github.io/charts
 # Update repos
 helm repo update
 
+# Install strimzi
+helm upgrade --install strimzi strimzi/strimzi-kafka-operator \
+     -n openftth \
+     --version 0.25.0
+
 # Install Nginx-Ingress
 helm install nginx-ingress ingress-nginx/ingress-nginx \
     --version 3.23.0 \
     --namespace nginx-ingress \
     --create-namespace \
     --set controller.replicaCount=1
-
-# Install strimzi
-helm upgrade --install strimzi strimzi/strimzi-kafka-operator \
-     -n openftth \
-     --version 0.25.0
 
 # Install Keycloak
 helm upgrade --install keycloak bitnami/keycloak -n openftth \
@@ -54,7 +54,7 @@ helm install openftth openftth --namespace openftth
 
 # Install go-http-file-server
 helm upgrade --install file-server  dax/go-http-file-server \
-  --version
+  --version 2.0.1 \
   --namespace openftth \
   --set username=user1 \
   --set password=pass1
