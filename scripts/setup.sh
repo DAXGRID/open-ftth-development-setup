@@ -54,7 +54,7 @@ helm install openftth openftth --namespace openftth
 
 # Install go-http-file-server
 helm upgrade --install file-server  dax/go-http-file-server \
-  --version 2.0.1 \
+  --version 2.0.2 \
   --namespace openftth \
   --set username=user1 \
   --set password=pass1
