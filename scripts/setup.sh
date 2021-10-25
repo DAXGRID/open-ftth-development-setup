@@ -59,6 +59,29 @@ helm upgrade --install file-server  dax/go-http-file-server \
   --set username=user1 \
   --set password=pass1
 
+cat <<EOF | kubectl apply -f -
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: file-server-ingress
+  namespace: openftth
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  tls:
+  rules:
+  - host: files.openftth.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: file-server-go-http-file-server
+          servicePort: 80
+EOF
+
 # Install Mbtileserver route-network
 helm upgrade --install openftth-routenetwork-tileserver dax/mbtileserver \
   --version 3.2.0 \
