@@ -61,9 +61,8 @@ metadata:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
-    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/proxy-body-size: 10m
 spec:
-  tls:
   rules:
   - host: files.openftth.local
     http:
@@ -88,12 +87,87 @@ helm upgrade --install openftth-routenetwork-tileserver dax/mbtileserver \
   --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/route_network.mbtiles /tmp/route_network.geojson --force --quiet" \
   --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /data}'
 
+cat <<EOF | kubectl apply -f -
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: routenetwork-tileserver-ingress
+  namespace: openftth
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  rules:
+  - host: tiles-routenetwork.openftth.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: custom-tileserver-mbtileserver
+          servicePort: 80
+EOF
+
 # Install Mbtileserver base-map
 helm upgrade --install openftth-basemap-tileserver dax/mbtileserver \
   --version 4.1.0 \
   --namespace openftth \
   --set image.tag=danish-1621954230 \
   --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /tilesets}'
+
+cat <<EOF | kubectl apply -f -
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: basemap-tileserver-ingress
+  namespace: openftth
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  rules:
+  - host: tiles-basemap.openftth.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: basemap-tileserver-mbtileserver
+          servicePort: 80
+EOF
+
+
+# Custom tile-server
+helm upgrade --install custom-tileserver dax/mbtileserver \
+  --version 4.1.0 \
+  --namespace openftth \
+  --set watcher.enabled=true \
+  --set watcher.fileServer.username=user1 \
+  --set watcher.fileServer.password=pass1 \
+  --set watcher.fileServer.uri=http://file-server-go-http-file-server \
+  --set watcher.kafka.consumer=tile_watcher_customer_area \
+  --set watcher.kafka.server=openftth-kafka-cluster-kafka-bootstrap:9092 \
+  --set "watcher.tileProcess.processes[0].name=TILEPROCESS__PROCESS__customer_area.geojson" \
+  --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/customer_area.mbtiles /tmp/customer_area.geojson --force --quiet" \
+  --set 'commandArgs={--enable-reload-signal, -d, /data}'
+
+cat <<EOF | kubectl apply -f -
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: custom-tileserver-ingress
+  namespace: openftth
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  rules:
+  - host: tiles-custom.openftth.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: custom-tileserver-mbtileserver
+          servicePort: 80
+EOF
 
 # Install Typesense
 helm upgrade --install openftth-search dax/typesense \
