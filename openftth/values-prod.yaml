@@ -141,5 +141,3 @@ ingress:
     desktopBridge:
     apiGateway: 
     auth:
-    tileServerRouteNetwork:
-    tileServerBasemap:
