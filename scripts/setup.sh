@@ -108,7 +108,7 @@ spec:
 EOF
 
 # Install Mbtileserver base-map
-helm upgrade --install openftth-basemap-tileserver dax/mbtileserver \
+helm upgrade --install basemap-tileserver dax/mbtileserver \
   --version 4.1.0 \
   --namespace openftth \
   --set image.tag=danish-1621954230 \
