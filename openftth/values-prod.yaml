@@ -111,7 +111,7 @@ frontend:
   keyCloakUri: ""
   routeNetworkTileServerUri: ""
   basemapTileServerUri: ""
-  aerialPhotoServerUri: ""
+  layers: {}
 
 postgis:
   username: postgres
