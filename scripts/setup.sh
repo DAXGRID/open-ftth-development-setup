@@ -74,7 +74,7 @@ spec:
 EOF
 
 # Install Mbtileserver route-network
-helm upgrade --install openftth-routenetwork-tileserver dax/mbtileserver \
+helm upgrade --install routenetwork-tileserver dax/mbtileserver \
   --version 4.1.0 \
   --namespace openftth \
   --set watcher.enabled=true \
@@ -103,7 +103,7 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: custom-tileserver-mbtileserver
+          serviceName: routenetwork-tileserver-mbtileserver
           servicePort: 80
 EOF
 
