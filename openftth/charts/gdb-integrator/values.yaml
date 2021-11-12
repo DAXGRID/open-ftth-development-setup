@@ -18,4 +18,4 @@ application:
 
 image:
   repository: openftth/gdb-integrator
-  tag: v4.7.0
+  tag: v4.7.1
