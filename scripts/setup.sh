@@ -45,8 +45,8 @@ helm upgrade --install openftth-event-store bitnami/postgresql \
 helm install openftth openftth --namespace openftth
 
 # Install go-http-file-server
-helm upgrade --install file-server  dax/go-http-file-server \
-  --version 2.1.0 \
+helm upgrade --install file-server dax/go-http-file-server \
+  --version 2.1.2 \
   --namespace openftth \
   --set username=user1 \
   --set password=pass1
