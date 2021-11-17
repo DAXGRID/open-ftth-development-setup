@@ -3,4 +3,4 @@ loglevel: "Information"
 
 image:
   repository: openftth/desktop-bridge
-  tag: v1.5.0
+  tag: v1.6.0
