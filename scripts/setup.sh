@@ -61,7 +61,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-body-size: 10m
+    nginx.ingress.kubernetes.io/proxy-body-size: 25m
 spec:
   rules:
   - host: files.openftth.local
@@ -154,7 +154,6 @@ metadata:
   namespace: openftth
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/proxy-body-size: 25m
 spec:
   rules:
   - host: tiles-custom.openftth.local
