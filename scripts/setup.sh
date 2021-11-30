@@ -95,7 +95,6 @@ metadata:
   namespace: openftth
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   rules:
   - host: tiles-routenetwork.openftth.local
@@ -122,7 +121,6 @@ metadata:
   namespace: openftth
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   rules:
   - host: tiles-basemap.openftth.local
@@ -156,7 +154,7 @@ metadata:
   namespace: openftth
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/proxy-body-size: 25m
 spec:
   rules:
   - host: tiles-custom.openftth.local
