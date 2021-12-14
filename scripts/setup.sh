@@ -16,7 +16,7 @@ helm repo update
 # Install strimzi
 helm upgrade --install strimzi strimzi/strimzi-kafka-operator \
      -n openftth \
-     --version 0.25.0
+     --version 0.26.1
 
 # Install Nginx-Ingress
 helm install nginx-ingress ingress-nginx/ingress-nginx \
