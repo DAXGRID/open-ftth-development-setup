@@ -25,6 +25,12 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     --create-namespace \
     --set controller.replicaCount=1
 
+# We sleep 1 min to make sure that nginx ingress and strimzi is up and running.
+# Otherwise we might experience issues with upgrading since they create
+# custom resource definitions.
+printf "Sleeping for 1 min waiting for nginx ingress and strimzi."
+sleep 1m
+
 # Install Keycloak
 helm upgrade --install keycloak bitnami/keycloak -n openftth \
      --version 2.3.0 \
