@@ -120,7 +120,7 @@ frontend:
       layer:
         type: raster
         tiles:
-          - "https://services.kortforsyningen.dk/orto_foraar?token=d7a878f2b71f71248075981855a481b4&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/jpeg&TRANSPARENT=false&LAYERS=orto_foraar&STYLES=&WIDTH=256&HEIGHT=256&SRS=EPSG:3857&BBOX={bbox-epsg-3857}"
+          - "https://api.dataforsyningen.dk/service?servicename=orto_foraar_DAF&token=d7a878f2b71f71248075981855a481b4&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/jpeg&TRANSPARENT=false&LAYERS=orto_foraar&STYLES=&WIDTH=256&HEIGHT=256&SRS=EPSG:3857&BBOX={bbox-epsg-3857}"
         tileSize: 256
     - name: custom
       layerGroups:
