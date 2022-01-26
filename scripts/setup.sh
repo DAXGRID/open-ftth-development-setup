@@ -20,9 +20,10 @@ helm upgrade --install strimzi strimzi/strimzi-kafka-operator \
 
 # Install Nginx-Ingress
 helm install nginx-ingress ingress-nginx/ingress-nginx \
-    --version 3.23.0 \
+    --version 4.0.16 \
     --namespace nginx-ingress \
     --create-namespace \
+    --set controller.ingressClassResource.default=true \
     --set controller.replicaCount=1
 
 # We sleep 1 min to make sure that nginx ingress and strimzi is up and running.
@@ -57,28 +58,6 @@ helm upgrade --install file-server dax/go-http-file-server \
   --set username=user1 \
   --set password=pass1
 
-cat <<EOF | kubectl apply -f -
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: file-server-ingress
-  namespace: openftth
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-body-size: 25m
-spec:
-  rules:
-  - host: files.openftth.local
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: file-server-go-http-file-server
-          servicePort: 80
-EOF
-
 # Install Mbtileserver route-network
 helm upgrade --install routenetwork-tileserver dax/mbtileserver \
   --version 4.1.0 \
@@ -93,50 +72,12 @@ helm upgrade --install routenetwork-tileserver dax/mbtileserver \
   --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/route_network.mbtiles /tmp/route_network.geojson --force --quiet" \
   --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /data}'
 
-cat <<EOF | kubectl apply -f -
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: routenetwork-tileserver-ingress
-  namespace: openftth
-  annotations:
-    kubernetes.io/ingress.class: nginx
-spec:
-  rules:
-  - host: tiles-routenetwork.openftth.local
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: routenetwork-tileserver-mbtileserver
-          servicePort: 80
-EOF
-
 # Install Mbtileserver base-map
 helm upgrade --install basemap-tileserver dax/mbtileserver \
   --version 4.1.0 \
   --namespace openftth \
   --set image.tag=danish-1621954230 \
   --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /tilesets}'
-
-cat <<EOF | kubectl apply -f -
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: basemap-tileserver-ingress
-  namespace: openftth
-  annotations:
-    kubernetes.io/ingress.class: nginx
-spec:
-  rules:
-  - host: tiles-basemap.openftth.local
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: basemap-tileserver-mbtileserver
-          servicePort: 80
-EOF
 
 # Custom tile-server
 helm upgrade --install custom-tileserver dax/mbtileserver \
@@ -151,25 +92,6 @@ helm upgrade --install custom-tileserver dax/mbtileserver \
   --set "watcher.tileProcess.processes[0].name=TILEPROCESS__PROCESS__customer_area.geojson" \
   --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/customer_area.mbtiles /tmp/customer_area.geojson --force --quiet" \
   --set 'commandArgs={--enable-reload-signal, -d, /data}'
-
-cat <<EOF | kubectl apply -f -
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: custom-tileserver-ingress
-  namespace: openftth
-  annotations:
-    kubernetes.io/ingress.class: nginx
-spec:
-  rules:
-  - host: tiles-custom.openftth.local
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: custom-tileserver-mbtileserver
-          servicePort: 80
-EOF
 
 # Install Typesense
 helm upgrade --install openftth-search dax/typesense \
