@@ -134,6 +134,7 @@ frontend:
         minZoom: 0
         maxZoom: 14
         maxzoom: 17
+  informationControlConfig: {}
 
 postgis:
   username: postgres

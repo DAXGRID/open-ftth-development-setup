@@ -112,6 +112,7 @@ frontend:
   routeNetworkTileServerUri: ""
   basemapTileServerUri: ""
   layers: {}
+  informationControlConfig: {}
 
 postgis:
   username: postgres

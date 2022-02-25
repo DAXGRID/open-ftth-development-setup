@@ -11,4 +11,5 @@ data:
     window.config_ROUTE_NETWORK_TILE_SERVER_URI = "{{ .Values.routeNetworkTileServerUri }}";
     window.config_BASEMAP_TILE_SERVER_URI = "{{ .Values.basemapTileServerUri }}";
     window.config_COLOR_OPTIONS = [{{- range .Values.colorMarkings }}"{{ . -}}",{{ end }}];
-    window.config_LAYERS = {{ .Values.layers | toJson }}
+    window.config_LAYERS = {{ .Values.layers | toJson }};
+    window.config_INFORMATION_CONTROL_CONFIG = {{ .Values.informationControlConfig | toJson }};
