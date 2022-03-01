@@ -13,3 +13,5 @@ data:
     window.config_COLOR_OPTIONS = [{{- range .Values.colorMarkings }}"{{ . -}}",{{ end }}];
     window.config_LAYERS = {{ .Values.layers | toJson }};
     window.config_INFORMATION_CONTROL_CONFIG = {{ .Values.informationControlConfig | toJson }};
+  maplibre.json: |-
+{{ .Values.maplibreJson | indent 4 }}

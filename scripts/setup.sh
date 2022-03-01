@@ -49,7 +49,8 @@ helm upgrade --install openftth-event-store bitnami/postgresql \
      --set service.type=ClusterIP
 
 # Install OpenFTTH
-helm install openftth openftth --namespace openftth
+helm upgrade openftth openftth -n openftth \
+     --set-file frontend.maplibreJson=./settings/maplibre.json
 
 # Install go-http-file-server
 helm upgrade --install file-server dax/go-http-file-server \

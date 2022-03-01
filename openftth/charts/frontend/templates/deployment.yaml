@@ -23,6 +23,8 @@ spec:
            items:
            - key: config-env.js
              path: config-env.js
+           - key: maplibre.json
+             path: maplibre.json
       containers:
       - name: {{ .Release.Name }}-{{ .Chart.Name }}
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
@@ -30,4 +32,7 @@ spec:
          - name: {{ .Release.Name }}-{{ .Chart.Name }}-mnt
            mountPath: /usr/share/nginx/html/config-env.js
            subPath: config-env.js
+         - name: {{ .Release.Name }}-{{ .Chart.Name }}-mnt
+           mountPath: /usr/share/nginx/html/maplibre.json
+           subPath: maplibre.json
       restartPolicy: Always

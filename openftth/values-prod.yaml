@@ -113,6 +113,7 @@ frontend:
   basemapTileServerUri: ""
   layers: {}
   informationControlConfig: {}
+  maplibreJson: ""
 
 postgis:
   username: postgres
