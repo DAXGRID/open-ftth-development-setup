@@ -112,7 +112,17 @@ frontend:
   routeNetworkTileServerUri: ""
   basemapTileServerUri: ""
   layers: {}
-  informationControlConfig: {}
+  informationControlConfig:
+    sourceLayers:
+      - body: |
+          <div>
+            <p>Id: {id}</p>
+            <p>Mrid: {properties.mrid}</p>
+          </div>
+        layer: route_network
+        filter:
+          property: properties.objecttype
+          value: route_node
   maplibreJson: ""
 
 postgis:
