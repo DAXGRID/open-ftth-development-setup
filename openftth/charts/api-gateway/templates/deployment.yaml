@@ -22,20 +22,20 @@ spec:
             memory: {{ .Values.resources.requests.memory }}
           limits:
             memory: {{ .Values.resources.limits.memory }}
-        readinessProbe:
-          exec:
-            command:
-            - cat
-            - /tmp/healthy
-          initialDelaySeconds: 120
-          periodSeconds: 60
         livenessProbe:
           exec:
             command:
             - cat
             - /tmp/healthy
-          initialDelaySeconds: 180
-          periodSeconds: 60
+          failureThreshold: 1
+          periodSeconds: 10
+        startupProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          failureThreshold: 60
+          timeoutSeconds: 10
         env:
         - name: SERILOG__LOGLEVEL__DEFAULT
           value: {{ .Values.loglevel }}
