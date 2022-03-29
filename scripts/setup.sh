@@ -137,6 +137,14 @@ helm upgrade --install route-network-tile-data-extract dax/open-ftth-tile-data-e
      --set fileServer.username=user1 \
      --set fileServer.password=pass1
 
+## Equipment search indexer
+helm upgrade --install equipment-search-indexer dax/equipment-search-indexer \
+     --version 1.1.0 \
+     --namespace openftth \
+     --set "specifications[0]"=Kundeterminering \
+     --set connectionstring="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE" \
+     --set typesense.apiKey="changeMe\!"
+
 # Setup ingress resources
 
 ## File server ingress
