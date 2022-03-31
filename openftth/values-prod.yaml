@@ -109,8 +109,6 @@ frontend:
   apiGatewayHttpUri: ""
   apiGatewayWsUri: ""
   keyCloakUri: ""
-  routeNetworkTileServerUri: ""
-  basemapTileServerUri: ""
   layers: {}
   informationControlConfig:
     sourceLayers:
