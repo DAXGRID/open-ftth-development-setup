@@ -139,7 +139,7 @@ helm upgrade --install route-network-tile-data-extract dax/open-ftth-tile-data-e
 
 ## Equipment search indexer
 helm upgrade --install equipment-search-indexer dax/equipment-search-indexer \
-     --version 1.3.0 \
+     --version 1.3.1 \
      --namespace openftth \
      --set "specifications[0]"=Kundeterminering \
      --set connectionstring="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE" \
