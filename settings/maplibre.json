@@ -58,7 +58,7 @@
       "tileSize": 256
     }
   },
-  "sprite": "https://raw.githubusercontent.com/DAXGRID/open-ftth-overview/master/MapIcons/Sprite/sprite",
+  "sprite": "https://raw.githubusercontent.com/DAXGRID/openftth-sprites/master/sprites/sprites",
   "glyphs": "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
   "layers": [
     {
