@@ -1,0 +1,48 @@
+fileServer:
+  uri: http://file-server-go-http-file-server
+  username: user1
+  password: pass1
+
+appsettings:
+  settings:
+    outputFilePath: "/tmp/route_network.geojson"
+    connectionString: "Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH"
+    selections:
+    - objectType: Feature
+      geometryFieldName: coord
+      sqlQuery: "select mrid, ST_AsGeoJSON(ST_Transform(coord,4326)) as coord, routenode_kind as kind,
+        routenode_function, naming_name, mapping_method
+        from route_network.route_node where coord is not null and marked_to_be_deleted = false
+        order by mrid"
+      defaultZoom:
+        minZoom: 15
+        maxZoom: 17
+      customZoom:
+        fieldName: kind
+        zoomMap:
+          CentralOfficeBig:
+            minZoom: 5
+            maxZoom: 17
+          CentralOfficeMedium:
+            minZoom: 5
+            maxZoom: 17
+          CentralOfficeSmall:
+            minZoom: 5
+            maxZoom: 17
+          CabinetBig:
+            minZoom: 12
+            maxZoom: 17
+      extraProperties:
+        objecttype: route_node
+    - objectType: Feature
+      geometryFieldName: coord
+      sqlQuery: "select mrid, ST_AsGeoJSON(ST_Transform(coord, 4326)) as coord, routesegment_kind as kind,
+        mapping_method as method from route_network.route_segment
+        where coord is not null and marked_to_be_deleted = false
+        order by mrid"
+      defaultZoom:
+        minZoom: 12
+        maxZoom: 17
+      customZoom:
+      extraProperties:
+        objecttype: route_segment

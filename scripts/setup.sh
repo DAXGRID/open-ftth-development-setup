@@ -129,13 +129,10 @@ helm upgrade --install relational-projector dax/relational-projector \
      --set geoDatabase.username=postgres
 
 # Route network tile data extract
-helm upgrade --install route-network-tile-data-extract dax/open-ftth-tile-data-extract \
+helm upgrade --install route-network-tile-data-extract dax/tile-data-extract \
+     -f scripts/route-network-tile-data-extract.yaml \
      --version 1.0.0 \
-     --namespace openftth \
-     --set postgisConnectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
-     --set fileServer.uri=http://file-server-go-http-file-server \
-     --set fileServer.username=user1 \
-     --set fileServer.password=pass1
+     --namespace openftth
 
 ## Equipment search indexer
 helm upgrade --install equipment-search-indexer dax/equipment-search-indexer \
