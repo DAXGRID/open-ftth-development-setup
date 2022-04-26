@@ -11,7 +11,7 @@ appsettings:
     - objectType: Feature
       geometryFieldName: coord
       sqlQuery: "select mrid, ST_AsGeoJSON(ST_Transform(coord,4326)) as coord, routenode_kind as kind,
-        routenode_function, naming_name, mapping_method
+        routenode_function as function, naming_name as name, mapping_method as method
         from route_network.route_node where coord is not null and marked_to_be_deleted = false
         order by mrid"
       defaultZoom:
