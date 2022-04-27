@@ -73,6 +73,20 @@ helm upgrade --install routenetwork-tileserver dax/mbtileserver \
   --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/route_network.mbtiles /tmp/route_network.geojson --force --quiet" \
   --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /data}'
 
+# Install Mbtileserver access-address
+helm upgrade --install access-address-tileserver dax/mbtileserver \
+  --version 4.1.0 \
+  --namespace openftth \
+  --set watcher.enabled=true \
+  --set watcher.fileServer.username=user1 \
+  --set watcher.fileServer.password=pass1 \
+  --set watcher.fileServer.uri=http://file-server-go-http-file-server \
+  --set watcher.kafka.consumer=tile_watcher_access_address \
+  --set watcher.kafka.server=openftth-kafka-cluster-kafka-bootstrap:9092 \
+  --set "watcher.tileProcess.processes[0].name=TILEPROCESS__PROCESS__access_addresses.geojson" \
+  --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/access_addresses.mbtiles /tmp/access_addresses.geojson --force --quiet" \
+  --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /data}'
+
 # Install Mbtileserver base-map
 helm upgrade --install basemap-tileserver dax/mbtileserver \
   --version 4.1.0 \
@@ -177,7 +191,7 @@ spec:
               number: 80
 EOF
 
-## Routenetwork tileserver
+## Routenetwork tileserver ingress
 cat <<EOF | kubectl apply -f -
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -196,6 +210,29 @@ spec:
         backend:
           service:
             name: routenetwork-tileserver-mbtileserver
+            port:
+              number: 80
+EOF
+
+## Access address tileserver ingress
+cat <<EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: access-address-tileserver-ingress
+  namespace: openftth
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: tiles-access-address.openftth.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: access-address-tileserver-mbtileserver
             port:
               number: 80
 EOF
