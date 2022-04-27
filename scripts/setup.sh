@@ -131,7 +131,14 @@ helm upgrade --install relational-projector dax/relational-projector \
 # Route network tile data extract
 helm upgrade --install route-network-tile-data-extract dax/tile-data-extract \
      -f scripts/route-network-tile-data-extract.yaml \
-     --version 1.0.3 \
+     --version 1.0.6 \
+     --namespace openftth
+
+# Access address tile data extract
+helm upgrade --install access-address-tile-data-extract dax/tile-data-extract \
+     -f scripts/access-address-tile-data-extract.yaml \
+     --set schedule="0 1 * * *" \
+     --version 1.0.6 \
      --namespace openftth
 
 ## Equipment search indexer
