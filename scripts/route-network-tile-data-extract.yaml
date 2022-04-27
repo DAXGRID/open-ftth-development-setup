@@ -10,10 +10,7 @@ appsettings:
     selections:
     - objectType: Feature
       geometryFieldName: coord
-      sqlQuery: "select mrid, ST_AsGeoJSON(ST_Transform(coord,4326)) as coord, routenode_kind as kind,
-        routenode_function as function, naming_name as name, mapping_method as method
-        from route_network.route_node where coord is not null and marked_to_be_deleted = false
-        order by mrid"
+      sqlQuery: "SELECT * FROM utility_network.route_node"
       defaultZoom:
         minZoom: 15
         maxZoom: 17
@@ -36,10 +33,7 @@ appsettings:
         objecttype: route_node
     - objectType: Feature
       geometryFieldName: coord
-      sqlQuery: "select mrid, ST_AsGeoJSON(ST_Transform(coord, 4326)) as coord, routesegment_kind as kind,
-        mapping_method as method from route_network.route_segment
-        where coord is not null and marked_to_be_deleted = false
-        order by mrid"
+      sqlQuery: "SELECT * FROM utility_network.route_segment"
       defaultZoom:
         minZoom: 12
         maxZoom: 17

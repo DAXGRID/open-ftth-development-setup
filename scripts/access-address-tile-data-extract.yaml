@@ -1,0 +1,31 @@
+fileServer:
+  uri: http://file-server-go-http-file-server
+  username: user1
+  password: pass1
+
+appsettings:
+  settings:
+    outputFilePath: "/tmp/access_addresses.geojson"
+    connectionString: "Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH"
+    selections:
+    - objectType: Feature
+      geometryFieldName: coord
+      sqlQuery: "
+        select id as mrid,
+               ST_AsGeoJSON(ST_Transform(coord,4326)) as coord,
+               status,
+               house_number,
+               road_code,
+               road_name,
+               town_name,
+               post_district_code,
+               post_district_name,
+               municipal_code,
+               access_address_external_id
+        from location.official_access_address where coord is not null and deleted = false
+        order by mrid"
+      defaultZoom:
+        minZoom: 15
+        maxZoom: 17
+      extraProperties:
+        objecttype: access_address
