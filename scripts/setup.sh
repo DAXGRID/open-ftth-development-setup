@@ -19,7 +19,7 @@ helm upgrade --install strimzi strimzi/strimzi-kafka-operator \
      --version 0.26.1
 
 # Install Nginx-Ingress
-helm install nginx-ingress ingress-nginx/ingress-nginx \
+helm upgrade --install nginx-ingress ingress-nginx/ingress-nginx \
     --version 4.0.16 \
     --namespace nginx-ingress \
     --create-namespace \
@@ -49,7 +49,7 @@ helm upgrade --install openftth-event-store bitnami/postgresql \
      --set service.type=ClusterIP
 
 # Install OpenFTTH
-helm upgrade openftth openftth -n openftth \
+helm upgrade --install openftth openftth -n openftth \
      --set-file frontend.maplibreJson=./settings/maplibre.json
 
 # Install go-http-file-server
@@ -83,8 +83,8 @@ helm upgrade --install access-address-tileserver dax/mbtileserver \
   --set watcher.fileServer.uri=http://file-server-go-http-file-server \
   --set watcher.kafka.consumer=tile_watcher_access_address \
   --set watcher.kafka.server=openftth-kafka-cluster-kafka-bootstrap:9092 \
-  --set "watcher.tileProcess.processes[0].name=TILEPROCESS__PROCESS__access_addresses.geojson" \
-  --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/access_addresses.mbtiles /tmp/access_addresses.geojson --force --quiet" \
+  --set "watcher.tileProcess.processes[0].name=TILEPROCESS__PROCESS__access_address.geojson" \
+  --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/access_address.mbtiles /tmp/access_address.geojson --force --quiet" \
   --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /data}'
 
 # Install Mbtileserver base-map
@@ -93,20 +93,6 @@ helm upgrade --install basemap-tileserver dax/mbtileserver \
   --namespace openftth \
   --set image.tag=danish-1621954230 \
   --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /tilesets}'
-
-# Custom tile-server
-helm upgrade --install custom-tileserver dax/mbtileserver \
-  --version 4.1.0 \
-  --namespace openftth \
-  --set watcher.enabled=true \
-  --set watcher.fileServer.username=user1 \
-  --set watcher.fileServer.password=pass1 \
-  --set watcher.fileServer.uri=http://file-server-go-http-file-server \
-  --set watcher.kafka.consumer=tile_watcher_custom \
-  --set watcher.kafka.server=openftth-kafka-cluster-kafka-bootstrap:9092 \
-  --set "watcher.tileProcess.processes[0].name=TILEPROCESS__PROCESS__customer_area.geojson" \
-  --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/customer_area.mbtiles /tmp/customer_area.geojson --force --quiet" \
-  --set 'commandArgs={--enable-reload-signal, -d, /data}'
 
 # Install Typesense
 helm upgrade --install openftth-search dax/typesense \
@@ -256,29 +242,6 @@ spec:
         backend:
           service:
             name: basemap-tileserver-mbtileserver
-            port:
-              number: 80
-EOF
-
-## Custom tileserver ingress
-cat <<EOF | kubectl apply -f -
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: custom-tileserver-ingress
-  namespace: openftth
-  annotations:
-    kubernetes.io/ingress.class: nginx
-spec:
-  rules:
-  - host: tiles-custom.openftth.local
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: custom-tileserver-mbtileserver
             port:
               number: 80
 EOF

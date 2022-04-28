@@ -1,5 +1,4 @@
 {
-  "id": "positron",
   "version": 8,
   "name": "Positron",
   "metadata": {
@@ -56,6 +55,15 @@
         "https://api.dataforsyningen.dk/service?servicename=orto_foraar_DAF&token=d7a878f2b71f71248075981855a481b4&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/jpeg&TRANSPARENT=false&LAYERS=orto_foraar&STYLES=&WIDTH=256&HEIGHT=256&SRS=EPSG:3857&BBOX={bbox-epsg-3857}"
       ],
       "tileSize": 256
+    },
+    "access_address": {
+      "type": "vector",
+      "tiles": [
+        "https://tiles-access-address.openftth.local/services/access_address/tiles/{z}/{x}/{y}.pbf"
+      ],
+      "minZoom": 0,
+      "maxZoom": 14,
+      "maxzoom": 17
     }
   },
   "sprite": "https://raw.githubusercontent.com/DAXGRID/openftth-sprites/master/sprites/sprites",
@@ -641,8 +649,8 @@
       "id": "aerial_photo",
       "type": "raster",
       "source": "aerial-photo",
-      "paint": { "raster-opacity": 0.8 },
-      "layout": { "visibility": "none" }
+      "layout": { "visibility": "none" },
+      "paint": { "raster-opacity": 0.8 }
     },
     {
       "id": "railway_transit",
@@ -993,6 +1001,33 @@
       "source-layer": "danishbasemap",
       "filter": ["all", ["==", "objecttype", "skel"]],
       "paint": { "line-color": "rgba(211, 211, 211, 1)" }
+    },
+    {
+      "id": "nedloebsrist",
+      "type": "symbol",
+      "source": "basemap-extra",
+      "source-layer": "danishbasemap",
+      "minzoom": 18,
+      "filter": ["all", ["==", "objecttype", "nedloebsrist"]],
+      "layout": { "icon-image": "drain-1", "icon-size": 0.4 },
+      "paint": {
+        "icon-color": "rgba(239, 0, 0, 1)",
+        "icon-opacity": 0.5,
+        "icon-halo-width": 1,
+        "icon-halo-color": "rgba(210, 210, 210, 1)",
+        "icon-halo-blur": 1
+      }
+    },
+    {
+      "id": "broend",
+      "type": "symbol",
+      "source": "basemap-extra",
+      "source-layer": "danishbasemap",
+      "minzoom": 18,
+      "maxzoom": 24,
+      "filter": ["all", ["==", "objecttype", "broenddaeksel"]],
+      "layout": { "icon-image": "circle-3", "icon-size": 0.5 },
+      "paint": { "icon-opacity": 0.5 }
     },
     {
       "id": "place_other",
@@ -1400,23 +1435,6 @@
       }
     },
     {
-      "id": "housenumber",
-      "type": "symbol",
-      "source": "osm",
-      "source-layer": "housenumber",
-      "minzoom": 16,
-      "layout": {
-        "text-field": "{housenumber}",
-        "text-size": 14,
-        "text-font": ["Open Sans Regular"]
-      },
-      "paint": {
-        "text-halo-width": 1,
-        "text-halo-color": "rgba(255, 255, 255, 1)",
-        "text-color": "rgba(43, 43, 43, 0.83)"
-      }
-    },
-    {
       "id": "route_segment_schematic",
       "type": "line",
       "source": "route_network",
@@ -1436,7 +1454,7 @@
           2
         ],
         "line-opacity": 1,
-        "line-dasharray": [2, 1]
+        "line-dasharray": [1]
       }
     },
     {
@@ -1589,6 +1607,58 @@
         "text-halo-width": 2,
         "text-halo-color": "rgba(255, 255, 255, 1)"
       }
+    },
+    {
+      "id": "route_sdu",
+      "type": "symbol",
+      "source": "route_network",
+      "source-layer": "route_network",
+      "minzoom": 17,
+      "maxzoom": 24,
+      "filter": ["all", ["==", "kind", "SDU"]],
+      "layout": {
+        "icon-image": "house-1",
+        "visibility": "visible",
+        "text-field": "{name}",
+        "text-font": ["Open Sans Regular"],
+        "text-justify": "right",
+        "text-anchor": "bottom-left",
+        "text-offset": [0.6, -0.2],
+        "text-allow-overlap": true,
+        "text-ignore-placement": true
+      }
+    },
+    {
+      "id": "housenumber",
+      "type": "symbol",
+      "source": "access_address",
+      "source-layer": "access_address",
+      "minzoom": 16,
+      "layout": {
+        "text-field": "{house_number}",
+        "text-size": 14,
+        "text-font": ["Open Sans Regular"],
+        "text-allow-overlap": true,
+        "text-ignore-placement": true,
+        "icon-offset": [0, 0],
+        "text-offset": [0, 0.8]
+      },
+      "paint": {
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-color": "rgba(43, 43, 43, 0.83)"
+      }
+    },
+    {
+      "id": "mast",
+      "type": "symbol",
+      "source": "basemap-extra",
+      "source-layer": "danishbasemap",
+      "minzoom": 18,
+      "filter": ["all", ["==", "objecttype", "mast"]],
+      "layout": { "icon-image": "circle-with-m-1", "icon-size": 0.7 },
+      "paint": { "text-opacity": 0.5, "icon-opacity": 0.5 }
     }
-  ]
+  ],
+  "id": "positron"
 }
