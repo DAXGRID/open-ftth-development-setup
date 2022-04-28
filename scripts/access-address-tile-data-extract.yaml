@@ -5,7 +5,7 @@ fileServer:
 
 appsettings:
   settings:
-    outputFilePath: "/tmp/access_addresses.geojson"
+    outputFilePath: "/tmp/access_address.geojson"
     connectionString: "Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH"
     selections:
     - objectType: Feature
