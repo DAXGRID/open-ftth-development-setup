@@ -3,7 +3,7 @@ serviceType: LoadBalancer
 
 image:
   repository: openftth/frontend
-  tag: v5.56.3
+  tag: v5.56.4
 
 mapbox:
   apiKey: ""
