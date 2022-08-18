@@ -114,7 +114,7 @@ helm upgrade --install danish-address-seed dax/danish-address-seed \
 
 # Install Route-network-search-indexer
 helm upgrade --install route-network-search-indexer dax/route-network-search-indexer \
-     --version 1.2.2 \
+     --version 1.3.1 \
      --namespace openftth \
      --set kafka.positionConnectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
      --set typesense.apiKey=changeMe!
