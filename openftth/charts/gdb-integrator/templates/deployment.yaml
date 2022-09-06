@@ -78,4 +78,4 @@ spec:
           value: "domain.route-network"
         - name: KAFKA__EVENTGEOGRAPHICALAREAUPDATED
           value: "notification.geographical-area-updated"
-      restartPolicy: Never
+      restartPolicy: Always
