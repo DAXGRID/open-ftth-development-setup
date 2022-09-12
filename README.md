@@ -16,7 +16,7 @@ To setup the cluster run the following command. Note that the setup script is fo
 ./scripts/setup.sh
 ```
 
-After the initial setup and keycloak is in a healthy state, run the follwing script. This setups keycloak with a default user, if you want to create a new user you will have to log into the keycloak backend and create it there.
+After the initial setup and Keycloak is in a healthy state, run the following script. This setups Keycloak with a default user, if you want to create a new user you will have to log into the Keycloak backend and create it there, the login information can be found querying the Kubernetes secret for Keycloak.
 
 ```sh
 ./scripts/keycloak/keycloak-default-setup.sh
