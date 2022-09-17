@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# exit when any command fails
+set -e
+
 # Create namespace
 kubectl create namespace openftth
 
