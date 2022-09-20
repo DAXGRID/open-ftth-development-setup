@@ -20,6 +20,8 @@
     "openmaptiles:version": "3.x",
     "maputnik:renderer": "mbgljs"
   },
+  "center": [11.008051, 57.266949],
+  "zoom": 12,
   "sources": {
     "route_network": {
       "type": "vector",
