@@ -124,7 +124,7 @@ helm upgrade --install route-network-search-indexer dax/route-network-search-ind
 
 # Install relational projector
 helm upgrade --install relational-projector dax/relational-projector \
-     --version 1.1.8 \
+     --version 1.1.11 \
      --namespace openftth \
      --set eventStoreDatabase.username=postgres \
      --set eventStoreDatabase.password=postgres \
@@ -146,7 +146,7 @@ helm upgrade --install access-address-tile-data-extract dax/tile-data-extract \
 
 ## Equipment search indexer
 helm upgrade --install equipment-search-indexer dax/equipment-search-indexer \
-     --version 1.3.9 \
+     --version 1.3.10 \
      --namespace openftth \
      --set "specifications[0]"=Kundeterminering \
      --set connectionstring="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE" \
