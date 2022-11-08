@@ -31,3 +31,6 @@ auth:
   requireHttps: false
   audience: ""
   enable: true
+
+outageService:
+  outageServiceUrl: ""
