@@ -91,4 +91,7 @@ spec:
         - name: AUTH__AUDIENCE
           value: {{ .Values.auth.audience }}
 
+        - name: OUTAGESERVICE__OUTAGESERVICEURL
+          value: {{ .Values.outageService.outageServiceUrl }}
+
       restartPolicy: Always
