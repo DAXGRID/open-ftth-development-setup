@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 
-# exit when any command fails
 set -e
 
-# Create namespace
-kubectl create namespace openftth
+# Create namespace if it does not already exist
+kubectl create namespace openftth --dry-run=client -o yaml | kubectl apply -f -
 
 # Install Strimzi
-helm repo add strimzi https://strimzi.io/charts/
-helm repo add grafana https://grafana.github.io/helm-charts
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-helm repo add dax https://daxgrid.github.io/charts
+helm repo add strimzi --force-update https://strimzi.io/charts/
+helm repo add grafana --force-update https://grafana.github.io/helm-charts
+helm repo add bitnami --force-update https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
+helm repo add ingress-nginx --force-update https://kubernetes.github.io/ingress-nginx
+helm repo add dax --force-update https://daxgrid.github.io/charts
 
 # Update repos
 helm repo update
@@ -25,7 +24,6 @@ helm upgrade --install strimzi strimzi/strimzi-kafka-operator \
 helm upgrade --install nginx-ingress ingress-nginx/ingress-nginx \
     --version 4.0.16 \
     --namespace nginx-ingress \
-    --create-namespace \
     --set controller.ingressClassResource.default=true \
     --set controller.replicaCount=1
 
