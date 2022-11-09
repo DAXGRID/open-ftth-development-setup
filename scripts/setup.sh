@@ -34,9 +34,20 @@ printf "Sleeping for 1 min waiting for nginx ingress and strimzi."
 sleep 1m
 
 # Install Keycloak
+
+## If there is already a password, we use that one instead.
+ADMIN_PASSWORD=$(kubectl get secret --namespace "openftth" keycloak -o jsonpath="{.data.admin-password}" | base64 --decode)
+
+## Set default password if '$ADMIN_PASSWORD' is empty.
+if test -z "$ADMIN_PASSWORD"
+then
+    ADMIN_PASSWORD="pleaseChangeMe!"
+fi
+
 helm upgrade --install keycloak bitnami/keycloak -n openftth \
      --version 2.3.0 \
      --set service.type=ClusterIP \
+     --set auth.adminPassword=$ADMIN_PASSWORD \
      --set proxyAddressForwarding=true
 
 # Install Postgres database for OpenFTTH eventstore
@@ -47,7 +58,7 @@ helm upgrade --install openftth-event-store bitnami/postgresql \
      --set global.postgresql.postgresqlDatabase=EVENT_STORE \
      --set global.postgresql.postgresqlUsername=postgres \
      --set global.postgresql.postgresqlPassword=postgres \
-     --set service.type=ClusterIP
+     --set service.type=NodePort
 
 # Install OpenFTTH
 helm upgrade --install openftth openftth -n openftth \
