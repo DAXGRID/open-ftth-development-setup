@@ -71,4 +71,9 @@ spec:
           value: notification.geographical-area-updated
         - name: KAFKA__POSITIONFILEPATH
           value: "/tmp/"
+
+        - name: NOTIFICATIONSERVER__DOMAIN
+          value: {{ .Values.notificationServer.domain }}
+        - name: NOTIFICATIONSERVER__PORT
+          value: "{{ .Values.notificationServer.port }}"
       restartPolicy: Always
