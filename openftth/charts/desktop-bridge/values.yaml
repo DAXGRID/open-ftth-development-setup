@@ -4,3 +4,7 @@ loglevel: "Information"
 image:
   repository: openftth/desktop-bridge
   tag: v2.0.0
+
+notificationServer:
+  domain: "notification-server"
+  port: 80

@@ -16,6 +16,10 @@ application:
   sendGeographicalAreaUpdatedNotification: true
   enableSegmentEndsAutoSnappingToRouteNode: true
 
+notificationServer:
+  domain: "notification-server"
+  port: 80
+
 image:
   repository: openftth/gdb-integrator
   tag: v5.0.0

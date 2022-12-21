@@ -78,4 +78,9 @@ spec:
           value: "domain.route-network"
         - name: KAFKA__EVENTGEOGRAPHICALAREAUPDATED
           value: "notification.geographical-area-updated"
+
+        - name: NOTIFICATIONSERVER__DOMAIN
+          value: {{ .Values.notificationServer.domain }}
+        - name: NOTIFICATIONSERVER__PORT
+          value: "{{ .Values.notificationServer.port }}"
       restartPolicy: Always

@@ -20,10 +20,8 @@ spec:
         env:
         - name: LOGGING__LOGLEVEL_DEFAULT
           value: {{ .Values.loglevel }}
-        - name: KAFKA__SERVER
-          value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
-        - name: KAFKA__NOTIFICATIONGEOGRAPHICALAREAUPDATEDCONSUMER
-          value: "notification-geographical-area-updated-desktop-bridge-consumer"
-        - name: KAFKA__NOTIFICATIONGEOGRAPHICALAREAUPDATED
-          value: "notification.geographical-area-updated"
+        - name: NOTIFICATIONSERVER__DOMAIN
+          value: {{ .Values.notificationServer.domain }}
+        - name: NOTIFICATIONSERVER__PORT
+          value: "{{ .Values.notificationServer.port }}"
       restartPolicy: Always
