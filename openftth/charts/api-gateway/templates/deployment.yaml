@@ -94,4 +94,9 @@ spec:
         - name: OUTAGESERVICE__OUTAGESERVICEURL
           value: {{ .Values.outageService.outageServiceUrl }}
 
+        - name: NOTIFICATIONSERVER__DOMAIN
+          value: {{ .Values.notificationServer.domain }}
+        - name: NOTIFICATIONSERVER__PORT
+          value: "{{ .Values.notificationServer.port }}"
+
       restartPolicy: Always
