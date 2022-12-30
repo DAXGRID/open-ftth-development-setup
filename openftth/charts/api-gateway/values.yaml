@@ -34,3 +34,7 @@ auth:
 
 outageService:
   outageServiceUrl: ""
+
+notificationServer:
+  domain: "notification-server"
+  port: 80
