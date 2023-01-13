@@ -1,6 +1,6 @@
 {{ if (eq .Values.ingress.tls.enabled true) }}
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
   name: letsencrypt
 spec:
