@@ -78,7 +78,7 @@ helm upgrade --install file-server dax/go-http-file-server \
 
 # Install Mbtileserver route-network
 helm upgrade --install routenetwork-tileserver dax/mbtileserver \
-  --version 5.2.0 \
+  --version 5.3.0 \
   --namespace openftth \
   --set watcher.enabled=true \
   --set watcher.fileServer.username=user1 \
@@ -90,7 +90,7 @@ helm upgrade --install routenetwork-tileserver dax/mbtileserver \
 
 # Install Mbtileserver access-address
 helm upgrade --install access-address-tileserver dax/mbtileserver \
-  --version 5.2.0 \
+  --version 5.3.0 \
   --namespace openftth \
   --set watcher.enabled=true \
   --set watcher.fileServer.username=user1 \
@@ -98,11 +98,12 @@ helm upgrade --install access-address-tileserver dax/mbtileserver \
   --set watcher.fileServer.uri=http://file-server-go-http-file-server \
   --set "watcher.tileProcess.processes[0].name=TILEPROCESS__PROCESS__access_address.geojson" \
   --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/access_address.mbtiles /tmp/access_address.geojson --force --quiet" \
+  --set watcher.startupProbe.failureThreshold=200 \
   --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /data}'
 
 # Install Mbtileserver base-map
 helm upgrade --install basemap-tileserver dax/mbtileserver \
-  --version 5.2.0 \
+  --version 5.3.0 \
   --namespace openftth \
   --set image.tag=danish-1621954230 \
   --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /tilesets}'
