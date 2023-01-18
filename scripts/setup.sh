@@ -21,6 +21,7 @@ helm upgrade --install strimzi strimzi/strimzi-kafka-operator \
      --version 0.26.1
 
 # Install Nginx-Ingress
+kubectl create namespace nginx-ingress --dry-run=client -o yaml | kubectl apply -f -
 helm upgrade --install nginx-ingress ingress-nginx/ingress-nginx \
     --version 4.0.16 \
     --namespace nginx-ingress \
