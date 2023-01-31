@@ -120,7 +120,7 @@ helm upgrade --install openftth-search dax/typesense \
 
 # Install Danish-address-seed
 helm upgrade --install danish-address-seed dax/danish-address-seed \
-     --version 1.1.16 \
+     --version 1.2.0 \
      --namespace openftth \
      --set schedule="0 0 * * *" \
      --set connectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
@@ -146,14 +146,14 @@ helm upgrade --install relational-projector dax/relational-projector \
 # Route network tile data extract
 helm upgrade --install route-network-tile-data-extract dax/tile-data-extract \
      -f scripts/route-network-tile-data-extract.yaml \
-     --version 1.0.6 \
+     --version 1.1.0 \
      --namespace openftth
 
 # Access address tile data extract
 helm upgrade --install access-address-tile-data-extract dax/tile-data-extract \
      -f scripts/access-address-tile-data-extract.yaml \
      --set schedule="0 1 * * *" \
-     --version 1.0.6 \
+     --version 1.1.0 \
      --namespace openftth
 
 ## Equipment search indexer
