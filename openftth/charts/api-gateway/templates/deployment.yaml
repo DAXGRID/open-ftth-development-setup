@@ -42,17 +42,6 @@ spec:
         - name: SERILOG__LOGLEVEL__DEFAULT
           value: {{ .Values.loglevel }}
 
-        - name: KAFKA__SERVER
-          value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
-        - name: KAFKA__POSITIONFILEPATH
-          value: "/data/"
-        - name: KAFKA__ROUTENETWORKEVENTTOPIC
-          value: "domain.route-network"
-        - name: KAFKA__UTILITYNETWORKNOTIFICATIONSTOPIC
-          value: "notification.utility-network"
-        - name: REMOTESERVICES__ROUTENETWORKSERVICE
-          value: http://{{ .Release.Name }}-route-network-service
-
         - name: EVENTSTOREDATABASE__HOST
           value: openftth-event-store-postgresql
         - name: EVENTSTOREDATABASE__PORT

@@ -20,6 +20,9 @@ notificationServer:
   domain: "notification-server"
   port: 80
 
+eventStore:
+  connectionString: "Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE"
+
 image:
   repository: openftth/gdb-integrator
   tag: v6.0.2

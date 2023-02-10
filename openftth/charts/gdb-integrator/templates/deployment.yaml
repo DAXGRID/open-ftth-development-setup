@@ -58,15 +58,12 @@ spec:
         - name: POSTGIS__DATABASE
           value: {{ .Values.postgis.database }}
         - name: POSTGIS__USERNAME
-          valueFrom:
-            secretKeyRef:
-              key: username
-              name: {{ .Release.Name }}-{{ .Chart.Name }}-postgis
+          value: {{ .Values.postgis.username }}
         - name: POSTGIS__PASSWORD
           valueFrom:
             secretKeyRef:
-              key: password
-              name: {{ .Release.Name }}-{{ .Chart.Name }}-postgis
+              key: postgisPassword
+              name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
 
         - name: KAFKA__SERVER
           value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
@@ -74,13 +71,16 @@ spec:
           value: "postgres-connector.route-network"
         - name: KAFKA__POSTGISROUTENETWORKCONSUMER
           value: "postgres-connector-gdb-integrator-consumer"
-        - name: KAFKA__EVENTROUTENETWORKTOPICNAME
-          value: "domain.route-network"
-        - name: KAFKA__EVENTGEOGRAPHICALAREAUPDATED
-          value: "notification.geographical-area-updated"
 
         - name: NOTIFICATIONSERVER__DOMAIN
           value: {{ .Values.notificationServer.domain }}
         - name: NOTIFICATIONSERVER__PORT
           value: "{{ .Values.notificationServer.port }}"
+
+        - name: EVENTSTORE__CONNECTIONSTRING
+          valueFrom:
+            secretKeyRef:
+              key: eventStoreConnectionString
+              name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
+
       restartPolicy: Always
