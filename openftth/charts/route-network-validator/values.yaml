@@ -19,4 +19,4 @@ notificationServer:
 
 image:
   repository: openftth/route-network-validator
-  tag: v3.0.0
+  tag: v3.1.0
