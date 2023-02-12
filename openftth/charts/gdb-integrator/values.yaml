@@ -22,4 +22,4 @@ notificationServer:
 
 image:
   repository: openftth/gdb-integrator
-  tag: v6.0.1
+  tag: v6.0.2
