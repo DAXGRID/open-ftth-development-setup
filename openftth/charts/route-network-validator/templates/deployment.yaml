@@ -51,29 +51,27 @@ spec:
         - name: DATABASE__USERNAME
           valueFrom:
             secretKeyRef:
-              key: username
-              name: {{ .Release.Name }}-{{ .Chart.Name }}-postgis
+              key: postgisUsername
+              name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
         - name: DATABASE__PASSWORD
           valueFrom:
             secretKeyRef:
-              key: password
-              name: {{ .Release.Name }}-{{ .Chart.Name }}-postgis
+              key: postgisPassword
+              name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
         - name: DATABASE__SCHEMA
           value: route_network_validator
         - name: DATABASE__ELEMENTNOTFEEDEDTABLENAME
           value: element_not_feeded
 
-        - name: KAFKA__SERVER
-          value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
-        - name: KAFKA__ROUTENETWORKEVENTTOPIC
-          value: domain.route-network
-        - name: KAFKA__GEOGRAPHICALAREAUPDATEDTOPIC
-          value: notification.geographical-area-updated
-        - name: KAFKA__POSITIONFILEPATH
-          value: "/tmp/"
-
         - name: NOTIFICATIONSERVER__DOMAIN
           value: {{ .Values.notificationServer.domain }}
         - name: NOTIFICATIONSERVER__PORT
           value: "{{ .Values.notificationServer.port }}"
+
+        - name: EVENTSTORE__CONNECTIONSTRING
+          valueFrom:
+            secretKeyRef:
+              key: eventStoreConnectionString
+              name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
+
       restartPolicy: Always
