@@ -11,9 +11,10 @@ kafka:
     replicationFactorOffsets: 1
     replicationFactorStatelog: 1
     stateLogMinIsr: 1
-  external:
-    type: nodeport
-    tls: false
+  # Makes the Kafka broker external.
+  # external:
+  #   type: loadbalancer
+  #   tls: true
   storage:
     storageClassName: ""
     size: 10Gi
