@@ -14,7 +14,7 @@ spec:
         port: 9093
         type: internal
         tls: true
-      {{- if .Values.kafka.external.type }}
+      {{- if .Values.kafka.external }}
       - name: external
         port: 9094
         type: {{ .Values.kafka.external.type }}

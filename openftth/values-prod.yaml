@@ -16,9 +16,10 @@ strimzi:
       storageClassName: ""
       size: 10Gi
       deleteClaim: false
-    external:
-      type: ""
-      tls: true
+    # Makes the uncomment this section to enable Kafka to be accessible externally,
+    # This can be useful when debugging.
+    #   type: loadbalancer
+    #   tls: true
   topics:
     domainRouteNetwork:
       partitions: 1
