@@ -18,7 +18,7 @@ notificationServer:
   port: 80
 
 eventStore:
-  connectionString: "Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE"
+  connectionString: ""
 
 image:
   repository: openftth/route-network-validator
