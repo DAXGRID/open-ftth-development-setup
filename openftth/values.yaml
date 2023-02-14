@@ -16,8 +16,10 @@ strimzi:
       storageClassName: ""
       size: 10Gi
       deleteClaim: false
-    # Makes the uncomment this section to enable Kafka to be accessible externally,
-    # This can be useful when debugging.
+    # Uncomment this section to enable Kafka to be accessible externally,
+    # This can be useful when debugging, or if external clients needs to access it.
+    # Remember that when this is done, each broker is restarted, the cluster should be
+    # able to handle it, but it is something to keep in mind.
     #   type: loadbalancer
     #   tls: false
   topics:
