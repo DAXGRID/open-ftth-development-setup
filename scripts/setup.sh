@@ -7,7 +7,6 @@ kubectl create namespace openftth --dry-run=client -o yaml | kubectl apply -f -
 
 # Install Strimzi
 helm repo add strimzi --force-update https://strimzi.io/charts/
-helm repo add grafana --force-update https://grafana.github.io/helm-charts
 helm repo add bitnami --force-update https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
 helm repo add ingress-nginx --force-update https://kubernetes.github.io/ingress-nginx
 helm repo add dax --force-update https://daxgrid.github.io/charts
