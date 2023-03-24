@@ -71,10 +71,9 @@ helm upgrade --install openftth openftth -n openftth \
 
 # Install go-http-file-server
 helm upgrade --install file-server dax/go-http-file-server \
-  --version 4.1.0 \
+  --version 5.0.0 \
   --namespace openftth \
-  --set username=user1 \
-  --set password=pass1
+  --set commandLineArgs="-l 80 -r /data --global-auth --user user1:pass1 --hostname file-server-go-http-file-server --hostname files.openftth.local --global-delete --global-mkdir --global-upload -L -"
 
 # Install Mbtileserver route-network
 helm upgrade --install routenetwork-tileserver dax/mbtileserver \
