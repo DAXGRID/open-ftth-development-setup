@@ -65,13 +65,6 @@ spec:
               key: postgisPassword
               name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
 
-        - name: KAFKA__SERVER
-          value: {{ .Release.Name }}-kafka-cluster-kafka-bootstrap:9092
-        - name: KAFKA__POSTGISROUTENETWORKTOPIC
-          value: "postgres-connector.route-network"
-        - name: KAFKA__POSTGISROUTENETWORKCONSUMER
-          value: "postgres-connector-gdb-integrator-consumer"
-
         - name: NOTIFICATIONSERVER__DOMAIN
           value: {{ .Values.notificationServer.domain }}
         - name: NOTIFICATIONSERVER__PORT

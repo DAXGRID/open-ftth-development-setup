@@ -1,6 +1,0 @@
-apiVersion: v2
-name: strimzi
-appVersion: "1.0"
-description: A Helm chart for strimzi kafka
-version: 0.2.0
-type: application
