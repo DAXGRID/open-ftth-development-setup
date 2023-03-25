@@ -1,47 +1,3 @@
-strimzi:
-  zookeeper:
-    replicas: 1
-    storage:
-      size: 10Gi
-      deleteClaim: true
-      storageClassName: ""
-  kafka:
-    replicas: 1
-    config:
-      autoCreateTopicsEnable: false
-      replicationFactorOffsets: 1
-      replicationFactorStatelog: 1
-      stateLogMinIsr: 1
-    storage:
-      storageClassName: ""
-      size: 10Gi
-      deleteClaim: false
-    # Uncomment this section to enable Kafka to be accessible externally,
-    # This can be useful when debugging, or if external clients needs to access it.
-    # Remember that when this is done, each broker is restarted, the cluster should be
-    # able to handle it, but it is something to keep in mind.
-    #   type: loadbalancer
-    #   tls: false
-  topics:
-    domainRouteNetwork:
-      partitions: 1
-      replicas: 1
-    requestRouteNetwork:
-      partitions: 1
-      replicas: 1
-    postgresConnectorRouteNetwork:
-      partitions: 1
-      replicas: 1
-    notificationGeoGraphicalAreaUpdated:
-      partitions: 1
-      replicas: 1
-    notificationUtilityNetwork:
-      partitions: 1
-      replicas: 1
-    notificationFileChanges:
-      partitions: 1
-      replicas: 1
-
 api-gateway:
   replicas: 1
   loglevel: "Information"
@@ -94,21 +50,6 @@ gdb-integrator:
   resources:
     requests:
       memory: 0Mi
-
-postgis-connector:
-  replicas: 1
-  bootstrapServers: kafka-cluster-kafka-bootstrap:9093
-  replicationFactor:
-    config: 1
-    offset: 1
-    status: 1
-  tls:
-    trustedCertificates:
-      secretName: kafka-cluster-cluster-ca-cert
-      certificate: ca.crt
-  postgis:
-    username: postgres
-    password: postgres
 
 frontend:
   replicas: 1

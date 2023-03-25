@@ -5,19 +5,13 @@ set -e
 # Create namespace if it does not already exist
 kubectl create namespace openftth --dry-run=client -o yaml | kubectl apply -f -
 
-# Install Strimzi
-helm repo add strimzi --force-update https://strimzi.io/charts/
+# Register helm repos.
 helm repo add bitnami --force-update https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
 helm repo add ingress-nginx --force-update https://kubernetes.github.io/ingress-nginx
 helm repo add dax --force-update https://daxgrid.github.io/charts
 
 # Update repos
 helm repo update
-
-# Install strimzi
-helm upgrade --install strimzi strimzi/strimzi-kafka-operator \
-     -n openftth \
-     --version 0.26.1
 
 # Install Nginx-Ingress
 kubectl create namespace nginx-ingress --dry-run=client -o yaml | kubectl apply -f -
