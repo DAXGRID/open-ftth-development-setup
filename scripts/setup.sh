@@ -38,11 +38,16 @@ then
     ADMIN_PASSWORD="pleaseChangeMe!"
 fi
 
+## Disable readiness and liveness probe until we migrate away from /auth
 helm upgrade --install keycloak bitnami/keycloak -n openftth \
-     --version 2.3.0 \
+     --version 14.1.0 \
      --set service.type=ClusterIP \
      --set auth.adminPassword=$ADMIN_PASSWORD \
-     --set proxyAddressForwarding=true
+     --set production=true \
+     --set proxy=edge \
+     --set httpRelativePath="/auth" \
+     --set readinessProbe.enabled=false \
+     --set livenessProbe.enabled=false
 
 # Install Postgres database for OpenFTTH eventstore
 # Username and password should be changed in live env.
