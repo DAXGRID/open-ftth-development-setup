@@ -21,14 +21,7 @@ helm upgrade --install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.ingressClassResource.default=true \
     --set controller.replicaCount=1
 
-# We sleep 1 min to make sure that nginx ingress and strimzi is up and running.
-# Otherwise we might experience issues with upgrading since they create
-# custom resource definitions.
-printf "Sleeping for 1 min waiting for nginx ingress and strimzi."
-sleep 1m
-
 # Install Keycloak
-
 ## If there is already a password, we use that one instead.
 ADMIN_PASSWORD=$(kubectl get secret --namespace "openftth" keycloak -o jsonpath="{.data.admin-password}" | base64 --decode)
 
@@ -115,14 +108,25 @@ helm upgrade --install openftth-search dax/typesense \
   --set resources.memoryRequest="2Gi" \
   --set resources.memoryLimit="3Gi"
 
-# Install Danish-address-seed
-helm upgrade --install danish-address-seed dax/danish-address-seed \
-     --version 1.2.0 \
+# Install Address import DAWA.
+helm upgrade --install address-import-dawa dax/address-import-dawa \
+     --version 1.2.2 \
      --namespace openftth \
-     --set schedule="0 0 * * *" \
-     --set connectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
-     --set typesense.host="openftth-search-typesense" \
-     --set typesense.apiKey=changeMe!
+     --set appsettings.settings.eventStoreConnectionString="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE"
+
+# Install Address postgis projector
+helm upgrade --install address-postgis-projector dax/address-postgis-projector \
+     --version 1.0.6 \
+     --namespace openftth \
+     --set appsettings.settings.eventStoreConnectionString="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE" \
+     --set appsettings.settings.postgisConnectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH"
+
+# Install access search indexer
+helm upgrade --install address-search-indexer dax/address-search-indexer \
+     --version 1.1.5 \
+     --namespace openftth \
+     --set appsettings.settings.eventStoreConnectionString="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE" \
+     --set appsettings.settings.typesense.key="changeMe!"
 
 # Install Route-network-search-indexer
 helm upgrade --install route-network-search-indexer dax/route-network-search-indexer \
