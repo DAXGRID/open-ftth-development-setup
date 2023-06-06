@@ -21,6 +21,12 @@ helm upgrade --install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.ingressClassResource.default=true \
     --set controller.replicaCount=1
 
+# We sleep 1 min to make sure that nginx ingress and strimzi is up and running.
+# Otherwise we might experience issues with upgrading since they create
+# custom resource definitions.
+printf "Sleeping for 1 min waiting for nginx ingress."
+sleep 1m
+
 # Install Keycloak
 ## If there is already a password, we use that one instead.
 ADMIN_PASSWORD=$(kubectl get secret --namespace "openftth" keycloak -o jsonpath="{.data.admin-password}" | base64 --decode)
@@ -50,7 +56,7 @@ helm upgrade --install openftth-event-store bitnami/postgresql \
      --set global.postgresql.postgresqlDatabase=EVENT_STORE \
      --set global.postgresql.postgresqlUsername=postgres \
      --set global.postgresql.postgresqlPassword=postgres \
-     --set service.type=NodePort
+     --set service.type=LoadBalancer
 
 # Install notification server
 helm upgrade --install notification-server dax/notification-server \
@@ -110,7 +116,7 @@ helm upgrade --install openftth-search dax/typesense \
 
 # Install Address import DAWA.
 helm upgrade --install address-import-dawa dax/address-import-dawa \
-     --version 1.2.2 \
+     --version 1.2.4 \
      --namespace openftth \
      --set appsettings.settings.eventStoreConnectionString="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE"
 
@@ -121,7 +127,7 @@ helm upgrade --install address-postgis-projector dax/address-postgis-projector \
      --set appsettings.settings.eventStoreConnectionString="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE" \
      --set appsettings.settings.postgisConnectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH"
 
-# Install access search indexer
+# Install access address search indexer
 helm upgrade --install address-search-indexer dax/address-search-indexer \
      --version 1.1.5 \
      --namespace openftth \
