@@ -1,6 +1,6 @@
 apiVersion: v2
 name: desktop-bridge
-appVersion: "2.0.0"
+appVersion: "2.1.0"
 description: A Helm chart for Desktop bridge
 version: 0.2.0
 type: application
