@@ -21,7 +21,7 @@ helm upgrade --install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.ingressClassResource.default=true \
     --set controller.replicaCount=1
 
-# We sleep 1 min to make sure that nginx ingress and strimzi is up and running.
+# We sleep 1 min to make sure that nginx ingress is up and running.
 # Otherwise we might experience issues with upgrading since they create
 # custom resource definitions.
 printf "Sleeping for 1 min waiting for nginx ingress and strimzi."
@@ -30,6 +30,7 @@ sleep 1m
 # Install Keycloak
 
 ## If there is already a password, we use that one instead.
+## It might log an error telling that the key is missing, that is no issue.
 ADMIN_PASSWORD=$(kubectl get secret --namespace "openftth" keycloak -o jsonpath="{.data.admin-password}" | base64 --decode)
 
 ## Set default password if '$ADMIN_PASSWORD' is empty.
@@ -76,7 +77,7 @@ helm upgrade --install file-server dax/go-http-file-server \
 
 # Install Mbtileserver route-network
 helm upgrade --install routenetwork-tileserver dax/mbtileserver \
-  --version 5.3.0 \
+  --version 5.5.1 \
   --namespace openftth \
   --set watcher.enabled=true \
   --set watcher.fileServer.username=user1 \
@@ -84,11 +85,11 @@ helm upgrade --install routenetwork-tileserver dax/mbtileserver \
   --set watcher.fileServer.uri=http://file-server-go-http-file-server \
   --set "watcher.tileProcess.processes[0].name=TILEPROCESS__PROCESS__route_network.geojson" \
   --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/route_network.mbtiles /tmp/route_network.geojson --force --quiet" \
-  --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /data}'
+  --set 'commandArgs={--enable-fs-watch, --tiles-only, -d, /data}'
 
 # Install Mbtileserver access-address
 helm upgrade --install access-address-tileserver dax/mbtileserver \
-  --version 5.3.0 \
+  --version 5.5.1 \
   --namespace openftth \
   --set watcher.enabled=true \
   --set watcher.fileServer.username=user1 \
@@ -97,14 +98,15 @@ helm upgrade --install access-address-tileserver dax/mbtileserver \
   --set "watcher.tileProcess.processes[0].name=TILEPROCESS__PROCESS__access_address.geojson" \
   --set "watcher.tileProcess.processes[0].value=-z17 -pS -P -o /tmp/access_address.mbtiles /tmp/access_address.geojson --force --quiet" \
   --set watcher.startupProbe.failureThreshold=200 \
-  --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /data}'
+  --set 'commandArgs={--enable-fs-watch, --tiles-only, -d, /data}'
 
 # Install Mbtileserver base-map
 helm upgrade --install basemap-tileserver dax/mbtileserver \
-  --version 5.3.0 \
+  --version 5.5.1 \
   --namespace openftth \
-  --set image.tag=danish-1621954230 \
-  --set 'commandArgs={--enable-reload-signal, --disable-preview, -d, /tilesets}'
+  --set image.tag=danish-1689934495 \
+  --set watcher.enabled=false \
+  --set 'commandArgs={--enable-fs-watch, -d, /static_tiles}'
 
 # Install Typesense
 helm upgrade --install openftth-search dax/typesense \

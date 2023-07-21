@@ -41,16 +41,6 @@
       "maxZoom": 14,
       "maxzoom": 14
     },
-    "basemap-extra": {
-      "type": "vector",
-      "tiles": [
-        "http://tiles-basemap.openftth.local/services/objects/tiles/{z}/{x}/{y}.pbf"
-      ],
-      "minZoom": 0,
-      "maxZoom": 14,
-      "minzoom": 16,
-      "maxzoom": 16
-    },
     "aerial-photo": {
       "type": "raster",
       "tiles": [
@@ -981,57 +971,6 @@
       }
     },
     {
-      "id": "vejkant",
-      "type": "line",
-      "source": "basemap-extra",
-      "source-layer": "danishbasemap",
-      "filter": ["all", ["==", "objecttype", "vejkant"]],
-      "paint": { "line-color": "rgba(201, 201, 201, 1)" }
-    },
-    {
-      "id": "helle",
-      "type": "line",
-      "source": "basemap-extra",
-      "source-layer": "danishbasemap",
-      "filter": ["all", ["==", "objecttype", "helle"]],
-      "paint": { "line-color": "rgba(183, 180, 180, 1)" }
-    },
-    {
-      "id": "skel",
-      "type": "line",
-      "source": "basemap-extra",
-      "source-layer": "danishbasemap",
-      "filter": ["all", ["==", "objecttype", "skel"]],
-      "paint": { "line-color": "rgba(211, 211, 211, 1)" }
-    },
-    {
-      "id": "nedloebsrist",
-      "type": "symbol",
-      "source": "basemap-extra",
-      "source-layer": "danishbasemap",
-      "minzoom": 18,
-      "filter": ["all", ["==", "objecttype", "nedloebsrist"]],
-      "layout": { "icon-image": "drain-1", "icon-size": 0.4 },
-      "paint": {
-        "icon-color": "rgba(239, 0, 0, 1)",
-        "icon-opacity": 0.5,
-        "icon-halo-width": 1,
-        "icon-halo-color": "rgba(210, 210, 210, 1)",
-        "icon-halo-blur": 1
-      }
-    },
-    {
-      "id": "broend",
-      "type": "symbol",
-      "source": "basemap-extra",
-      "source-layer": "danishbasemap",
-      "minzoom": 18,
-      "maxzoom": 24,
-      "filter": ["all", ["==", "objecttype", "broenddaeksel"]],
-      "layout": { "icon-image": "circle-3", "icon-size": 0.5 },
-      "paint": { "icon-opacity": 0.5 }
-    },
-    {
       "id": "place_other",
       "type": "symbol",
       "metadata": { "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f" },
@@ -1650,16 +1589,6 @@
         "text-halo-color": "rgba(255, 255, 255, 1)",
         "text-color": "rgba(43, 43, 43, 0.83)"
       }
-    },
-    {
-      "id": "mast",
-      "type": "symbol",
-      "source": "basemap-extra",
-      "source-layer": "danishbasemap",
-      "minzoom": 18,
-      "filter": ["all", ["==", "objecttype", "mast"]],
-      "layout": { "icon-image": "circle-with-m-1", "icon-size": 0.7 },
-      "paint": { "text-opacity": 0.5, "icon-opacity": 0.5 }
     }
   ],
   "id": "positron"
