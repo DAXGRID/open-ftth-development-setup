@@ -71,7 +71,7 @@ helm upgrade --install openftth openftth -n openftth \
 
 # Install go-http-file-server
 helm upgrade --install file-server dax/go-http-file-server \
-  --version 5.0.1 \
+  --version 5.0.3 \
   --namespace openftth \
   --set commandLineArgs="-l 80 -r /data --global-auth --user user1:pass1 --hostname file-server-go-http-file-server --hostname files.openftth.local --global-delete --global-mkdir --global-upload -L -"
 
