@@ -24,7 +24,7 @@ helm upgrade --install nginx-ingress ingress-nginx/ingress-nginx \
 # We sleep 1 min to make sure that nginx ingress is up and running.
 # Otherwise we might experience issues with upgrading since they create
 # custom resource definitions.
-printf "Sleeping for 1 min waiting for nginx ingress and strimzi."
+printf "Sleeping for 1 min waiting for nginx ingress."
 sleep 1m
 
 # Install Keycloak
