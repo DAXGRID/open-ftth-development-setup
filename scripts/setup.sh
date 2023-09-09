@@ -60,6 +60,13 @@ helm upgrade --install openftth-event-store bitnami/postgresql \
      --set global.postgresql.postgresqlPassword=postgres \
      --set service.type=NodePort
 
+# Install user edit history
+helm upgrade --install user-edit-history dax/user-edit-history \
+     --version 1.1.1 \
+     --namespace openftth \
+     --set appsettings.settings.eventStoreConnectionString="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE" \
+     --set appsettings.settings.connectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH"
+
 # Install notification server
 helm upgrade --install notification-server dax/notification-server \
      --version 1.0.1 \
