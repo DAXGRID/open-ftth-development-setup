@@ -27,16 +27,6 @@ spec:
             name: {{ .Release.Name}}-frontend
             port:
               number: 80
-  - host: {{ .Values.ingress.domainNames.desktopBridge }}
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: {{ .Release.Name}}-desktop-bridge
-            port:
-              number: 80
   - host: {{ .Values.ingress.domainNames.apiGateway }}
     http:
       paths:
