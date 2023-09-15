@@ -18,22 +18,6 @@ api-gateway:
     audience: "account"
     enable: true
 
-route-network-validator:
-  loglevel: "Information"
-  replicas: 1
-  resources:
-    requests:
-      memory: 0Mi
-    limits:
-      memory: 0Gi
-  database:
-    database: OPEN_FTTH
-    username: postgres
-    password: postgres
-    port: 5432
-  eventStore:
-    connectionString: "Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE"
-
 gdb-integrator:
   replicas: 1
   loglevel: "Information"
