@@ -90,10 +90,6 @@ postgis:
     requests:
       memory: 1Gi
 
-desktop-bridge:
-  replicas: 1
-  loglevel: "Information"
-
 ingress:
   tls:
     enabled: false
@@ -103,6 +99,5 @@ ingress:
     hosts: {}
   domainNames:
     frontend: openftth.local
-    desktopBridge: desktop-bridge.openftth.local
     apiGateway: api-gateway.openftth.local
     auth: auth.openftth.local

@@ -60,6 +60,11 @@ helm upgrade --install openftth-event-store bitnami/postgresql \
      --set global.postgresql.postgresqlPassword=postgres \
      --set service.type=NodePort
 
+# Install Desktop Bridge.
+helm upgrade --install desktop-bridge dax/desktop-bridge \
+     --namespace openftth \
+     --version 1.0.0
+
 # Install user edit history
 helm upgrade --install user-edit-history dax/user-edit-history \
      --version 1.1.1 \
@@ -194,6 +199,31 @@ spec:
         backend:
           service:
             name: file-server-go-http-file-server
+            port:
+              number: 80
+EOF
+
+## Desktop bridge ingress
+cat <<EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: desktop-bridge-ingress
+  namespace: openftth
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+spec:
+  rules:
+  - host: desktop-bridge.openftth.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: desktop-bridge
             port:
               number: 80
 EOF
