@@ -81,6 +81,15 @@ helm upgrade --install notification-server dax/notification-server \
 helm upgrade --install openftth openftth -n openftth \
      --set-file frontend.maplibreJson=./settings/maplibre.json
 
+# Install Route network validator
+helm upgrade --install route-network-validator dax/route-network-validator \
+     --version 1.2.0 \
+     --namespace openftth \
+     --set postgis.database=OPEN_FTTH \
+     --set postgis.username=postgres \
+     --set postgis.password=postgres \
+     --set eventStore.connectionString="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE"
+
 # Install go-http-file-server
 helm upgrade --install file-server dax/go-http-file-server \
   --version 5.0.4 \
