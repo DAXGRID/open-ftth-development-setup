@@ -27,10 +27,11 @@ typesense:
   apiKey: ""
 
 auth:
-  host: ""
+  host: "http://keycloak/auth/realms/openftth"
   requireHttps: false
-  audience: ""
+  audience: "account"
   enable: true
+  validIssuers: ""
 
 outageService:
   outageServiceUrl: ""

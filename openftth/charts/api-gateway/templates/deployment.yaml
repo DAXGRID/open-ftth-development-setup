@@ -79,6 +79,8 @@ spec:
           value: "{{ .Values.auth.enable }}"
         - name: AUTH__AUDIENCE
           value: {{ .Values.auth.audience }}
+        - name: AUTH__VALIDISSUERS
+          value: {{ .Values.auth.validIssuers }}
 
         - name: OUTAGESERVICE__OUTAGESERVICEURL
           value: {{ .Values.outageService.outageServiceUrl }}
