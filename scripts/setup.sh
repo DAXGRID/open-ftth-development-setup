@@ -176,6 +176,12 @@ helm upgrade --install access-address-tile-data-extract dax/tile-data-extract \
      --version 1.1.0 \
      --namespace openftth
 
+# GDB-Integrator
+helm upgrade --install gdb-integrator dax/gdb-integrator \
+     --version 1.0.0 \
+     --namespace openftth \
+     --set eventStore.connectionString="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE"
+
 ## Equipment search indexer
 helm upgrade --install equipment-search-indexer dax/equipment-search-indexer \
      --version 1.3.13 \
