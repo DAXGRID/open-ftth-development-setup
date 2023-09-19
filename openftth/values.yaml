@@ -13,10 +13,10 @@ api-gateway:
     host: openftth-search-typesense
     apiKey: changeMe!
   auth:
-    host: http://auth.openftth.local/auth/realms/openftth
     requireHttps: false
     audience: "account"
     enable: true
+    validIssuers: "http://keycloak/auth/realms/openftth,http://auth.openftth.local/auth/realms/openftth"
 
 frontend:
   replicas: 1
