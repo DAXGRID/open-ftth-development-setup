@@ -18,33 +18,6 @@ api-gateway:
     enable: true
     validIssuers: "http://keycloak/auth/realms/openftth,http://auth.openftth.local/auth/realms/openftth"
 
-frontend:
-  replicas: 1
-  desktopBridgeUri: "ws://desktop-bridge.openftth.local"
-  apiGatewayHttpUri: "http://api-gateway.openftth.local"
-  apiGatewayWsUri: "ws://api-gateway.openftth.local"
-  keyCloakUri: "http://auth.openftth.local/auth"
-  routeNetworkTileServerUri: "http://tiles-routenetwork.openftth.local"
-  basemapTileServerUri: "http://tiles-basemap.openftth.local"
-  layers:
-    - name: aerial-photo
-      layerGroups:
-        - text: Aerial Photo
-          layers:
-            - aerial_photo
-  informationControlConfig:
-    sourceLayers:
-      - body: |
-          <div>
-            <p>Id: {id}</p>
-            <p>Mrid: {properties.mrid}</p>
-          </div>
-        layer: route_network
-        filter:
-          property: properties.objecttype
-          value: route_node
-  maplibreJson: ""
-
 postgis:
   username: postgres
   password: postgres
@@ -65,6 +38,5 @@ ingress:
       server: ""
     hosts: {}
   domainNames:
-    frontend: openftth.local
     apiGateway: api-gateway.openftth.local
     auth: auth.openftth.local

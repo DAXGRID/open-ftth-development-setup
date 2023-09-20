@@ -78,8 +78,13 @@ helm upgrade --install notification-server dax/notification-server \
      --namespace openftth
 
 # Install OpenFTTH
-helm upgrade --install openftth openftth -n openftth \
-     --set-file frontend.maplibreJson=./settings/maplibre.json
+helm upgrade --install openftth openftth -n openftth
+
+helm upgrade --install openftth-frontend dax/openftth-frontend \
+    -f scripts/openftth-frontend-override.yaml \
+     --version 1.0.0 \
+    --namespace openftth \
+    --set-file maplibreJson=./settings/maplibre.json
 
 # Install Route network validator
 helm upgrade --install route-network-validator dax/route-network-validator \
@@ -308,6 +313,29 @@ spec:
         backend:
           service:
             name: basemap-tileserver-mbtileserver
+            port:
+              number: 80
+EOF
+
+## OpenFTTH frontend ingress
+cat <<EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-ingress
+  namespace: openftth
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: openftth.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: openftth-frontend
             port:
               number: 80
 EOF
