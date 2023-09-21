@@ -80,9 +80,16 @@ helm upgrade --install notification-server dax/notification-server \
 # Install OpenFTTH
 helm upgrade --install openftth openftth -n openftth
 
+# Install OpenFTTH api gateway
+helm upgrade --install openftth-api-gateway dax/openftth-api-gateway \
+     -f scripts/openftth-api-gateway-override.yaml \
+     --version 1.1.0 \
+     --namespace openftth
+
+# Install OpenFTTH frontend
 helm upgrade --install openftth-frontend dax/openftth-frontend \
     -f scripts/openftth-frontend-override.yaml \
-     --version 1.0.0 \
+    --version 1.0.0 \
     --namespace openftth \
     --set-file maplibreJson=./settings/maplibre.json
 
@@ -336,6 +343,31 @@ spec:
         backend:
           service:
             name: openftth-frontend
+            port:
+              number: 80
+EOF
+
+## OpenFTTH api-gateway ingress
+cat <<EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-gateway-ingress
+  namespace: openftth
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+spec:
+  rules:
+  - host: api-gateway.openftth.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: openftth-api-gateway
             port:
               number: 80
 EOF

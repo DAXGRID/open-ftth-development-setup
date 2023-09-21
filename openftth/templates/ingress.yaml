@@ -17,16 +17,6 @@ spec:
     secretName: tls-secret
   {{ end }}
   rules:
-  - host: {{ .Values.ingress.domainNames.apiGateway }}
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: {{ .Release.Name}}-api-gateway
-            port:
-              number: 80
   - host: {{ .Values.ingress.domainNames.auth }}
     http:
       paths:
