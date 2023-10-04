@@ -371,3 +371,26 @@ spec:
             port:
               number: 80
 EOF
+
+## Kecloak Ingress
+cat <<EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: keycloak-ingress
+  namespace: openftth
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: auth.openftth.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: keycloak
+            port:
+              number: 80
+EOF

@@ -9,14 +9,3 @@ postgis:
   resources:
     requests:
       memory: 1Gi
-
-ingress:
-  tls:
-    enabled: false
-    acme:
-      email: ""
-      server: ""
-    hosts: {}
-  domainNames:
-    apiGateway: api-gateway.openftth.local
-    auth: auth.openftth.local
