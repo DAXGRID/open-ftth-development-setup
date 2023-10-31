@@ -110,7 +110,7 @@ helm upgrade --install file-server dax/go-http-file-server \
 
 # Install Mbtileserver route-network
 helm upgrade --install routenetwork-tileserver dax/mbtileserver \
-  --version 5.5.1 \
+  --version 5.6.0 \
   --namespace openftth \
   --set watcher.enabled=true \
   --set watcher.fileServer.username=user1 \
@@ -122,7 +122,7 @@ helm upgrade --install routenetwork-tileserver dax/mbtileserver \
 
 # Install Mbtileserver access-address
 helm upgrade --install access-address-tileserver dax/mbtileserver \
-  --version 5.5.1 \
+  --version 5.6.0 \
   --namespace openftth \
   --set watcher.enabled=true \
   --set watcher.fileServer.username=user1 \
@@ -135,7 +135,7 @@ helm upgrade --install access-address-tileserver dax/mbtileserver \
 
 # Install Mbtileserver base-map
 helm upgrade --install basemap-tileserver dax/mbtileserver \
-  --version 5.5.1 \
+  --version 5.6.0 \
   --namespace openftth \
   --set image.tag=danish-1689934495 \
   --set watcher.enabled=false \
