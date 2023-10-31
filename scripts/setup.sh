@@ -137,7 +137,7 @@ helm upgrade --install access-address-tileserver dax/mbtileserver \
 helm upgrade --install basemap-tileserver dax/mbtileserver \
   --version 5.6.0 \
   --namespace openftth \
-  --set image.tag=danish-1689934495 \
+  --set image.tag=danish-1698762103 \
   --set watcher.enabled=false \
   --set 'commandArgs={--enable-fs-watch, -d, /static_tiles}'
 
