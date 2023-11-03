@@ -212,11 +212,11 @@ metadata:
   name: file-server-ingress
   namespace: openftth
   annotations:
-    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-body-size: 25m
 spec:
+  ingressClassName: nginx
   rules:
   - host: files.openftth.local
     http:
@@ -238,10 +238,10 @@ metadata:
   name: desktop-bridge-ingress
   namespace: openftth
   annotations:
-    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
 spec:
+  ingressClassName: nginx
   rules:
   - host: desktop-bridge.openftth.local
     http:
@@ -262,9 +262,8 @@ kind: Ingress
 metadata:
   name: routenetwork-tileserver-ingress
   namespace: openftth
-  annotations:
-    kubernetes.io/ingress.class: nginx
 spec:
+  ingressClassName: nginx
   rules:
   - host: tiles-routenetwork.openftth.local
     http:
@@ -285,9 +284,8 @@ kind: Ingress
 metadata:
   name: access-address-tileserver-ingress
   namespace: openftth
-  annotations:
-    kubernetes.io/ingress.class: nginx
 spec:
+  ingressClassName: nginx
   rules:
   - host: tiles-access-address.openftth.local
     http:
@@ -308,9 +306,8 @@ kind: Ingress
 metadata:
   name: basemap-tileserver-ingress
   namespace: openftth
-  annotations:
-    kubernetes.io/ingress.class: nginx
 spec:
+  ingressClassName: nginx
   rules:
   - host: tiles-basemap.openftth.local
     http:
@@ -331,9 +328,8 @@ kind: Ingress
 metadata:
   name: frontend-ingress
   namespace: openftth
-  annotations:
-    kubernetes.io/ingress.class: nginx
 spec:
+  ingressClassName: nginx
   rules:
   - host: openftth.local
     http:
@@ -355,10 +351,10 @@ metadata:
   name: api-gateway-ingress
   namespace: openftth
   annotations:
-    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
 spec:
+  ingressClassName: nginx
   rules:
   - host: api-gateway.openftth.local
     http:
@@ -379,9 +375,8 @@ kind: Ingress
 metadata:
   name: keycloak-ingress
   namespace: openftth
-  annotations:
-    kubernetes.io/ingress.class: nginx
 spec:
+  ingressClassName: nginx
   rules:
   - host: auth.openftth.local
     http:
