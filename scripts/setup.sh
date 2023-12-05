@@ -40,7 +40,7 @@ fi
 
 ## Disable readiness and liveness probe until we migrate away from /auth
 helm upgrade --install keycloak bitnami/keycloak -n openftth \
-     --version 17.2.1 \
+     --version 17.3.4 \
      --set service.type=ClusterIP \
      --set auth.adminPassword=$ADMIN_PASSWORD \
      --set production=true \
