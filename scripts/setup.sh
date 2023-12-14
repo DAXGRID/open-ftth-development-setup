@@ -171,7 +171,7 @@ helm upgrade --install address-search-indexer dax/address-search-indexer \
 
 # Install Route-network-search-indexer
 helm upgrade --install route-network-search-indexer dax/route-network-search-indexer \
-     --version 2.2.1 \
+     --version 2.2.3 \
      --namespace openftth \
      --set eventStore.connectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH" \
      --set typesense.apiKey=changeMe!
