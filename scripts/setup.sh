@@ -73,7 +73,7 @@ helm upgrade --install user-edit-history dax/user-edit-history \
 
 # Install notification server
 helm upgrade --install notification-server dax/notification-server \
-     --version 1.0.1 \
+     --version 1.0.2 \
      --namespace openftth
 
 # Install OpenFTTH
