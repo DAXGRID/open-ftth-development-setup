@@ -94,7 +94,7 @@ helm upgrade --install openftth-frontend dax/openftth-frontend \
 
 # Install Route network validator
 helm upgrade --install route-network-validator dax/route-network-validator \
-     --version 1.2.0 \
+     --version 1.2.2 \
      --namespace openftth \
      --set postgis.database=OPEN_FTTH \
      --set postgis.username=postgres \
