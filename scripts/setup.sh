@@ -206,7 +206,7 @@ helm upgrade --install gdb-integrator dax/gdb-integrator \
 
 ## Equipment search indexer
 helm upgrade --install equipment-search-indexer dax/equipment-search-indexer \
-     --version 1.3.13 \
+     --version 1.3.14 \
      --namespace openftth \
      --set "specifications[0]"=Kundeterminering \
      --set connectionstring="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE" \
