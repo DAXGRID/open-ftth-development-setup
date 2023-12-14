@@ -66,7 +66,7 @@ helm upgrade --install desktop-bridge dax/desktop-bridge \
 
 # Install user edit history
 helm upgrade --install user-edit-history dax/user-edit-history \
-     --version 1.1.1 \
+     --version 1.1.2 \
      --namespace openftth \
      --set appsettings.settings.eventStoreConnectionString="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE" \
      --set appsettings.settings.connectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH"
