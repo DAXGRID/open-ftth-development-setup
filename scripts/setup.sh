@@ -157,7 +157,7 @@ helm upgrade --install address-import-dawa dax/address-import-dawa \
 
 # Install Address postgis projector
 helm upgrade --install address-postgis-projector dax/address-postgis-projector \
-     --version 1.0.10 \
+     --version 1.0.11 \
      --namespace openftth \
      --set appsettings.settings.eventStoreConnectionString="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE" \
      --set appsettings.settings.postgisConnectionString="Host=openftth-postgis;Port=5432;Username=postgres;Password=postgres;Database=OPEN_FTTH"
