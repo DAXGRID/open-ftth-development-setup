@@ -62,7 +62,7 @@ helm upgrade --install openftth-event-store bitnami/postgresql \
 # Install Desktop Bridge.
 helm upgrade --install desktop-bridge dax/desktop-bridge \
      --namespace openftth \
-     --version 1.0.0
+     --version 1.0.1
 
 # Install user edit history
 helm upgrade --install user-edit-history dax/user-edit-history \
