@@ -88,7 +88,7 @@ helm upgrade --install openftth-api-gateway dax/openftth-api-gateway \
 # Install OpenFTTH frontend
 helm upgrade --install openftth-frontend dax/openftth-frontend \
     -f scripts/openftth-frontend-override.yaml \
-    --version 1.1.14 \
+    --version 1.1.17 \
     --namespace openftth \
     --set-file maplibreJson=./settings/maplibre.json
 
