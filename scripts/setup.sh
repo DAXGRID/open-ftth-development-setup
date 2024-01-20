@@ -62,6 +62,7 @@ helm upgrade --install openftth-event-store bitnami/postgresql \
 # Install Desktop Bridge.
 helm upgrade --install desktop-bridge dax/desktop-bridge \
      --namespace openftth \
+     --set image.tag=13-01-2024-07 \
      --version 1.0.1
 
 # Install user edit history
@@ -82,7 +83,7 @@ helm upgrade --install openftth openftth -n openftth
 # Install OpenFTTH api gateway
 helm upgrade --install openftth-api-gateway dax/openftth-api-gateway \
      -f scripts/openftth-api-gateway-override.yaml \
-     --version 1.1.10 \
+     --version 1.1.11 \
      --namespace openftth
 
 # Install OpenFTTH frontend
