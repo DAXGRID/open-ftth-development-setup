@@ -142,7 +142,7 @@ helm upgrade --install basemap-tileserver dax/mbtileserver \
 
 # Install Typesense
 helm upgrade --install openftth-search dax/typesense \
-  --version 1.2.0 \
+  --version 1.2.1 \
   --namespace openftth \
   --set serviceType=ClusterIP \
   --set apiKey=changeMe! \
