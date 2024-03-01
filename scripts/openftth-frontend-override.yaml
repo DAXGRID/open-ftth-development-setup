@@ -3,7 +3,7 @@ replicas: 1
 desktopBridgeUri: "ws://desktop-bridge.openftth.local"
 apiGatewayHttpUri: "http://api-gateway.openftth.local"
 apiGatewayWsUri: "ws://api-gateway.openftth.local"
-keyCloakUri: "http://auth.openftth.local/auth"
+keyCloakUri: "http://auth.openftth.local/auth/"
 routeNetworkTileServerUri: "http://tiles-routenetwork.openftth.local"
 basemapTileServerUri: "http://tiles-basemap.openftth.local"
 
