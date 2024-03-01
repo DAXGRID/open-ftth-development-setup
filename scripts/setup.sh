@@ -82,7 +82,7 @@ helm upgrade --install openftth openftth -n openftth
 # Install OpenFTTH api gateway
 helm upgrade --install openftth-api-gateway dax/openftth-api-gateway \
      -f scripts/openftth-api-gateway-override.yaml \
-     --version 1.1.11 \
+     --version 1.1.12 \
      --namespace openftth
 
 # Install OpenFTTH frontend
