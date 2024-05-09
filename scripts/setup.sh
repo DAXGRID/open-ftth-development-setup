@@ -164,7 +164,7 @@ helm upgrade --install address-postgis-projector dax/address-postgis-projector \
 
 # Install access address search indexer
 helm upgrade --install address-search-indexer dax/address-search-indexer \
-     --version 1.1.10 \
+     --version 1.1.11 \
      --namespace openftth \
      --set appsettings.settings.eventStoreConnectionString="Host=openftth-event-store-postgresql;Port=5432;Username=postgres;Password=postgres;Database=EVENT_STORE" \
      --set appsettings.settings.typesense.key="changeMe!"
