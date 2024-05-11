@@ -10,12 +10,12 @@ appsettings:
     selections:
     - objectType: Feature
       geometryFieldName: coord
-      sqlQuery: "SELECT * FROM utility_network.route_node"
+      sqlQuery: "SELECT mrid, routenode_kind, routenode_function, naming_name, mapping_method, lifecycle_deployment_state, ST_AsGeoJSON(ST_Transform(coord,4326)) as coord FROM route_network.route_node WHERE marked_to_be_deleted = false"
       defaultZoom:
         minZoom: 15
         maxZoom: 17
       customZoom:
-        fieldName: kind
+        fieldName: routenode_kind
         zoomMap:
           CentralOfficeBig:
             minZoom: 5
@@ -33,7 +33,7 @@ appsettings:
         objecttype: route_node
     - objectType: Feature
       geometryFieldName: coord
-      sqlQuery: "SELECT * FROM utility_network.route_segment"
+      sqlQuery: "SELECT mrid, routesegment_kind, naming_name, mapping_method, lifecycle_deployment_state, ST_AsGeoJSON(ST_Transform(coord,4326)) as coord FROM route_network.route_segment WHERE marked_to_be_deleted = false"
       defaultZoom:
         minZoom: 12
         maxZoom: 17
