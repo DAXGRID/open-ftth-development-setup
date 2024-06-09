@@ -59,6 +59,15 @@ helm upgrade --install openftth-event-store bitnami/postgresql \
      --set global.postgresql.postgresqlPassword=postgres \
      --set service.type=LoadBalancer
 
+# Install Postgis
+# Username and password should be changed in live env.
+helm upgrade --install openftth-postgis dax/postgis \
+     --version 2.0.0 \
+     --set serviceType="LoadBalancer" \
+     --set username="postgres" \
+     --set password="postgres" \
+     --namespace openftth
+
 # Install Desktop Bridge.
 helm upgrade --install desktop-bridge dax/desktop-bridge \
      --namespace openftth \
@@ -75,9 +84,6 @@ helm upgrade --install user-edit-history dax/user-edit-history \
 helm upgrade --install notification-server dax/notification-server \
      --version 1.0.2 \
      --namespace openftth
-
-# Install OpenFTTH
-helm upgrade --install openftth openftth -n openftth
 
 # Install OpenFTTH api gateway
 helm upgrade --install openftth-api-gateway dax/openftth-api-gateway \
