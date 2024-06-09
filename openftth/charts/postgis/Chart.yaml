@@ -1,6 +1,0 @@
-apiVersion: v2
-name: postgis
-appVersion: "12.1"
-description: A Helm chart for postgis
-version: 0.2.2
-type: application
