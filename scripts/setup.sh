@@ -51,13 +51,13 @@ helm upgrade --install keycloak bitnami/keycloak -n openftth \
 
 # Install Postgres database for OpenFTTH eventstore
 # Username and password should be changed in live env.
-helm upgrade --install openftth-event-store bitnami/postgresql \
-     --version 10.3.18 \
+helm upgrade --install openftth-event-store-postgresql dax/postgresql \
+     --version 1.0.0 \
      --namespace openftth \
-     --set global.postgresql.postgresqlDatabase=EVENT_STORE \
-     --set global.postgresql.postgresqlUsername=postgres \
-     --set global.postgresql.postgresqlPassword=postgres \
-     --set service.type=LoadBalancer
+     --set databaseName=EVENT_STORE \
+     --set username=postgres \
+     --set password=postgres \
+     --set serviceType=LoadBalancer
 
 # Install Postgis
 # Username and password should be changed in live env.
