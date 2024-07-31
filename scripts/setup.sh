@@ -88,13 +88,13 @@ helm upgrade --install notification-server dax/notification-server \
 # Install OpenFTTH api gateway
 helm upgrade --install openftth-api-gateway dax/openftth-api-gateway \
      -f scripts/openftth-api-gateway-override.yaml \
-     --version 1.1.15 \
+     --version 1.1.22 \
      --namespace openftth
 
 # Install OpenFTTH frontend
 helm upgrade --install openftth-frontend dax/openftth-frontend \
     -f scripts/openftth-frontend-override.yaml \
-    --version 1.2.4 \
+    --version 1.2.8 \
     --namespace openftth \
     --set-file maplibreJson=./settings/maplibre.json
 
