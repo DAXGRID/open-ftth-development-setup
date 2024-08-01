@@ -16,7 +16,7 @@ helm repo update
 # Install Nginx-Ingress
 kubectl create namespace nginx-ingress --dry-run=client -o yaml | kubectl apply -f -
 helm upgrade --install nginx-ingress ingress-nginx/ingress-nginx \
-    --version 4.10.0 \
+    --version 4.11.1 \
     --namespace nginx-ingress \
     --set controller.ingressClassResource.default=true \
     --set controller.replicaCount=1
