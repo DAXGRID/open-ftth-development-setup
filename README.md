@@ -1,6 +1,6 @@
 # OPEN-FTTH Kubernetes Setup
 
-Helm Chart for OPEN-FTTH
+Development setup for the OpenFTTH system.
 
 ## Requirements
 
