@@ -1,0 +1,22 @@
+[
+  {
+    "id": "27b1db67-da97-4931-8898-36a5b9bf653a",
+    "protocol": "openid-connect",
+    "protocolMapper": "oidc-usermodel-client-role-mapper",
+    "name": "client roles",
+    "consentRequired": false,
+    "config": {
+      "introspection.token.claim": "true",
+      "multivalued": "true",
+      "userinfo.token.claim": "false",
+      "user.attribute": "foo",
+      "id.token.claim": "true",
+      "lightweight.claim": "false",
+      "access.token.claim": "true",
+      "claim.name": "openftth_frontend.roles",
+      "jsonType.label": "String",
+      "usermodel.clientRoleMapping.clientId": "openftth-frontend",
+      "usermodel.clientRoleMapping.rolePrefix": ""
+    }
+  }
+]
